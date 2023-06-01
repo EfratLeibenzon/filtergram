@@ -3,7 +3,7 @@
 export function AppHeader() {
     return (
         <header className="app-header">
-            <h1>filtergram-from header</h1>
+            <h1>hello efratr</h1>
         </header>
     )
 }
