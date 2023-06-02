@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStorys, removeStory } from '../store/story.actions'
 import { StoryList } from '../cmps/story-list'
 import { StoryAdd } from '../cmps/story-add'
 
 export function HomeIndex() {
+    const [isAdd, setIsAdd] = useState(false)
 
     const { storys } = useSelector((storeState) => storeState.storyModule)
 
@@ -23,7 +24,7 @@ export function HomeIndex() {
     }
 
     function onAddStory() {
-        StoryAdd()
+        setIsAdd(true)
     }
 
     return (
@@ -32,6 +33,7 @@ export function HomeIndex() {
             <div className='home-index'>
                 <h3>hello from home page</h3>
                 {/* {storyToEdit && <StoryEdit />} */}
+                {isAdd && <StoryAdd />}
                 <StoryList storys={storys} onRemoveStory={onRemoveStory} />
             </div></section>
     )
