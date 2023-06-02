@@ -3,14 +3,17 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'instaPost'
-const instaPosts = [{
+
+let gInstaPosts
+
+const instaPostsData = [{
     _id: "s101",
-    txt: "Best trip ever",
-    imgUrl: "http://some-img",
+    txt: 'how you doin',
+    imgUrl: `https://robohash.org/"s101".png?set=any&?size=100x100`,
     by: {
         _id: "u101",
         fullname: "Ulash Ulashi",
-        imgUrl: "http://some-img"
+        userImgUrl: `https://robohash.org/"u101".png?set=any&?size=100x100`
     },
     loc: { // Optional
         lat: 11.11,
@@ -57,7 +60,69 @@ const instaPosts = [{
         }
     ],
     tags: ["fun", "romantic"]
+},
+{
+    _id: "s102",
+    txt: 'how you doin 2',
+    imgUrl: `https://robohash.org/"s102".png?set=any&?size=100x100`,
+    by: {
+        _id: "u102",
+        fullname: "bitch",
+        userImgUrl: `https://robohash.org/"u102".png?set=any&?size=100x100`
+    },
+    loc: { // Optional
+        lat: 11.11,
+        lng: 22.22,
+        name: "Tel Aviv"
+    },
+    comments: [
+        {
+            id: "c1001",
+            by: {
+                _id: "u105",
+                fullname: "Bob",
+                imgUrl: "http://some-img"
+            },
+            txt: "good one!",
+            likedBy: [ // Optional
+                {
+                    "_id": "u105",
+                    "fullname": "Bob",
+                    "imgUrl": "http://some-img"
+                }
+            ]
+        },
+        {
+            id: "c1002",
+            by: {
+                _id: "u106",
+                fullname: "Dob",
+                imgUrl: "http://some-img"
+            },
+            txt: "not good!",
+        }
+    ],
+    likedBy: [
+        {
+            _id: "u105",
+            fullname: "Bob",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u106",
+            fullname: "Dob",
+            imgUrl: "http://some-img"
+        },
+        {
+            _id: "u107",
+            fullname: "Bob",
+            imgUrl: "http://some-img"
+        }
+    ],
+    tags: ["fun", "romantic"]
 }]
+
+_createInstaPosts()
 
 export const instaPostService = {
     query,
@@ -140,9 +205,20 @@ function getEmptyInstaPost() {
     }
 }
 
-function createInstaPost() {
-    const newInstaPost = getEmptyInstaPost()
-    return newInstaPost
+function _createInstaPosts() {
+    gInstaPosts = utilService.loadFromStorage(STORAGE_KEY)
+    if (gInstaPosts && gInstaPosts.length > 0) return
+
+    gInstaPosts = instaPostsData.map(instaPost => {
+        const id = utilService.makeId()
+        return { ...instaPost, _id: id }
+    })
+    _saveInstaPosts()
+
+}
+
+function _saveInstaPosts() {
+    utilService.saveToStorage(STORAGE_KEY, gInstaPosts)
 }
 
 

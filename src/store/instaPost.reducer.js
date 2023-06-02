@@ -26,6 +26,7 @@ export function instaPostReducer(state = initialState, action) {
             instaPosts = state.instaPosts.map(instaPost => (instaPost._id === action.instaPost._id) ? action.instaPost : instaPost)
             newState = { ...state, instaPosts }
             break
+        default:
 
     }
     return newState

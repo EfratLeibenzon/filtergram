@@ -1,7 +1,7 @@
 import { instaPostService } from "../services/instaPost.service.local.js";
 import { store } from './store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_INSTAPOST, REMOVE_INSTAPOST, SET_INSTAPOSTS, UNDO_REMOVE_INSTAPOST, UPDATE_INSTAPOST } from "./instaPost.reducer.js";
+import { ADD_INSTAPOST, REMOVE_INSTAPOST, SET_INSTAPOSTS, UPDATE_INSTAPOST } from "./instaPost.reducer.js";
 
 
 // Action Creators:
@@ -75,24 +75,24 @@ export function updateInstaPost(instaPost) {
         })
 }
 
-// Demo for Optimistic Mutation 
+// Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
-export function onRemoveInstaPostOptimistic(instaPostId) {
-    store.dispatch({
-        type: REMOVE_INSTAPOST,
-        instaPostId
-    })
-    showSuccessMsg('InstaPost removed')
+// export function onRemoveInstaPostOptimistic(instaPostId) {
+//     store.dispatch({
+//         type: REMOVE_INSTAPOST,
+//         instaPostId
+//     })
+//     showSuccessMsg('InstaPost removed')
 
-    instaPostService.remove(instaPostId)
-        .then(() => {
-            console.log('Server Reported - Deleted Succesfully');
-        })
-        .catch(err => {
-            showErrorMsg('Cannot remove instaPost')
-            console.log('Cannot load instaPosts', err)
-            store.dispatch({
-                type: UNDO_REMOVE_INSTAPOST,
-            })
-        })
-}
+//     instaPostService.remove(instaPostId)
+//         .then(() => {
+//             console.log('Server Reported - Deleted Succesfully');
+//         })
+//         .catch(err => {
+//             showErrorMsg('Cannot remove instaPost')
+//             console.log('Cannot load instaPosts', err)
+//             store.dispatch({
+//                 type: UNDO_REMOVE_INSTAPOST,
+//             })
+//         })
+// }

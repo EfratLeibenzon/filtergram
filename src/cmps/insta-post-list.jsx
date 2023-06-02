@@ -1,18 +1,20 @@
-import { useEffect } from "react"
-import { useSelector } from "react-redux"
-import { loadInstaPosts } from "../store/instaPost.actions"
+import { InstaPostPreview } from "./insta-post-preview";
 
+export function InstaPostList({ instaPosts, onRemoveInstaPost }) {
 
-export function InstaPostList() {
-
-    const { instaPosts } = useSelector((storeState) => storeState.instaPostModule)
-
-    useEffect(() => {
-        loadInstaPosts()
-    }, [])
 
     return (
-        <ul>
+        <ul className="insta-post-list">
+            {instaPosts.map(instaPost =>
+                <li className="insta-post-preview" key={instaPost._id}>
+                    <InstaPostPreview instaPost={instaPost} />
+                    <div>
+                        <button className="remove-btn" onClick={() => { onRemoveInstaPost(instaPost._id) }}>Remove</button>
+                    </div>
 
-        </ul>)
+                </li>
+            )}
+
+        </ul>
+    )
 }
