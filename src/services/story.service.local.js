@@ -2,11 +2,11 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 
-const STORAGE_KEY = 'instaPost'
+const STORAGE_KEY = 'story'
 
-let gInstaPosts
+let gStorys
 
-const instaPostsData = [{
+const storysData = [{
     _id: "s101",
     txt: 'how you doin',
     imgUrl: `https://robohash.org/"s101".png?set=any&?size=100x100`,
@@ -122,70 +122,70 @@ const instaPostsData = [{
     tags: ["fun", "romantic"]
 }]
 
-_createInstaPosts()
+_createStorys()
 
-export const instaPostService = {
+export const storyService = {
     query,
     getById,
     save,
     remove,
-    getEmptyInstaPost,
-    // addInstaPostMsg
+    getEmptyStory,
+    // addStoryMsg
 }
-window.cs = instaPostService
+window.cs = storyService
 
 
 async function query() {
     // filterBy = { by: '', tags: [] }
-    var instaPosts = await storageService.query(STORAGE_KEY)
+    var storys = await storageService.query(STORAGE_KEY)
     // if (filterBy.txt) {
     //     const regex = new RegExp(filterBy.txt, 'i')
-    //     instaPosts = instaPosts.filter(instaPost => regex.test(instaPost.vendor) || regex.test(instaPost.description))
+    //     storys = storys.filter(story => regex.test(story.vendor) || regex.test(story.description))
     // }
     // if (filterBy.price) {
-    //     instaPosts = instaPosts.filter(instaPost => instaPost.price <= filterBy.price)
+    //     storys = storys.filter(story => story.price <= filterBy.price)
     // }
-    return instaPosts
+    return storys
 }
 
-function getById(instaPostId) {
-    return storageService.get(STORAGE_KEY, instaPostId)
+function getById(storyId) {
+    return storageService.get(STORAGE_KEY, storyId)
 }
 
-async function remove(instaPostId) {
+async function remove(storyId) {
     // throw new Error('Nope')
-    await storageService.remove(STORAGE_KEY, instaPostId)
+    await storageService.remove(STORAGE_KEY, storyId)
 }
 
-async function save(instaPost) {
-    var savedInstaPost
-    if (instaPost._id) {
-        savedInstaPost = await storageService.put(STORAGE_KEY, instaPost)
+async function save(story) {
+    var savedStory
+    if (story._id) {
+        savedStory = await storageService.put(STORAGE_KEY, story)
     } else {
         // Later, owner is set by the backend
-        // instaPost.owner = 'userService.getLoggedinUser()'
-        savedInstaPost = await storageService.post(STORAGE_KEY, instaPost)
+        // story.owner = 'userService.getLoggedinUser()'
+        savedStory = await storageService.post(STORAGE_KEY, story)
     }
-    return savedInstaPost
+    return savedStory
 }
 
-// async function addInstaPostMsg(instaPostId, txt) {
+// async function addStoryMsg(storyId, txt) {
 //     // Later, this is all done by the backend
-//     const instaPost = await getById(instaPostId)
-//     if (!instaPost.msgs) instaPost.msgs = []
+//     const story = await getById(storyId)
+//     if (!story.msgs) story.msgs = []
 
 //     const msg = {
 //         id: utilService.makeId(),
 //         by: ' userService.getLoggedinUser()',
 //         txt
 //     }
-//     instaPost.msgs.push(msg)
-//     await storageService.put(STORAGE_KEY, instaPost)
+//     story.msgs.push(msg)
+//     await storageService.put(STORAGE_KEY, story)
 
 //     return msg
 // }
 
-function getEmptyInstaPost() {
+function getEmptyStory() {
     return {
         txt: "",
         imgUrl: "http://some-img",
@@ -205,20 +205,20 @@ function getEmptyInstaPost() {
     }
 }
 
-function _createInstaPosts() {
-    gInstaPosts = utilService.loadFromStorage(STORAGE_KEY)
-    if (gInstaPosts && gInstaPosts.length > 0) return
+function _createStorys() {
+    gStorys = utilService.loadFromStorage(STORAGE_KEY)
+    if (gStorys && gStorys.length > 0) return
 
-    gInstaPosts = instaPostsData.map(instaPost => {
+    gStorys = storysData.map(story => {
         const id = utilService.makeId()
-        return { ...instaPost, _id: id }
+        return { ...story, _id: id }
     })
-    _saveInstaPosts()
+    _saveStorys()
 
 }
 
-function _saveInstaPosts() {
-    utilService.saveToStorage(STORAGE_KEY, gInstaPosts)
+function _saveStorys() {
+    utilService.saveToStorage(STORAGE_KEY, gStorys)
 }
 
 

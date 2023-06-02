@@ -1,38 +1,38 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadInstaPosts, removeInstaPost } from '../store/instaPost.actions'
-import { InstaPostList } from '../cmps/insta-post-list'
-import { AddInstaPost } from '../cmps/add-insta-post'
+import { loadStorys, removeStory } from '../store/story.actions'
+import { StoryList } from '../cmps/story-list'
+import { StoryAdd } from '../cmps/story-add'
 
 export function HomeIndex() {
 
-    const { instaPosts } = useSelector((storeState) => storeState.instaPostModule)
+    const { storys } = useSelector((storeState) => storeState.storyModule)
 
     useEffect(() => {
-        loadInstaPosts()
+        loadStorys()
     }, [])
 
-    function onRemoveInstaPost(instaPostId) {
-        removeInstaPost(instaPostId)
+    function onRemoveStory(storyId) {
+        removeStory(storyId)
             .then(() => {
-                console.log('insta post with id', instaPostId, ' has removed')
+                console.log('story with id', storyId, ' has removed')
             })
             .catch((err) => {
-                console.log('cannot remove insta post with id', instaPostId, err)
+                console.log('cannot remove story with id', storyId, err)
             })
     }
 
-    function onAddInstaPost() {
-        AddInstaPost()
+    function onAddStory() {
+        StoryAdd()
     }
 
     return (
         <section>
-            <button onClick={onAddInstaPost}>add Post</button>
+            <button onClick={onAddStory}>add Post</button>
             <div className='home-index'>
                 <h3>hello from home page</h3>
-                {/* {instaPostToEdit && <InstaPostEdit />} */}
-                <InstaPostList instaPosts={instaPosts} onRemoveInstaPost={onRemoveInstaPost} />
+                {/* {storyToEdit && <StoryEdit />} */}
+                <StoryList storys={storys} onRemoveStory={onRemoveStory} />
             </div></section>
     )
 }
