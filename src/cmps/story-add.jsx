@@ -73,8 +73,4 @@ export function StoryAdd() {
 
 
     //     // )
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 3920c144bdb1dba2faa0940201c40bc3aaaff847
