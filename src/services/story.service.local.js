@@ -188,11 +188,11 @@ async function save(story) {
 function getEmptyStory() {
     return {
         txt: "",
-        imgUrl: "",
+        imgUrl: "http://some-img",
         by: {
             _id: "u101",
             fullname: "Ulash Ulashi",
-            imgUrl: ""
+            imgUrl: "http://some-img"
         },
         // loc: { // Optional
         //     lat: 11.11,
