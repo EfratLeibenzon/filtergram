@@ -1,7 +1,7 @@
 import { commentService } from "../services/comment.service.local.js";
 import { store } from './store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_COMMENT, REMOVE_COMMENT, SET_COMMENTS, UPDATE_COMMENT } from "./comment.reducer.js";
+import { ADD_COMMENT, REMOVE_COMMENT, GET_COMMENTS, } from "./comment.reducer.js";
 
 
 // Action Creators:
@@ -11,25 +11,25 @@ export function getActionRemoveComment(commentId) {
         commentId
     }
 }
-// export function getActionAddComment(comment) {
-//     return {
-//         type: ADD_COMMENT,
-//         comment
-//     }
-// }
-// export function getActionUpdateComment(comment) {
-//     return {
-//         type: UPDATE_COMMENT,
-//         comment
-//     }
-// }
+export function getActionAddComment(comment) {
+    return {
+        type: ADD_COMMENT,
+        comment
+    }
+}
+export function getActionGetComment(comment) {
+    return {
+        type: GET_COMMENTS,
+        comment
+    }
+}
 
 export async function loadComments(storyId) {
     try {
         const comments = await commentService.query(storyId)
         console.log('Comments from DB:', comments)
         store.dispatch({
-            type: SET_COMMENTS,
+            type: GET_COMMENTS,
             comments
         })
 
@@ -65,7 +65,7 @@ export function updateComment(comment) {
     return commentService.save(comment)
         .then(savedComment => {
             console.log('Updated Comment:', savedComment)
-            store.dispatch(getActionUpdateComment(savedComment))
+            store.dispatch(getActionGetComment(savedComment))
             return savedComment
         })
         .catch(err => {

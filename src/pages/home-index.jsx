@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { loadStorys, removeStory } from '../store/story.actions'
 import { StoryList } from '../cmps/story-list'
 import { StoryAdd } from '../cmps/story-add'
+import { UploadWidget } from '../cmps/upload-widget'
 
 export function HomeIndex() {
     const [isAdd, setIsAdd] = useState(false)
@@ -29,11 +30,14 @@ export function HomeIndex() {
 
     return (
         <section>
-            <button onClick={onAddStory}>add Post</button>
+            <img src="https://res.cloudinary.com/duxmabf4n/image/upload/v1685811634/an1dequb3e0efxnakcv6.png" alt="" />
+            {/* <button onClick={onAddStory}>add Post</button> */}
             <div className='home-index'>
                 <h3>hello from home page</h3>
+                <StoryAdd />
                 {/* {storyToEdit && <StoryEdit />} */}
-                {isAdd && <StoryAdd />}
+                {/* {isAdd && <UploadWidget />} */}
+                <UploadWidget />
                 <StoryList storys={storys} onRemoveStory={onRemoveStory} />
             </div></section>
     )

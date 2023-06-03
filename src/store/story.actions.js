@@ -1,7 +1,7 @@
 import { storyService } from "../services/story.service.local.js";
 import { store } from './store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_STORY, REMOVE_STORY, SET_STORYS, UPDATE_STORY } from "./story.reducer.js";
+import { ADD_STORY, REMOVE_STORY, SET_STORYS, SET_PATH, GET_PATH, UPDATE_STORY } from "./story.reducer.js";
 
 
 // Action Creators:
@@ -24,6 +24,13 @@ export function getActionUpdateStory(story) {
     }
 }
 
+export function setPath(imgPath) {
+    store.dispatch({
+        type: SET_PATH,
+        imgPath
+    })
+}
+
 export async function loadStorys() {
     try {
         const storys = await storyService.query()
@@ -39,20 +46,20 @@ export async function loadStorys() {
     }
 }
 
-export async function loadStory(storyId) {
-    try {
-        const story = await storyService.getById(storyId)
-        console.log('Storys from DB:', story)
-        store.dispatch({
-            type: SET_STORY,
-            story
-        })
+// export async function loadStory(storyId) {
+//     try {
+//         const story = await storyService.getById(storyId)
+//         console.log('Storys from DB:', story)
+//         store.dispatch({
+//             type: SET_STORY,
+//             story
+//         })
 
-    } catch (err) {
-        console.log('Cannot load story', err)
-        throw err
-    }
-}
+//     } catch (err) {
+//         console.log('Cannot load story', err)
+//         throw err
+//     }
+// }
 
 
 
