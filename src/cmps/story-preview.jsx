@@ -1,7 +1,11 @@
+import { commentsService } from "../services/comment.service"
 
 
 export function StoryPreview({ story }) {
 
+    function onOpenStoryDetails() {
+
+    }
 
     return (
         <article className="story-preview">
@@ -14,7 +18,7 @@ export function StoryPreview({ story }) {
                 <button>like</button>
                 <button>save</button>
                 <button>share</button>
-                <button>comment</button>
+                <button onClick={onOpenStoryDetails}>comment</button>
             </div>
             <section>likes:{story.likedBy.length}</section>
             <p><span className="user-name">{story.by.fullname}</span>.  .<span className="story-txt">{story.txt}</span></p>

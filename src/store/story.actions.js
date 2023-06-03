@@ -37,8 +37,24 @@ export async function loadStorys() {
         console.log('Cannot load storys', err)
         throw err
     }
-
 }
+
+export async function loadStory(storyId) {
+    try {
+        const story = await storyService.getById(storyId)
+        console.log('Storys from DB:', story)
+        store.dispatch({
+            type: SET_STORY,
+            story
+        })
+
+    } catch (err) {
+        console.log('Cannot load story', err)
+        throw err
+    }
+}
+
+
 
 export async function removeStory(storyId) {
     try {

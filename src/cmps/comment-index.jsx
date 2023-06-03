@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { loadComment, removeComment } from '../store/comment.actions'
-import { useParams } from "react-router-dom"
 
-export function StoryDetails() {
-    const { storyId } = useParams()
-    const [story, setStory] = useState(null)
+export function CommentIndex() {
     const { comments } = useSelector((storeState) => storeState.commentModule)
 
-
-
     useEffect(() => {
-        setStory(() => load)
-        loadComment(storyId)
-    }, [story])
+        loadComment()
+    }, [])
 
     function onRemoveComment(commentId) {
         removeComment(commentId)
