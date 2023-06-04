@@ -10,6 +10,7 @@ export function HomeIndex() {
 
     useEffect(() => {
         loadStorys()
+        console.log(storys)
     }, [])
 
     function onRemoveStory(storyId) {

@@ -2,7 +2,7 @@ export const stories = [
     {
         _id: "s101",
         txt: 'here comes the sun ☀️',
-        imgUrl: '/assets/img/profileImg/101.jpeg',
+        imgUrl: './assets/img/profileImg/101.jpeg',
         by: {
             _id: "u101",
             fullname: "Irene__",

@@ -52,6 +52,7 @@ function getEmptyStory() {
         by: users[0],
         loc: {},
         comments: [],
+        likedBy: [],
         tags: []
     }
 }
