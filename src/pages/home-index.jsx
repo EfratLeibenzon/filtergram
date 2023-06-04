@@ -27,7 +27,7 @@ export function HomeIndex() {
     return (
         <section>
             <div className='home-index'>
-                <StoryEdit />
+                {/* <StoryEdit /> */}
                 <StoryList storys={storys} onRemoveStory={onRemoveStory} />
             </div>
         </section>
