@@ -2,27 +2,15 @@ export const SET_STORYS = 'SET_STORYS'
 export const REMOVE_STORY = 'REMOVE_STORY'
 export const ADD_STORY = 'ADD_STORY'
 export const UPDATE_STORY = 'UPDATE_STORY'
-export const SET_STORY = 'SET_STORY'
-export const CEAR_STORY = 'CEAR_STORY'
-export const SET_PATH = 'SET_PATH'
-
 
 const initialState = {
     storys: [],
-    story: null,
-    imgPath: null
 }
 
 export function storyReducer(state = initialState, action) {
     var newState = state
     var storys
     switch (action.type) {
-        case CEAR_STORY:
-            newState = { ...state, story: action.null }
-            break
-        case SET_STORY:
-            newState = { ...state, story: action.story }
-            break
         case SET_STORYS:
             newState = { ...state, storys: action.storys }
             break
@@ -36,9 +24,6 @@ export function storyReducer(state = initialState, action) {
         case UPDATE_STORY:
             storys = state.storys.map(story => (story._id === action.story._id) ? action.story : story)
             newState = { ...state, storys }
-            break
-        case SET_PATH:
-            newState = { ...state, imgPath: action.imgPath }
             break
         default:
 

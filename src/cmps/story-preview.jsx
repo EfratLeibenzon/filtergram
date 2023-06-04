@@ -1,4 +1,4 @@
-import { commentsService } from "../services/comment.service"
+
 
 
 export function StoryPreview({ story }) {
@@ -9,7 +9,7 @@ export function StoryPreview({ story }) {
 
     return (
         <article className="story-preview">
-            <header className="story-header">
+            {/* <header className="story-header">
                 <img className="mini-user-img" src={story.by.userImgUrl} alt="" />
                 <h4 className="user-name">{story.by.fullname}</h4>
             </header>
@@ -21,7 +21,7 @@ export function StoryPreview({ story }) {
                 <button onClick={onOpenStoryDetails}>comment</button>
             </div>
             <section>likes:{story.likedBy.length}</section>
-            <p><span className="user-name">{story.by.fullname}</span>.  .<span className="story-txt">{story.txt}</span></p>
+            <p><span className="user-name">{story.by.fullname}</span>.  .<span className="story-txt">{story.txt}</span></p> */}
         </article>
     )
 }

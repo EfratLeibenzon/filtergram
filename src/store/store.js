@@ -2,12 +2,11 @@ import { createStore, combineReducers } from 'redux'
 
 import { storyReducer } from './story.reducer.js'
 import { systemReducer } from './system.reducer'
-import { commentReducer } from './comment.reducer.js'
+
 
 const rootReducer = combineReducers({
     storyModule: storyReducer,
     systemModule: systemReducer,
-    commentModule: commentReducer,
 })
 
 

@@ -1,7 +1,6 @@
 import { storyService } from "../services/story.service.local.js";
 import { store } from './store.js'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { ADD_STORY, REMOVE_STORY, SET_STORYS, SET_PATH, GET_PATH, UPDATE_STORY } from "./story.reducer.js";
+import { ADD_STORY, REMOVE_STORY, SET_STORYS, UPDATE_STORY } from "./story.reducer.js";
 
 
 // Action Creators:
@@ -24,13 +23,6 @@ export function getActionUpdateStory(story) {
     }
 }
 
-export function setPath(imgPath) {
-    store.dispatch({
-        type: SET_PATH,
-        imgPath
-    })
-}
-
 export async function loadStorys() {
     try {
         const storys = await storyService.query()
@@ -45,23 +37,6 @@ export async function loadStorys() {
         throw err
     }
 }
-
-// export async function loadStory(storyId) {
-//     try {
-//         const story = await storyService.getById(storyId)
-//         console.log('Storys from DB:', story)
-//         store.dispatch({
-//             type: SET_STORY,
-//             story
-//         })
-
-//     } catch (err) {
-//         console.log('Cannot load story', err)
-//         throw err
-//     }
-// }
-
-
 
 export async function removeStory(storyId) {
     try {
@@ -97,25 +72,3 @@ export function updateStory(story) {
             throw err
         })
 }
-
-// Demo for Optimistic Mutation
-// (IOW - Assuming the server call will work, so updating the UI first)
-// export function onRemoveStoryOptimistic(storyId) {
-//     store.dispatch({
-//         type: REMOVE_STORY,
-//         storyId
-//     })
-//     showSuccessMsg('Story removed')
-
-//     storyService.remove(storyId)
-//         .then(() => {
-//             console.log('Server Reported - Deleted Succesfully');
-//         })
-//         .catch(err => {
-//             showErrorMsg('Cannot remove story')
-//             console.log('Cannot load storys', err)
-//             store.dispatch({
-//                 type: UNDO_REMOVE_STORY,
-//             })
-//         })
-// }

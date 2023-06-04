@@ -1,4 +1,4 @@
-const storiesDemoData = [
+export const stories = [
     {
         _id: "s101",
         txt: 'here comes the sun ☀️',
@@ -447,7 +447,7 @@ const storiesDemoData = [
     },
 ]
 
-const users = [
+export const users = [
     {
         _id: "u101",
         fullname: "Irene__",
@@ -483,9 +483,4 @@ const users = [
     }
 ]
 
-const tags = ['cool', 'food', 'baby', 'nature',]
-
-
-function getData() {
-    return storiesDemoData
-}
+export const tags = ['cool', 'food', 'baby', 'nature',]
