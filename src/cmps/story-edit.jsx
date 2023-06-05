@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { storyService } from "../services/story.service.local"
-import { useParams } from "react-router-dom"
-import { uploadService } from "../services/upload.service"
+import { Navigate, useNavigate, useParams } from "react-router-dom"
 import { ImgUploader } from "./img-uploader"
 import { addStory } from "../store/story.actions"
 
 export function StoryEdit() {
     const [storyToEdit, setStoryToEdit] = useState(storyService.getEmptyStory())
     const { storyId } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (!storyId) return
@@ -19,29 +19,51 @@ export function StoryEdit() {
             .then((story) => setStoryToEdit(story)) // change to try
             .catch((err) => {
                 console.log('couldnt load story', err)
-                // navigate('/story')
             })
     }
 
     function onUploadedImg(imgUrl) {
         console.log('oved!', imgUrl)
-        setStoryToEdit({ ...storyToEdit, imgUrl })
-        const newText = prompt('enter your text:')
-        setStoryToEdit({ ...storyToEdit, txt: newText })
+        setStoryToEdit((prevStoryToEdit) => ({ ...prevStoryToEdit, imgUrl: imgUrl }))
     }
 
-    function onSaveStory() {
+    function onSaveStory(ev) {
+        ev.preventDefault()
         console.log(storyToEdit)
-
         addStory(storyToEdit)
+        navigate('/')
 
     }
 
     return (
         <div className="story-edit">
-            <ImgUploader onUploaded={onUploadedImg} />
-            {storyToEdit.txt && <button onClick={onSaveStory}>Post</button>}
+            {!storyToEdit.imgUrl && <ImgUploader onUploaded={onUploadedImg} />}
+            {storyToEdit.imgUrl && <CreateStoryTitle storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} />}
         </div>
     )
 
+}
+
+function CreateStoryTitle({ storyToEdit, setStoryToEdit, onSaveStory }) {
+
+    function handleChange({ target }) {
+        let { value, name: field } = target
+        setStoryToEdit((prev) => ({ ...prev, [field]: value }))
+
+    }
+    return (
+        <div>
+            <section className="edit-story-img">
+                <img src={storyToEdit.imgUrl} alt="" />
+            </section>
+            <section className="edit-story-form">
+                <form onSubmit={onSaveStory}>
+                    <label htmlFor="txt">
+                        <input onChange={handleChange} type="text" name="txt" id="txt" placeholder="Write a caption..." />
+                    </label>
+                    <button>Post</button>
+                </form>
+            </section>
+        </div>
+    )
 }

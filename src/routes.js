@@ -44,9 +44,9 @@ const routes = [
         component: <StoryEdit />,
         label: 'StoryEdit',
     }, {
-        path: '/story/edit/:storyId',
+        path: '/story/edit/',
         component: <StoryEdit />,
-        label: 'StoryEdit',
+        label: 'Create',
     }, {
         path: '/search',
         component: <Search />,

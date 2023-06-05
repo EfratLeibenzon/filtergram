@@ -1,4 +1,4 @@
-export const stories = [
+export const newData = [
     {
         _id: "s101",
         txt: 'here comes the sun ☀️',
@@ -451,7 +451,7 @@ export const users = [
     {
         _id: "u101",
         fullname: "Irene__",
-        userImgUrl: '/assets/img/profileImg/101.jpeg'
+        userImgUrl: 'https://res.cloudinary.com/duxmabf4n/image/upload/v1685950112/eiqrhchqoliytvlhd60w.jpg'
     }, {
         _id: "u102",
         fullname: "freddie mercury",
@@ -484,3 +484,16 @@ export const users = [
 ]
 
 export const tags = ['cool', 'food', 'baby', 'nature',]
+
+
+
+
+export const stories = [{
+    _id: 's101',
+    txt: 'yummy!!',
+    imgUrl: 'https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg',
+    by: users[0],
+    loc: {},
+    comments: [],
+    likedBy: []
+}]
