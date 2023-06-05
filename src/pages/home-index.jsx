@@ -13,16 +13,16 @@ export function HomeIndex() {
         console.log(storys)
     }, [])
 
-    function onRemoveStory(storyId) {
-        removeStory(storyId)
-            .then(() => {
-                console.log('story with id', storyId, ' has removed')
-            })
-            .catch((err) => {
-                console.log('cannot remove story with id', storyId, err)
-            })
+    async function onRemoveStory(storyId) {
+        try {
+            await removeStory(storyId)
+            console.log('story with id', storyId, ' has removed')
+            // showSuccessMsg(`Story (id: ${storyId}) removed `)
+        } catch (err) {
+            console.log('cannot remove story with id', storyId, err)
+            // showErrorMsg('Cannot remove story')
+        }
     }
-
 
     return (
         <section>

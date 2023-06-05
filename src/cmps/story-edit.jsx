@@ -14,12 +14,13 @@ export function StoryEdit() {
         loadStory()
     }, [])
 
-    function loadStory() {
-        storyService.getById(storyId)
-            .then((story) => setStoryToEdit(story)) // change to try
-            .catch((err) => {
-                console.log('couldnt load story', err)
-            })
+    async function loadStory() {
+        try {
+            const story = await storyService.getById(storyId)
+            setStoryToEdit(story)
+        } catch (err) {
+            console.log('couldnt load story', err)
+        }
     }
 
     function onUploadedImg(imgUrl) {
@@ -27,12 +28,15 @@ export function StoryEdit() {
         setStoryToEdit((prevStoryToEdit) => ({ ...prevStoryToEdit, imgUrl: imgUrl }))
     }
 
-    function onSaveStory(ev) {
+    async function onSaveStory(ev) {
         ev.preventDefault()
-        console.log(storyToEdit)
-        addStory(storyToEdit)
+        try {
+            addStory(storyToEdit)
+            console.log('story added!')
+        } catch (err) {
+            console.log('Cannot add story', err)
+        }
         navigate('/')
-
     }
 
     return (

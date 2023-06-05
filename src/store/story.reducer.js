@@ -2,6 +2,7 @@ export const SET_STORYS = 'SET_STORYS'
 export const REMOVE_STORY = 'REMOVE_STORY'
 export const ADD_STORY = 'ADD_STORY'
 export const UPDATE_STORY = 'UPDATE_STORY'
+export const ADD_COMMENT = 'ADD_COMMENT' // UPDATE_STORY?????
 
 const initialState = {
     storys: [],
@@ -19,8 +20,7 @@ export function storyReducer(state = initialState, action) {
             newState = { ...state, storys }
             break
         case ADD_STORY:
-            storys = [...state.storys, action.story]
-            newState = { ...state, storys }
+            newState = { ...state, storys: [action.story, ...state.storys] }
             break
         case UPDATE_STORY:
             storys = state.storys.map(story => (story._id === action.story._id) ? action.story : story)
