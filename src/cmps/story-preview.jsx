@@ -1,17 +1,23 @@
 
 
 
-export function StoryPreview({ story }) {
+export function StoryPreview({ story, onRemoveStory }) {
 
     function onOpenStoryDetails() {
 
     }
 
     return (
-        <article className="story-preview">
+        <article>
             <header className="story-header">
-                <img className="mini-user-img" src={story.by.userImgUrl} alt="" />
-                <h4 className="user-name">{story.by.fullname}</h4>
+                <div>
+                    <button className="remove-btn" onClick={() => { onRemoveStory(story._id) }}>Remove</button>
+                </div>
+                <div>
+                    <img className="mini-user-img" src={story.by.userImgUrl} alt="" />
+                    <h4 className="user-name">{story.by.fullname}</h4>
+                </div>
+
             </header>
             <img className="story-img" src={story.imgUrl} alt="" />
             <div className="action-btns">

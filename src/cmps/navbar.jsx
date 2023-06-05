@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export function Navbar() {
     return (
-        <nav className="main-navbar">
+        <nav className="main-navbar flex column">
             <NavLink to={"/"}>Home</NavLink>
             <NavLink to={"/search"}>Search</NavLink>
             <NavLink to={"/explore"}>Explore</NavLink>
