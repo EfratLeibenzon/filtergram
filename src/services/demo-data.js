@@ -480,6 +480,7 @@ export const users = [
         _id: "u108",
         fullname: "joe",
         imgUrl: '/assets/img/profileImg/logo.jpeg'
+
     }
 ]
 
