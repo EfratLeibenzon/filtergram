@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { uploadService } from '../services/upload.service'
+import uploadingImg from '../assets/img/uploadingImg.jpeg'
 
 export function ImgUploader({ onUploaded = null }) {
   const [imgData, setImgData] = useState({
@@ -25,9 +26,12 @@ export function ImgUploader({ onUploaded = null }) {
 
   return (
     <div className="upload-preview">
-      {imgData.imgUrl && <img src={imgData.imgUrl} style={{ maxWidth: '200px', float: 'right' }} />}
+      <img className='bg-img' src={uploadingImg} alt="" />
+      {imgData.imgUrl && <img src={imgData.imgUrl} />}
       <label htmlFor="imgUpload">{getUploadLabel()}</label>
-      <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
+      <button className='img-btn'>
+        <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
+      </button>
     </div>
   )
 }

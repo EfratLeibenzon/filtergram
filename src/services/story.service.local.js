@@ -24,6 +24,7 @@ window.cs = storyService
 
 async function query() { // filterBy = { by: '', tags: [] }
     var storys = await storageService.query(STORAGE_KEY)
+    // storys.sort((s1, s2)=> s1.createdAt-s2.createdAt)
     return storys
 }
 

@@ -31,7 +31,7 @@ export function StoryEdit() {
     async function onSaveStory(ev) {
         ev.preventDefault()
         try {
-            addStory(storyToEdit)
+            await addStory(storyToEdit)
             console.log('story added!')
         } catch (err) {
             console.log('Cannot add story', err)

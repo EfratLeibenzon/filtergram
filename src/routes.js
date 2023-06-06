@@ -1,6 +1,7 @@
 import { Notifications } from './cmps/notifications.jsx'
 import { Search } from './cmps/search.jsx'
 import { StoryEdit } from './cmps/story-edit.jsx'
+import { Suggested } from './cmps/suggested.jsx'
 import { Explore } from './pages/explore.jsx'
 import { HomeIndex } from './pages/home-index.jsx'
 import { Messages } from './pages/messages.jsx'
@@ -39,15 +40,17 @@ const routes = [
         path: '/story/edit',
         component: <StoryEdit />,
         label: 'Story',
-    }, {
+    },
+    {
         path: '/story/edit/:storyId',
         component: <StoryEdit />,
         label: 'StoryEdit',
     }, {
-        path: '/story/edit/',
+        path: '/story/create',
         component: <StoryEdit />,
         label: 'Create',
-    }, {
+    }
+    , {
         path: '/search',
         component: <Search />,
         label: 'Search',
@@ -55,12 +58,7 @@ const routes = [
         path: '/notifications',
         component: <Notifications />,
         label: 'Notifications',
-    }
-
-
+    },
 ]
-{/* <Route element={<ToyDetails />} path="/toy/:toyId" />create
-<Route element={<ToyEdit />} path="/toy/edit" />
-<Route element={<ToyEdit />} path="/toy/edit/:toyId" /> */}
 
 export default routes

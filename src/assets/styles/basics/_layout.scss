@@ -1,9 +1,11 @@
 .main-section {
+    margin-left: $nav-width;
+    width: 100%;
     display: grid;
-    grid-template-columns: 240px 0.9fr 500px 1fr;
+    grid-template-columns: 1fr 1013px 1fr;
 
     >* {
-        grid-column: 3;
+        grid-column: 2;
 
         &.full {
             grid-column: 1 /-1;

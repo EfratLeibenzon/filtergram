@@ -1,10 +1,11 @@
 .story-preview {
-
+    width: 100%;
+    max-height: 90vh;
 
     &.user-preview {
         padding: 5px;
-    }
 
+    }
 
 }
 
@@ -13,4 +14,19 @@
     width: 32px;
 
     border-radius: 50%;
+}
+
+.upload-preview {
+    height: 200px;
+    background-color: wheat;
+
+}
+
+.bg-img {
+    margin: auto;
+    width: 200px;
+}
+
+.img-btn {
+    background-color: blue;
 }
