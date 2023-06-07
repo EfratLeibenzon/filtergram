@@ -23,7 +23,7 @@ export function Navbar() {
             <NavLink to={"/story/create"}><CgAddR /></NavLink>
             <NavLink to={"/profile"}>Profile</NavLink>
 
-            <button><AiOutlineMenu /></button>
+            <button className="icon-btn"><AiOutlineMenu /></button>
 
         </nav>
     )
