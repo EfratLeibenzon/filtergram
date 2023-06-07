@@ -49,10 +49,10 @@ export function StoryEdit({ storyToAdd, setStoryToAdd }) {
 
     return (
         <div className="story-edit">
-            <DynamicComponent onUploaded={onUploadedImg} imgUrl={storyToEdit.imgUrl} storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} />
-            {/* {!storyToEdit.imgUrl && <ImgUploader onUploaded={onUploadedImg} />}
-            {storyToEdit.imgUrl && <EditImg imgUrl={storyToEdit.imgUrl} />}
-            {storyToEdit.imgUrl && <CreateStoryTitle storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} />} */}
+            {/* <DynamicComponent onUploaded={onUploadedImg} imgUrl={storyToEdit.imgUrl} storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} /> */}
+            {!storyToEdit.imgUrl && <ImgUploader onUploaded={onUploadedImg} />}
+            {/* {storyToEdit.imgUrl && <EditImg imgUrl={storyToEdit.imgUrl} />} */}
+            {storyToEdit.imgUrl && <CreateStoryTitle storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} />}
         </div>
     )
 }

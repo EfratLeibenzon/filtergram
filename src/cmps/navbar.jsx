@@ -8,17 +8,17 @@ export function Navbar() {
     return (
         <nav className="main-navbar flex column justify-start">
             <section className="logo">
-                <NavLink to={"/"}>FILTERGRAM</NavLink>
+                <NavLink className="navbar-item" to={"/"}>FILTERGRAM</NavLink>
             </section>
-            <NavLink to={"/"}><span>{homeIcon}</span><span>home</span> </NavLink>
-            <NavLink to={"/search"}><span>{searchIcon}</span><span>search</span></NavLink>
-            <NavLink to={"/explore"}><span>{exploreIcon}</span><span>explore</span></NavLink>
-            <NavLink to={"/reels"}><span>{reelsIcon}</span><span>reels</span></NavLink>
-            <NavLink to={"/messages"}><span>{sendIcon}</span><span>messages</span></NavLink>
-            <NavLink to={"/notifications"}><span>{likeIcon}</span><span>notifications</span></NavLink>
-            <NavLink to={"/story/create"}><span>{createIcon}</span><span>create</span></NavLink>
-            <NavLink to={"/profile"}>Profile</NavLink>
-            <button className="icon-btn"><span>{moreIcon}</span><span>more</span></button>
+            <NavLink className="navbar-item" to={"/"}><span>{homeIcon}</span><span>home</span> </NavLink>
+            <button className="navbar-item"> <span>{searchIcon}</span><span>search</span></button>
+            <NavLink className="navbar-item" to={"/explore"}><span>{exploreIcon}</span><span>explore</span></NavLink>
+            <NavLink className="navbar-item" to={"/reels"}><span>{reelsIcon}</span><span>reels</span></NavLink>
+            <NavLink className="navbar-item" to={"/messages"}><span>{sendIcon}</span><span>messages</span></NavLink>
+            <button className="navbar-item"><span>{likeIcon}</span><span>notifications</span></button>
+            <NavLink className="navbar-item" to={"/story/edit"}> <span>{createIcon}</span><span>create</span></NavLink>
+            <NavLink className="navbar-item" to={"/profile"}>Profile</NavLink>
+            <button className="navbar-item"><span>{moreIcon}</span><span>more</span></button>
 
         </nav>
     )

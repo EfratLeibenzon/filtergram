@@ -36,16 +36,18 @@ const routes = [
         path: '/story/:storyId',
         component: <StoryDetails />,
         label: 'StoryDetails',
-    }, {
+    },
+    {
         path: '/story/edit',
         component: <StoryEdit />,
-        label: 'Story',
+        label: 'Create',
     },
     {
         path: '/story/edit/:storyId',
         component: <StoryEdit />,
         label: 'StoryEdit',
-    }, {
+    },
+    {
         path: '/story/create',
         component: <StoryEdit />,
         label: 'Create',

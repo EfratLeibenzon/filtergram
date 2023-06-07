@@ -5,14 +5,31 @@
     left: 0;
     padding: 5px;
     border-right: 0.5px solid gray;
+    line-height: 18px;
+    font-size: 16px;
+    font-weight: 400;
 
-    &button {
-        bottom: 20px;
+    // &button {
+    //     bottom: 20px;
+    // }
+
+    &span:nth-child(2)>* {
+        align-items: flex-start;
+        text-size-adjust: 100%;
+        padding-left: 16px;
     }
 
-    &a.span:nth-child(2) {
-        vertical-align: middle;
-    }
+}
+
+.navbar-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.navbar-item {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    text-align: start;
 }
 
 .main-navbar>* {

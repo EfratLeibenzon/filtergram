@@ -17,36 +17,35 @@ html {
 
 body {
     font-size: rem(16px);
-    margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: caveat;
-    margin: 0 0 0.6em;
-    line-height: 1;
-}
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+
+//     margin: 0 0 0.6em;
+//     line-height: 1;
+// }
 
 
-section,
-div,
-main {
-    padding: 5px;
-}
+// section,
+// div,
+// main {
+//     padding: 5px;
+// }
 
 img {
     max-width: 460px;
     max-height: 750px;
 }
 
-p {
-    margin: 0 0 1em;
-}
+// p {
+//     margin: 0 0 1em;
+// }
 
 a {
     text-decoration: none;
@@ -55,6 +54,7 @@ a {
 
 a:hover {
     text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .icon-btn {
@@ -62,4 +62,9 @@ a:hover {
     border: none;
     color: inherit;
     text-align: start;
+}
+
+button {
+    font-size: inherit;
+    font-weight: 400;
 }
