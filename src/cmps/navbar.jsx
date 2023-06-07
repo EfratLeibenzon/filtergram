@@ -23,7 +23,6 @@ export function Navbar() {
             <NavLink to={"/notifications"}><AiOutlineHeart /></NavLink>
             <NavLink to={"/story/create"}><CgAddR /></NavLink>
             <NavLink to={"/profile"}>Profile</NavLink>
-
             <button ><SlMenu /></button>
 
         </nav>
