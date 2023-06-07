@@ -6,7 +6,8 @@ import { BiMoviePlay } from 'react-icons/bi'
 import { FiSend } from 'react-icons/fi'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { CgAddR } from 'react-icons/cg'
-import { AiOutlineMenu } from 'react-icons/ai'
+import { SlMenu } from 'react-icons/sl'
+
 
 export function Navbar() {
     return (
@@ -23,7 +24,7 @@ export function Navbar() {
             <NavLink to={"/story/create"}><CgAddR /></NavLink>
             <NavLink to={"/profile"}>Profile</NavLink>
 
-            <button><AiOutlineMenu /></button>
+            <button ><SlMenu /></button>
 
         </nav>
     )
