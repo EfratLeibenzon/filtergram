@@ -39,7 +39,8 @@ main {
 }
 
 img {
-    width: 100%;
+    max-width: 460px;
+    max-height: 750px;
 }
 
 p {
@@ -48,13 +49,16 @@ p {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .icon-btn {
     background-color: transparent;
     border: none;
+    color: inherit;
+    text-align: start;
 }

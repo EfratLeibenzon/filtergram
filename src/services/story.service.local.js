@@ -83,6 +83,7 @@ function getCommentById(storyId, commentId) {
 
 function getEmptyComment() {
     return {
+        _id: utilService.makeId(8),
         by: users[0],
         txt: "",
         likedBy: []

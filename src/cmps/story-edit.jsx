@@ -49,10 +49,10 @@ export function StoryEdit({ storyToAdd, setStoryToAdd }) {
 
     return (
         <div className="story-edit">
-            {/* <DynamicComponent stage={stage} /> */}
-            {!storyToEdit.imgUrl && <ImgUploader onUploaded={onUploadedImg} />}
-            {(storyToEdit.imgUrl && !storyToEdit.txt) && <EditImg imgUrl={storyToEdit.imgUrl} />}
-            {storyToEdit.imgUrl && <CreateStoryTitle storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} />}
+            <DynamicComponent onUploaded={onUploadedImg} imgUrl={storyToEdit.imgUrl} storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} />
+            {/* {!storyToEdit.imgUrl && <ImgUploader onUploaded={onUploadedImg} />}
+            {storyToEdit.imgUrl && <EditImg imgUrl={storyToEdit.imgUrl} />}
+            {storyToEdit.imgUrl && <CreateStoryTitle storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} />} */}
         </div>
     )
 }
@@ -80,33 +80,22 @@ function CreateStoryTitle({ storyToEdit, setStoryToEdit, onSaveStory }) {
     )
 }
 
-// function DynamicComponent(stage) {
-//     switch (stage) {
-//         case 'imgUpload':
-//             <ImgUploader onUploaded={onUploadedImg} />
-//             break
-//         // case 'imgEdit':
-//         //     <ImgUploader onUploaded={onUploadedImg} />
-//         //     break
-//         case 'addTxt':
-//             <CreateStoryTitle storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} />
-//             break
-//     }
-
-// }
+function DynamicComponent({ onUploadedImg, storyToEdit, setStoryToEdit, onSaveStory }) {
+    if (!storyToEdit.imgUrl && !storyToEdit.txt) return <ImgUploader onUploaded={onUploadedImg} />
+    else if (storyToEdit.imgUrl && !storyToEdit.txt) return <EditImg imgUrl={storyToEdit.imgUrl} />
+    return <CreateStoryTitle storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} />
+}
 
 function EditImg(imgUrl) {
-
     return (
-        <div>
-            <section>
+        <div className="edit-img flex row">
+            <section className="img-preview">
                 <img src={imgUrl} alt="" />
             </section>
-            <section>
-                <img onClick={console.log('Black & white')} src='https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg' alt="" style={{ height: '50px', width: '50px' }} />
+            <section className="img-editors">
+                <img onClick={() => console.log('Black & white')} src='https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg' alt="" style={{ height: '50px', width: '50px' }} />
             </section>
         </div>
-
     )
 
 }

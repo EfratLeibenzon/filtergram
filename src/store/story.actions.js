@@ -60,15 +60,14 @@ export async function addStory(story) {
     }
 }
 
-export function updateStory(story) {
-    return storyService.save(story)
-        .then(savedStory => {
-            console.log('Updated Story:', savedStory)
-            store.dispatch(getActionUpdateStory(savedStory))
-            return savedStory
-        })
-        .catch(err => {
-            console.log('Cannot save story', err)
-            throw err
-        })
+export async function updateStory(story) {
+    try {
+        const savedStory = await storyService.save(story)
+        console.log('Updated Story:', savedStory)
+        store.dispatch(getActionUpdateStory(savedStory))
+        return savedStory
+    } catch (err) {
+        console.log('Cannot save story', err)
+        throw err
+    }
 }

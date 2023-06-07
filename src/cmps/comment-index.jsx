@@ -1,35 +1,48 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { loadComment, removeComment } from '../store/comment.actions'
+import { storyService } from "../services/story.service.local"
+import { updateStory } from "../store/story.actions"
 
-export function CommentIndex() {
-    const { comments } = useSelector((storeState) => storeState.commentModule)
 
-    useEffect(() => {
-        loadComment()
-    }, [])
+export function CommentIndex({ story }) {
+    const [commentToAdd, setcommentToAdd] = useState(storyService.getEmptyComment())
 
-    function onRemoveComment(commentId) {
-        removeComment(commentId)
-            .then(() => {
-                console.log('comment with id', commentId, ' has removed')
-            })
-            .catch((err) => {
-                console.log('cannot remove comment with id', commentId, err)
-            })
+    // function onRemoveComment(commentId) {
+    //     removeComment(commentId)
+    //         .then(() => {
+    //             console.log('comment with id', commentId, ' has removed')
+    //         })
+    //         .catch((err) => {
+    //             console.log('cannot remove comment with id', commentId, err)
+    //         })
+    // }
+
+
+    function handleChange({ target }) {
+        setcommentToAdd({ ...commentToAdd, txt: target.value })
+        console.log(commentToAdd)
     }
 
-
-    // function onAddComent() {
-    //     let comment = commentsService.getEmptyComment()
-    //     comment.txt = prompt('Add your Comment:')
-
-
-    // }
+    async function onSaveComment(ev) {
+        ev.preventDefault()
+        setcommentToAdd({ ...commentToAdd, CreatedAt: Date.now() })
+        story.comments.push(commentToAdd)
+        console.log(ev.target)
+        try {
+            const savedStory = await updateStory(story)
+            console.log('savedStory', savedStory)
+        }
+        catch (err) {
+            console.log('cant add comment', err)
+        }
+    }
 
 
 
     return (
-        <section></section>
+        <form onSubmit={onSaveComment}>
+            <input onChange={handleChange} type="text" name="comment" placeholder="Add a comment..." />
+            <button>Post</button>
+        </form>
     )
 }

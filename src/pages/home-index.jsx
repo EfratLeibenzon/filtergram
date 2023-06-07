@@ -26,10 +26,8 @@ export function HomeIndex() {
         try {
             await removeStory(storyId)
             console.log('story with id', storyId, ' has removed')
-            // showSuccessMsg(`Story (id: ${storyId}) removed `)
         } catch (err) {
             console.log('cannot remove story with id', storyId, err)
-            // showErrorMsg('Cannot remove story')
         }
     }
 
