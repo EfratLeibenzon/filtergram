@@ -35,7 +35,7 @@ export function HomeIndex() {
 
     return (
         <section>
-            {storyToAdd && <StoryEdit />}
+            {storyToAdd && <StoryEdit storyToAdd={storyToAdd} setStoryToAdd={setStoryToAdd} />}
             <div className='home-index flex'>
                 <section className='story-container'>
 

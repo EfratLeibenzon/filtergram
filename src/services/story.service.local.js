@@ -24,7 +24,7 @@ window.cs = storyService
 
 async function query() { // filterBy = { by: '', tags: [] }
     var storys = await storageService.query(STORAGE_KEY)
-    // storys.sort((s1, s2)=> s1.createdAt-s2.createdAt)
+    storys.sort((s1, s2) => s1.createdAt - s2.createdAt)
     return storys
 }
 
@@ -48,13 +48,15 @@ async function save(story) {
 
 function getEmptyStory() {
     return {
-        txt: "",
-        imgUrl: "",
+        txt: '',
+        createdAt: null,
+        imgUrl: '',
         by: users[0],
         loc: {},
+        taggedUsers: [],
         comments: [],
         likedBy: [],
-        tags: []
+        hashTags: []
     }
 }
 
