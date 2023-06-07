@@ -1,4 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
+import { MdHomeFilled } from 'react-icons/md'
+import { TfiSearch } from 'react-icons/tfi'
+import { FaRegCompass } from 'react-icons/fa'
+import { BiMoviePlay } from 'react-icons/bi'
+import { FiSend } from 'react-icons/fi'
+import { AiOutlineHeart } from 'react-icons/ai'
+import { CgAddR } from 'react-icons/cg'
+import { AiOutlineMenu } from 'react-icons/ai'
 
 export function Navbar() {
     return (
@@ -6,16 +14,16 @@ export function Navbar() {
             <section className="logo">
                 <NavLink to={"/"}>FILTERGRAM</NavLink>
             </section>
-            <NavLink to={"/"}>Home</NavLink>
-            <NavLink to={"/search"}>Search</NavLink>
-            <NavLink to={"/explore"}>Explore</NavLink>
-            <NavLink to={"/reels"}>Reels</NavLink>
-            <NavLink to={"/messages"}>Messages</NavLink>
-            <NavLink to={"/notifications"}>Notifications</NavLink>
-            <NavLink to={"/story/create"}>Create</NavLink>
+            <NavLink to={"/"}><MdHomeFilled /></NavLink>
+            <NavLink to={"/search"}><TfiSearch /></NavLink>
+            <NavLink to={"/explore"}><FaRegCompass /></NavLink>
+            <NavLink to={"/reels"}><BiMoviePlay /></NavLink>
+            <NavLink to={"/messages"}><FiSend /></NavLink>
+            <NavLink to={"/notifications"}><AiOutlineHeart /></NavLink>
+            <NavLink to={"/story/create"}><CgAddR /></NavLink>
             <NavLink to={"/profile"}>Profile</NavLink>
 
-            <button>more</button>
+            <button><AiOutlineMenu /></button>
 
         </nav>
     )
