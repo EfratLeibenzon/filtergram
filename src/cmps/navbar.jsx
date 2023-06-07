@@ -5,7 +5,6 @@ import { searchIcon, exploreIcon, homeIcon, reelsIcon, sendIcon, likeIcon, creat
 
 
 export function Navbar() {
-    const style = { color: 'black' }
     return (
         <nav className="main-navbar flex column justify-start">
             <section className="logo">

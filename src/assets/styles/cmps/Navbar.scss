@@ -9,6 +9,10 @@
     &button {
         bottom: 20px;
     }
+
+    &a.span:nth-child(2) {
+        vertical-align: middle;
+    }
 }
 
 .main-navbar>* {
