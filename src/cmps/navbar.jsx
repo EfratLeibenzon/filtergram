@@ -1,12 +1,7 @@
 import { NavLink } from "react-router-dom"
-import { MdHomeFilled } from 'react-icons/md'
-import { TfiSearch } from 'react-icons/tfi'
-import { FaRegCompass } from 'react-icons/fa'
-import { BiMoviePlay } from 'react-icons/bi'
-import { FiSend } from 'react-icons/fi'
-import { AiOutlineHeart } from 'react-icons/ai'
-import { CgAddR } from 'react-icons/cg'
-import { SlMenu } from 'react-icons/sl'
+import { searchIcon, exploreIcon, homeIcon, reelsIcon, sendIcon, likeIcon, createIcon, moreIcon } from './icons'
+
+
 
 
 export function Navbar() {
@@ -16,15 +11,15 @@ export function Navbar() {
             <section className="logo">
                 <NavLink to={"/"}>FILTERGRAM</NavLink>
             </section>
-            <NavLink to={"/"}><MdHomeFilled />home</NavLink>
-            <NavLink to={"/search"}><TfiSearch />search</NavLink>
-            <NavLink to={"/explore"}><FaRegCompass />explore</NavLink>
-            <NavLink to={"/reels"}><BiMoviePlay />reels</NavLink>
-            <NavLink to={"/messages"}><FiSend />messages</NavLink>
-            <NavLink to={"/notifications"}><AiOutlineHeart />notifications</NavLink>
-            <NavLink to={"/story/create"}><CgAddR />create</NavLink>
+            <NavLink to={"/"}><span>{homeIcon}</span><span>home</span> </NavLink>
+            <NavLink to={"/search"}><span>{searchIcon}</span><span>search</span></NavLink>
+            <NavLink to={"/explore"}><span>{exploreIcon}</span><span>explore</span></NavLink>
+            <NavLink to={"/reels"}><span>{reelsIcon}</span><span>reels</span></NavLink>
+            <NavLink to={"/messages"}><span>{sendIcon}</span><span>messages</span></NavLink>
+            <NavLink to={"/notifications"}><span>{likeIcon}</span><span>notifications</span></NavLink>
+            <NavLink to={"/story/create"}><span>{createIcon}</span><span>create</span></NavLink>
             <NavLink to={"/profile"}>Profile</NavLink>
-            <button className="icon-btn"><SlMenu style={style} />more</button>
+            <button className="icon-btn"><span>{moreIcon}</span><span>more</span></button>
 
         </nav>
     )
