@@ -10,20 +10,21 @@ import { SlMenu } from 'react-icons/sl'
 
 
 export function Navbar() {
+    const style = { color: 'black' }
     return (
-        <nav className="main-navbar flex column">
+        <nav className="main-navbar flex column justify-start">
             <section className="logo">
                 <NavLink to={"/"}>FILTERGRAM</NavLink>
             </section>
-            <NavLink to={"/"}><MdHomeFilled /></NavLink>
-            <NavLink to={"/search"}><TfiSearch /></NavLink>
-            <NavLink to={"/explore"}><FaRegCompass /></NavLink>
-            <NavLink to={"/reels"}><BiMoviePlay /></NavLink>
-            <NavLink to={"/messages"}><FiSend /></NavLink>
-            <NavLink to={"/notifications"}><AiOutlineHeart /></NavLink>
-            <NavLink to={"/story/create"}><CgAddR /></NavLink>
+            <NavLink to={"/"}><MdHomeFilled />home</NavLink>
+            <NavLink to={"/search"}><TfiSearch />search</NavLink>
+            <NavLink to={"/explore"}><FaRegCompass />explore</NavLink>
+            <NavLink to={"/reels"}><BiMoviePlay />reels</NavLink>
+            <NavLink to={"/messages"}><FiSend />messages</NavLink>
+            <NavLink to={"/notifications"}><AiOutlineHeart />notifications</NavLink>
+            <NavLink to={"/story/create"}><CgAddR />create</NavLink>
             <NavLink to={"/profile"}>Profile</NavLink>
-            <button ><SlMenu /></button>
+            <button className="icon-btn"><SlMenu style={style} />more</button>
 
         </nav>
     )
