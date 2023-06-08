@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom"
 import { searchIcon, exploreIcon, homeIcon, reelsIcon, sendIcon, likeIcon, createIcon, moreIcon } from './icons'
+import { userService } from "../services/user.service";
 
-
+const userName = userService.getLoggedinUser()?.[0]?.userName;
 
 
 export function Navbar() {
@@ -17,9 +18,8 @@ export function Navbar() {
             <NavLink className="navbar-item" to={"/messages"}><span>{sendIcon}</span><span>messages</span></NavLink>
             <button className="navbar-item"><span>{likeIcon}</span><span>notifications</span></button>
             <NavLink className="navbar-item" to={"/story/edit"}> <span>{createIcon}</span><span>create</span></NavLink>
-            <NavLink className="navbar-item" to={"/profile"}>Profile</NavLink>
+            <NavLink className="navbar-item" to={`/${userName}`}>Profile</NavLink>
             <button className="navbar-item"><span>{moreIcon}</span><span>more</span></button>
-
         </nav>
     )
 }

@@ -1,3 +1,4 @@
+import { useActionData } from 'react-router-dom'
 import { Notifications } from './cmps/notifications.jsx'
 import { Search } from './cmps/search.jsx'
 import { StoryEdit } from './cmps/story-edit.jsx'
@@ -8,7 +9,10 @@ import { Messages } from './pages/messages.jsx'
 import { Profile } from './pages/profile.jsx'
 import { Reels } from './pages/reels.jsx'
 import { StoryDetails } from './pages/story-details.jsx'
+import {userService} from './services/user.service'
 
+const userName = userService.getLoggedinUser()?.[0]?.userName;
+console.log(userName)
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [
@@ -29,7 +33,7 @@ const routes = [
         component: <Messages />,
         label: 'Messages',
     }, {
-        path: '/profile',
+        path: `/${userName}`,
         component: <Profile />,
         label: 'Profile',
     }, {
@@ -60,7 +64,7 @@ const routes = [
         path: '/notifications',
         component: <Notifications />,
         label: 'Notifications',
-    },
+    }
 ]
 
 export default routes
