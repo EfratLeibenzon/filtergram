@@ -12,7 +12,7 @@ import { StoryDetails } from './pages/story-details.jsx'
 import {userService} from './services/user.service'
 
 const userName = userService.getLoggedinUser()?.[0]?.userName;
-console.log(userName)
+// console.log('user name from routes.js', userName)
 
 // Routes accesible from the main navigation (in AppHeader)
 const routes = [

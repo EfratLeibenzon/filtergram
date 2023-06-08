@@ -37,7 +37,6 @@ function saveLocalUser(user) {
 
 
 async function login(userCred) {
-    debugger;
     const users = await storageService.query('user')
     const user = users.find(user => user.username === userCred.username)
     if (user) {
@@ -73,7 +72,7 @@ async function getUsers(filterBy = { txt: '' }) {
     //     // users = users.filter(user => regex.test(user.unername) || regex.test(car.description))
     // }
     // return users
-    console.log('get logged in user', storageService.query(STORAGE_KEY_LOGGEDIN_USER))
+    // console.log('get logged in user', storageService.query(STORAGE_KEY_LOGGEDIN_USER))
     return storageService.query(STORAGE_KEY_LOGGEDIN_USER)
     // return httpService.get(`user`)
 }
