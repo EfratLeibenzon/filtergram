@@ -1,0 +1,19 @@
+.story-edit {
+    position: fixed;
+    top: 40px;
+    background-color: lightblue;
+    z-index: 100;
+    width: 60vw;
+    height: 70vh;
+}
+
+.input-btn {
+    background-color: rgb(0, 149, 246);
+    border-color: rgb(0, 149, 246);
+    color: white;
+    height: 40px;
+    width: 177px;
+    font-size: 14px;
+    border-radius: 10px;
+    box-shadow: none;
+}

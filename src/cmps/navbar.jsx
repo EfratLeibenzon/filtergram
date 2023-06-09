@@ -1,11 +1,18 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { searchIcon, exploreIcon, homeIcon, reelsIcon, sendIcon, likeIcon, createIcon, moreIcon } from './icons'
+import { storyService } from "../services/story.service.local"
 import { userService } from "../services/user.service";
 
 const userName = userService.getLoggedinUser()?.[0]?.userName;
 
 
-export function Navbar() {
+export function Navbar({ isStoryEdit, setisStoryEdit }) {
+
+    function onCreate() {
+        setisStoryEdit(true)
+        console.log('isStoryEdit', isStoryEdit)
+    }
+
     return (
         <nav className="main-navbar flex column justify-start">
             <section className="logo">
@@ -17,8 +24,8 @@ export function Navbar() {
             <NavLink className="navbar-item" to={"/reels"}><span>{reelsIcon}</span><span>reels</span></NavLink>
             <NavLink className="navbar-item" to={"/messages"}><span>{sendIcon}</span><span>messages</span></NavLink>
             <button className="navbar-item"><span>{likeIcon}</span><span>notifications</span></button>
-            <NavLink className="navbar-item" to={"/story/edit"}> <span>{createIcon}</span><span>create</span></NavLink>
-            <NavLink className="navbar-item" to={`/${userName}`}>Profile</NavLink>
+            <button className="navbar-item" onClick={onCreate} > <span>{createIcon}</span><span>create</span></button>
+            <NavLink className="navbar-item" to={"/profile/:userId"}>Profile</NavLink>
             <button className="navbar-item"><span>{moreIcon}</span><span>more</span></button>
         </nav>
     )

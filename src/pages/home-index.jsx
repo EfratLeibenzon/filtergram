@@ -4,23 +4,14 @@ import { loadStorys, removeStory } from '../store/story.actions'
 import { StoryList } from '../cmps/story-list'
 import { StoryEdit } from '../cmps/story-edit'
 import { Suggested } from '../cmps/suggested'
-import { storyService } from '../services/story.service.local'
-
 
 export function HomeIndex() {
     const { storys } = useSelector((storeState) => storeState.storyModule)
-    const [storyToAdd, setStoryToAdd] = useState(null)
 
     useEffect(() => {
         loadStorys()
         console.log(storys)
     }, [])
-
-    function onAddStory() {
-        const story = storyService.getEmptyStory()
-        setStoryToAdd(story)
-    }
-
 
     async function onRemoveStory(storyId) {
         try {
@@ -33,10 +24,8 @@ export function HomeIndex() {
 
     return (
         <section>
-            {storyToAdd && <StoryEdit storyToAdd={storyToAdd} setStoryToAdd={setStoryToAdd} />}
             <div className='home-index flex'>
                 <section className='story-container'>
-
                     <StoryList storys={storys} onRemoveStory={onRemoveStory} />
                 </section>
                 <Suggested />

@@ -3,36 +3,100 @@
     height: 100%;
     position: fixed;
     left: 0;
-    padding: 5px;
+    padding: 10px;
     border-right: 0.5px solid gray;
     line-height: 18px;
     font-size: 16px;
     font-weight: 400;
 
-    // &button {
-    //     bottom: 20px;
-    // }
-
-    &span:nth-child(2)>* {
-        align-items: flex-start;
-        text-size-adjust: 100%;
-        padding-left: 16px;
+    .logo {
+        margin-inline-start: 10px;
+        margin-block-start: 20px;
+        margin-block-end: 20px;
     }
 
 }
 
-.navbar-item:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+.nav-icons-container {
+    height: 80vh;
+
+    // button {
+    //     background-color: white;
+    //     margin-block-start: 20px;
+    //     border-radius: 10px;
+
+    //     font-size: 1.1rem;
+    //     color: black;
+    //     text-align: left;
+
+    //     &:hover {
+    //         background-color: gray;
+    //     }
+    // }
 }
 
-.navbar-item {
-    background-color: transparent;
-    border: none;
-    color: inherit;
-    text-align: start;
+.nav-icons-container>* {
+    background-color: white;
+    margin-block-start: 20px;
+    border-radius: 10px;
+
+    font-size: 1.1rem;
+    color: black;
+    text-align: left;
+
+    &:hover {
+        background-color: gray;
+    }
 }
 
 .main-navbar>* {
     margin: 4px 0px;
     padding: 12px;
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    text-align: start;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
 }
+
+// .main-navbar {
+//     width: $nav-width;
+//     height: 100%;
+//     position: fixed;
+//     left: 0;
+//     padding: 5px;
+//     border-right: 0.5px solid gray;
+//     line-height: 18px;
+//     font-size: 16px;
+//     font-weight: 400;
+
+//     // &button {
+//     //     bottom: 20px;
+//     // }
+
+//     &span:nth-child(2)>* {
+//         align-items: flex-start;
+//         text-size-adjust: 100%;
+//         padding-left: 16px;
+//     }
+
+// }
+
+// .navbar-item:hover {
+//     background-color: rgba(0, 0, 0, 0.05);
+// }
+
+// .navbar-item {
+//     background-color: transparent;
+//     border: none;
+//     color: inherit;
+//     text-align: start;
+// }
+
+// .main-navbar>* {
+//     margin: 4px 0px;
+//     padding: 12px;
+// }
