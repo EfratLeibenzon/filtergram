@@ -27,13 +27,8 @@ export function Navbar({ isStoryEdit, setisStoryEdit }) {
             <NavLink className="navbar-item" to={"/reels"}><span>{reelsIcon}</span><span>reels</span></NavLink>
             <NavLink className="navbar-item" to={"/messages"}><span>{sendIcon}</span><span>messages</span></NavLink>
             <button className="navbar-item"><span>{likeIcon}</span><span>notifications</span></button>
-<<<<<<< HEAD
             <button className="navbar-item" onClick={onCreate} > <span>{createIcon}</span><span>create</span></button>
             <NavLink className="navbar-item" to={"/profile/:userId"}>Profile</NavLink>
-=======
-            <NavLink className="navbar-item" to={"/story/edit"}> <span>{createIcon}</span><span>create</span></NavLink>
-            <NavLink className="navbar-item" to={`/${userName}`}>Profile</NavLink>
->>>>>>> 78b57618f0515f8ffb401416c4822a98772f29ac
             <button className="navbar-item"><span>{moreIcon}</span><span>more</span></button>
         </nav>
     )
