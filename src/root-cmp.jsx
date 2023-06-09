@@ -1,23 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Routes, Route } from 'react-router'
-import routes from './routes'
 import { Navbar } from './cmps/navbar'
+import { HomeIndex } from './pages/home-index'
+import { Explore } from './pages/explore'
+import { Profile } from './pages/profile'
+import { Messages } from './pages/messages'
+import { Reels } from './pages/reels'
+import { StoryEdit } from './cmps/story-edit'
 
 
 export function RootCmp() {
+    const [isStoryEdit, setisStoryEdit] = useState(false)
 
     return (
         <div className='flex'>
+            <Navbar isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} />
 
-            <Navbar />
             <main className='main-section'>
                 <Routes>
-                    {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
+                    <Route element={<HomeIndex />} path="/">
+                        {/* <Route element={<StoryDetails path={"/story/:storyId"} />} /> */}
+                    </Route>
+                    <Route element={<Explore />} path="/explore" />
+                    <Route element={<Reels />} path="/reels" />
+                    <Route element={<Messages />} path="/messages" />
+                    <Route element={<Profile />} path={'/profile/:userId'} />
                 </Routes>
+                {isStoryEdit && <StoryEdit isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} />}
             </main>
 
         </div>
     )
 }
-
 

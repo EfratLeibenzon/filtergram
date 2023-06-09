@@ -1,6 +1,6 @@
 import { storyService } from "../services/story.service.local.js";
 import { store } from './store.js'
-import { ADD_STORY, REMOVE_STORY, SET_STORYS, UPDATE_STORY } from "./story.reducer.js";
+import { ADD_STORY, REMOVE_STORY, SET_STORYS, UPDATE_STORY, TOGGLE_LIKE } from "./story.reducer.js";
 
 
 // Action Creators:
@@ -20,6 +20,19 @@ export function getActionUpdateStory(story) {
     return {
         type: UPDATE_STORY,
         story
+    }
+}
+
+export async function toggleLike(story, user) {
+    try {
+        // console.log('storyid', storyId)
+        await storyService.saveToggleLike(story, user)
+        store.dispatch({
+            type: TOGGLE_LIKE, payload: { story, user }
+        })
+    } catch (err) {
+        console.log('Cannot add like', err)
+        throw err
     }
 }
 

@@ -1,15 +1,25 @@
-
+import { useCallback } from 'react'
+import { useSelector } from 'react-redux'
 import { CommentIndex } from './comment-index'
 import { CommentList } from './comment-list'
+import { LikeBtn } from './like-btn.jsx'
+import { toggleLike } from '../store/story.actions.js'
 import { commentIcon, likeIcon, optionsIcon, savedIcon, sendIcon } from './icons'
 
 export function StoryPreview({ story, onRemoveStory }) {
+
+    const user = useSelector(storeState => storeState.userModule.user)
+    const isLiked = story.likedBy.some((u) => u._id === user._id)
+
+    const onToggleLike = useCallback(() => {
+        toggleLike(story, user)
+    }, [story, user])
 
     function onOpenStoryDetails() {
 
     }
 
-    function likesCount(likesCount) {
+    function likesPreview(likesCount) {
         if (likesCount > 1) return <section>{likesCount} likes</section>
         else if (likesCount === 1) return <section>{likesCount} like</section>
         return <section>no likes yet</section>
@@ -28,12 +38,13 @@ export function StoryPreview({ story, onRemoveStory }) {
             </header>
             <img className="story-img" src={story.imgUrl} alt="" />
             <div className="action-btns">
-                <button className='icon-btn'><span>{likeIcon}</span></button>
+                {/* <button className='icon-btn'><span>{likeIcon}</span></button> */}
+                <LikeBtn className="icon-btn" toggleLike={onToggleLike} isLiked={isLiked} />
                 <button className='icon-btn' onClick={onOpenStoryDetails}><span>{commentIcon}</span></button>
                 <button className='icon-btn'><span>{sendIcon}</span></button>
                 <button className='icon-btn'><span>{savedIcon}</span></button>
             </div>
-            {likesCount(story.likedBy.length)}
+            {likesPreview(story.likedBy.length)}
             <p><span className="user-name">{story.by.userName}</span><span className="story-txt">{story.txt}</span></p>
             <CommentList comments={story.comments} />
             <CommentIndex story={story} />
