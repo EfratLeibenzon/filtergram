@@ -1,10 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import { searchIcon, exploreIcon, homeIcon, reelsIcon, sendIcon, likeIcon, createIcon, moreIcon } from './icons'
-<<<<<<< HEAD
 import { storyService } from "../services/story.service.local"
-=======
 import { userService } from "../services/user.service";
->>>>>>> 78b57618f0515f8ffb401416c4822a98772f29ac
 
 const userName = userService.getLoggedinUser()?.[0]?.userName;
 
