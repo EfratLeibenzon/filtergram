@@ -65,14 +65,29 @@ export const users = [
         _id: "u101",
         fullName: "Irene Radvogin",
         userName: "irene_rad",
-        mail: 'IreneRadvogin@gmail.com',
-        userBio: '',
+        password: "mukmuk",
+        mail: 'IreneRadvogin@gmail.com', //not in the starter
+        userBio: '', //not in the starter
         userImgUrl: 'https://res.cloudinary.com/duxmabf4n/image/upload/v1685950112/eiqrhchqoliytvlhd60w.jpg',
-        followingId: [],
-        followersId: [],
-        savedStories: [],
-        taggedStories: [],
-        userStories: []
+        followingId: [], //provided in the starter as: following
+        followersId: [], //provided in the starter as: followers
+        following: [
+            {
+              _id: "u106",
+              fullname: "Dob",
+              imgUrl: "http://some-img"
+            }
+          ],
+          followers: [
+            {
+              _id: "u105",
+              fullname: "Bob",
+              imgUrl: "http://some-img"
+            }
+          ],
+        savedStories: [], //provided in the starter as savedStoryIds
+        taggedStories: [], //not in the starter
+        userStories: [] //not in the starter
     },
 ]
 

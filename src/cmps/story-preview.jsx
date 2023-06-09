@@ -1,9 +1,19 @@
-
+import { useCallback } from 'react'
+import { useSelector } from 'react-redux'
 import { CommentIndex } from './comment-index'
 import { CommentList } from './comment-list'
+import { LikeBtn } from './like-btn.jsx'
+import { toggleLike } from '../store/story.actions.js'
 import { commentIcon, likeIcon, optionsIcon, savedIcon, sendIcon } from './icons'
 
 export function StoryPreview({ story, onRemoveStory }) {
+
+    const user = useSelector(storeState => storeState.userModule.user)
+    const isLiked = story.likedBy.some((u) => u._id === user._id)
+
+    const onToggleLike = useCallback(() => {
+        toggleLike(story, user)
+    }, [story, user])
 
     function onOpenStoryDetails() {
 
@@ -28,7 +38,8 @@ export function StoryPreview({ story, onRemoveStory }) {
             </header>
             <img className="story-img" src={story.imgUrl} alt="" />
             <div className="action-btns">
-                <button className='icon-btn'><span>{likeIcon}</span></button>
+                {/* <button className='icon-btn'><span>{likeIcon}</span></button> */}
+                <LikeBtn className="icon-btn" toggleLike={onToggleLike} isLiked={isLiked} />
                 <button className='icon-btn' onClick={onOpenStoryDetails}><span>{commentIcon}</span></button>
                 <button className='icon-btn'><span>{sendIcon}</span></button>
                 <button className='icon-btn'><span>{savedIcon}</span></button>

@@ -5,7 +5,7 @@ export function Profile() {
 
     return (
         <div className="profile">
-            <h1>Hi from Profile</h1>
+            {/* <h1>Hi from Profile</h1> */}
             <UserDetails />
             <section className="user-stories grid">
                 {/* <StoryList /> */}

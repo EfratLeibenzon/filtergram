@@ -16,7 +16,8 @@ export const storyService = {
     getEmptyStory,
     queryComments,
     getCommentById,
-    getEmptyComment
+    getEmptyComment,
+    saveToggleLike,
 
 }
 window.cs = storyService
@@ -31,6 +32,25 @@ async function query() { // filterBy = { by: '', tags: [] }
 function getById(storyId) {
     return storageService.get(STORAGE_KEY, storyId)
 }
+
+async function saveToggleLike(story, user) {
+    // check inside the story if I am there. If not add the id, if yes then remove
+    const isLiked = story.likedBy.some((s) => s._id === story._id)
+    const stories = utilService.loadFromStorage(STORAGE_KEY)
+    const storyIndex = stories.findIndex((s) => s._id === story._id)
+    const likedBy = isLiked ? story.likedBy.filter((u) => u._id !== user._id) : [...story.likedBy, user]
+    const newStory = { ...story, likedBy }
+    const newStories = [
+      ...stories.slice(0, storyIndex),
+      newStory,
+      ...stories.slice(storyIndex + 1)
+    ]
+    utilService.saveToStorage(STORAGE_KEY, newStories)
+    return newStories
+    // console.log('ssssssss', storyId)
+    // console.log('userrrr', user)
+    // var story = await storageService.put(STORAGE_KEY, story)
+  }
 
 async function remove(storyId) {
     await storageService.remove(STORAGE_KEY, storyId)
