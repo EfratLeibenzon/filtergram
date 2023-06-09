@@ -13,22 +13,36 @@ export function UserDetails() {
     const userName = useParams()
 
 
-    let userPage = user[0]
+    let profilePage = user[0]
 
     useEffect(() => {
         loadStorys()
         loadUsers()
     }, [])
 
+     console.log('profile stories', profilePage)
 
     return (
-        <div className="user-details">
+        <div className="profile-container">
             <section className='profile-header'>
                 <section className="profile-photo">
-                    <img src={userPage.userImgUrl} />
+                    <img src={profilePage.userImgUrl} />
                 </section>
                 <section className="profile-info">
-                    <a>{userPage.userName}</a>
+                    <div className="profile-info-header">
+                    <a>{profilePage.userName}</a>
+                    <div>
+                        <button className="profile-edit-btn">Edit profile</button>
+                    </div>
+                    </div>
+                    <div className="user-info">
+                        <ul style={{listStyle: "none"}}>
+                            <li>{profilePage.userStories.length} post</li>
+                            <li>{profilePage.followers.length} followers</li>
+                            <li>{profilePage.following.length} following</li>
+                        </ul>
+                    </div>
+                    <div class="user-name">{profilePage.fullName}</div>
                 </section>
             </section>
             {/* <h1>UserDetails</h1> */}

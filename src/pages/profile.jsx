@@ -4,12 +4,10 @@ import { UserDetails } from "../cmps/user-details";
 export function Profile() {
 
     return (
-        <div className="profile">
-            {/* <h1>Hi from Profile</h1> */}
+        <div className="profile-page">
             <UserDetails />
-            <section className="user-stories grid">
-                {/* <StoryList /> */}
-            </section>
+            {/* <section className="user-stories grid">
+            </section> */}
         </div>
     )
 }
