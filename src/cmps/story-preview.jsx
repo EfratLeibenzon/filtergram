@@ -9,7 +9,7 @@ export function StoryPreview({ story, onRemoveStory }) {
 
     }
 
-    function likesCount(likesCount) {
+    function likesPreview(likesCount) {
         if (likesCount > 1) return <section>{likesCount} likes</section>
         else if (likesCount === 1) return <section>{likesCount} like</section>
         return <section>no likes yet</section>
@@ -33,7 +33,7 @@ export function StoryPreview({ story, onRemoveStory }) {
                 <button className='icon-btn'><span>{sendIcon}</span></button>
                 <button className='icon-btn'><span>{savedIcon}</span></button>
             </div>
-            {likesCount(story.likedBy.length)}
+            {likesPreview(story.likedBy.length)}
             <p><span className="user-name">{story.by.userName}</span><span className="story-txt">{story.txt}</span></p>
             <CommentList comments={story.comments} />
             <CommentIndex story={story} />

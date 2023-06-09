@@ -1,101 +1,87 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { storyService } from "../services/story.service.local"
-import { Navigate, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { ImgUploader } from "./img-uploader"
 import { addStory } from "../store/story.actions"
+import { EditImg } from "./edit-img"
+import { CreateStoryTitle } from "./edit-story-title"
 
-export function StoryEdit({ storyToAdd, setStoryToAdd }) {
-    const [storyToEdit, setStoryToEdit] = useState(storyToAdd || storyService.getEmptyStory())
-    // const [stage, setStage] = useState()
+export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
+
+    let storyToEdit = useRef(storyService.getEmptyStory())
     const { storyId } = useParams()
-    const navigate = useNavigate()
+    const [stage, setStage] = useState(0)
+
 
     useEffect(() => {
-        if (!storyId) return
-        loadStory()
+        if (!storyId) {
+            // storyToEdit = storyService.getEmptyStory()
+            setStage(1)
+        } else {
+            loadStory()
+            setStage(3)
+        }
     }, [])
-
-    // function onSetStage() {
-    //     if (!storyToEdit.imgUrl) setStage('imgUpload')
-    //     if (storyToEdit)
-    // }
 
     async function loadStory() {
         try {
-            const story = await storyService.getById(storyId)
-            setStoryToEdit(story)
+            storyToEdit = await storyService.getById(storyId)
         } catch (err) {
             console.log('couldnt load story', err)
         }
     }
 
-    function onUploadedImg(imgUrl) {
-        setStoryToEdit((prevStoryToEdit) => ({ ...prevStoryToEdit, imgUrl: imgUrl }))
+    function onUploaded(imgUrl) {
+        console.log(imgUrl)
+        storyToEdit.current = { ...storyToEdit.current, imgUrl: imgUrl }
+        console.log(storyToEdit)
+        setStage(2)
     }
 
-    async function onSaveStory(ev) {
-        ev.preventDefault()
+    async function onSaveStory(title) {
+        const timeStamp = Date.now()
         try {
-            storyToEdit.createdAt = Date.now()
-            setStoryToAdd(storyToEdit)
-            await addStory(storyToEdit)
-            setStoryToAdd(null)
-            console.log('story added!')
+            storyToEdit.current = { ...storyToEdit.current, txt: title, createdAt: timeStamp }
+            const story = await addStory(storyToEdit.current)
+            console.log(`story after!`, story)
         } catch (err) {
             console.log('Cannot add story', err)
         }
-        navigate('/')
+        finally {
+            console.log('finally')
+            setisStoryEdit(false)
+        }
     }
+
 
     return (
         <div className="story-edit">
-            {/* <DynamicComponent onUploaded={onUploadedImg} imgUrl={storyToEdit.imgUrl} storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} /> */}
-            {!storyToEdit.imgUrl && <ImgUploader onUploaded={onUploadedImg} />}
-            {/* {storyToEdit.imgUrl && <EditImg imgUrl={storyToEdit.imgUrl} />} */}
-            {storyToEdit.imgUrl && <CreateStoryTitle storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} />}
+            {storyToEdit && <DynamicComponent
+                stage={stage}
+                onUploaded={onUploaded}
+                imgUrl={storyToEdit.current.imgUrl}
+                storyToEdit={storyToEdit}
+                // setStoryToEdit={setStoryToEdit}
+                onSaveStory={onSaveStory}
+                setStage={setStage}
+            />}
         </div>
     )
 }
 
-function CreateStoryTitle({ storyToEdit, setStoryToEdit, onSaveStory }) {
-    function handleChange({ target }) {
-        let { value, name: field } = target
-        setStoryToEdit((prev) => ({ ...prev, [field]: value }))
-
+function DynamicComponent({ stage, onUploaded, imgUrl, storyToEdit, onSaveStory, setStage }) {
+    switch (stage) {
+        case 1:
+            console.log('storyToEdit inside case 1:', storyToEdit)
+            return <ImgUploader onUploaded={onUploaded} />
+        // break
+        case 2:
+            console.log('storyToEdit inside case 2:', storyToEdit)
+            return <EditImg imgUrl={imgUrl} setStage={setStage} />
+        // break
+        case 3:
+            console.log('storyToEdit inside case 3:', storyToEdit)
+            return <CreateStoryTitle storyToEdit={storyToEdit} onSaveStory={onSaveStory} />
+        // break
     }
-    return (
-        <div>
-            <section className="edit-story-img">
-                <img src={storyToEdit.imgUrl} alt="" />
-            </section>
-            <section className="edit-story-form">
-                <form onSubmit={onSaveStory}>
-                    <label htmlFor="txt">
-                        <input onChange={handleChange} type="text" name="txt" id="txt" placeholder="Write a caption..." />
-                    </label>
-                    <button>Post</button>
-                </form>
-            </section>
-        </div>
-    )
-}
-
-function DynamicComponent({ onUploadedImg, storyToEdit, setStoryToEdit, onSaveStory }) {
-    if (!storyToEdit.imgUrl && !storyToEdit.txt) return <ImgUploader onUploaded={onUploadedImg} />
-    else if (storyToEdit.imgUrl && !storyToEdit.txt) return <EditImg imgUrl={storyToEdit.imgUrl} />
-    return <CreateStoryTitle storyToEdit={storyToEdit} setStoryToEdit={setStoryToEdit} onSaveStory={onSaveStory} />
-}
-
-function EditImg(imgUrl) {
-    return (
-        <div className="edit-img flex row">
-            <section className="img-preview">
-                <img src={imgUrl} alt="" />
-            </section>
-            <section className="img-editors">
-                <img onClick={() => console.log('Black & white')} src='https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg' alt="" style={{ height: '50px', width: '50px' }} />
-            </section>
-        </div>
-    )
-
 }
