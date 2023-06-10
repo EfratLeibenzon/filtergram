@@ -9,7 +9,7 @@ import { StoryDetails } from './story-details'
 import { useLocation, useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
 
-import { useNavigate } from 'react-router'
+// import { useNavigate } from 'react-router'
 import { LongTxt } from './long-txt'
 
 // export function StoryPreview({ story, onRemoveStory, setIsStoryDetailsOpen, isStoryDetailsOpen }) {
@@ -26,8 +26,8 @@ export function StoryPreview({ story, onRemoveStory }) {
     }, [story, user])
 
     function onOpenStoryDetails(story) {
-        setIsStoryDetailsOpen(true)
-        console.log("is details open", isStoryDetailsOpen)
+        // setIsStoryDetailsOpen(true)
+        // console.log("is details open", isStoryDetailsOpen)
         navigate('/StoryDetails/:storyId');
     }
 
