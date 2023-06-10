@@ -4,7 +4,7 @@
     font-size: 14px;
     gap: 15px;
     width: 315px;
-    padding-top: 22px;
+    padding-top: 6vh ;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 
     .suggestion-header {
@@ -22,9 +22,9 @@
 
             img {
                 border-radius: 50%;
-                height: 56px;
+                height: 50px;
                 object-fit: cover;
-                width: 56px;
+                width: 50px;
             }
 
             .suggestion-user-name {
@@ -44,7 +44,7 @@
 
     .suggested-options {
         display: flex;
-        padding: 4px 16px;
+        padding: 4px 5px;
         width: 351px;
 
         span {

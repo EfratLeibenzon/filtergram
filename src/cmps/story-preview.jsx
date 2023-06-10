@@ -47,6 +47,8 @@ export function StoryPreview({ story, onRemoveStory }) {
             </section>)
 
     }
+ 
+console.log('liked by',story.likedBy )
 
     return (
         <article className="story-preview column">
@@ -69,7 +71,7 @@ export function StoryPreview({ story, onRemoveStory }) {
                 <Link to="/StoryDetails/:storyId" state={{ background: location }}><span>{commentIcon}</span></Link>
 
                 <button className='icon-btn'><span>{sendIcon}</span></button>
-                <button className='icon-btn'><span>{savedIcon}</span></button>
+                <button className='icon-btn save'><span>{savedIcon}</span></button>
             </div>
             {likesPreview(story.likedBy.length)}
             <section className='story-title'>

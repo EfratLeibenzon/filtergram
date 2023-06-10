@@ -5,8 +5,19 @@
 
 
     .user-preview {
-        padding: 5px;
+        // padding: 5px;
+        padding-bottom: 5px;
+    }
 
+    .action-btns {
+        display: flex;
+        gap: 13px;
+        position: relative;
+
+        .icon-btn.save {
+            position: absolute;
+            right: 0;
+        }
     }
 
     button {
@@ -56,4 +67,6 @@
 .user-name {
     font-family: inherit;
     font-weight: 600;
+    padding: 0 1vw;
+    align-items: center;
 }
