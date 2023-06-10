@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { uploadService } from '../services/upload.service'
+import { uploadBgImg } from './icons'
 
 export function ImgUploader({ onUploaded = null }) {
+  console.log('ImgUploader working')
   const [imgData, setImgData] = useState({
     imgUrl: null,
     height: 500,
@@ -24,12 +26,16 @@ export function ImgUploader({ onUploaded = null }) {
   }
 
   return (
-    <div className="upload-preview">
+    <div className="img-uploader">
+      <header>
+        <h1>Create new post</h1>
+      </header>
       {imgData.imgUrl && <img src={imgData.imgUrl} />}
       {/* <label htmlFor="imgUpload">{getUploadLabel()}</label> */}
-      <h1>Drag photos and videos here</h1>
-      <button className='input-btn'>select from computer
-        <input className='hidden' type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
+      <section className='icon'>{uploadBgImg}</section>
+      <p>Drag photos and videos here</p>
+      <button className='input-btn'>Select from computer
+        <input className='img-input hidden' type="file" onChange={uploadImg} accept="img/*" id="imgUpload" />
       </button>
     </div>
   )

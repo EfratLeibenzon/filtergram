@@ -7,14 +7,18 @@ import { Profile } from './pages/profile'
 import { Messages } from './pages/messages'
 import { Reels } from './pages/reels'
 import { StoryEdit } from './cmps/story-edit'
+import { userService } from './services/user.service'
 
 
 export function RootCmp() {
     const [isStoryEdit, setisStoryEdit] = useState(false)
 
+    let user = userService
+
     return (
         <div className='flex'>
             <Navbar isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} />
+            {isStoryEdit && <StoryEdit isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} />}
 
             <main className='main-section'>
                 <Routes>
@@ -26,7 +30,6 @@ export function RootCmp() {
                     <Route element={<Messages />} path="/messages" />
                     <Route element={<Profile />} path={'/profile/:userId'} />
                 </Routes>
-                {isStoryEdit && <StoryEdit isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} />}
             </main>
 
         </div>

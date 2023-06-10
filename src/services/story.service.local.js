@@ -41,16 +41,16 @@ async function saveToggleLike(story, user) {
     const likedBy = isLiked ? story.likedBy.filter((u) => u._id !== user._id) : [...story.likedBy, user]
     const newStory = { ...story, likedBy }
     const newStories = [
-      ...stories.slice(0, storyIndex),
-      newStory,
-      ...stories.slice(storyIndex + 1)
+        ...stories.slice(0, storyIndex),
+        newStory,
+        ...stories.slice(storyIndex + 1)
     ]
     utilService.saveToStorage(STORAGE_KEY, newStories)
     return newStories
     // console.log('ssssssss', storyId)
     // console.log('userrrr', user)
     // var story = await storageService.put(STORAGE_KEY, story)
-  }
+}
 
 async function remove(storyId) {
     await storageService.remove(STORAGE_KEY, storyId)
@@ -103,7 +103,7 @@ function getCommentById(storyId, commentId) {
 
 function getEmptyComment() {
     return {
-        _id: utilService.makeId(8),
+        _id: utilService.makeId(12),
         by: users[0],
         txt: "",
         likedBy: []

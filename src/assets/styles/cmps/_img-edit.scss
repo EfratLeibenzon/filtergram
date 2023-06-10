@@ -1,0 +1,62 @@
+.img-edit {
+    width: 1072px;
+    height: 774px;
+
+    background-color: rgb(219, 219, 219);
+
+    &header {
+        position: absolute;
+        top: 0;
+        line-height: 20px;
+        padding: 5px;
+        margin: 5px;
+        width: 100%;
+        border-bottom: 1px solid rgb(219, 219, 219);
+        font-size: 16px;
+        font-weight: 600;
+
+    }
+
+    &.img-preview {
+        width: 673px;
+        height: 673px;
+    }
+
+    &.img-editors {
+        width: 318px;
+        height: 666.3px;
+        padding: 5px;
+
+        &p {
+            height: 11px;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        &.filter-btns {
+            display: grid;
+            grid-template-columns: repeat(3, 33.3333%);
+            width: 318px;
+            height: 650px;
+            gap: 5px;
+            grid-auto-flow: dense;
+        }
+
+        &.filter-btn {
+
+            display: flex;
+            flex-direction: column;
+
+            &p {
+                font-size: 14px;
+                color: #737373;
+            }
+
+            &img {
+                border-radius: 3px;
+                max-width: 88px;
+                height: 88px;
+            }
+        }
+    }
+}
