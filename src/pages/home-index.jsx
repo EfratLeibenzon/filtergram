@@ -5,7 +5,7 @@ import { StoryList } from '../cmps/story-list'
 import { StoryEdit } from '../cmps/story-edit'
 import { Suggested } from '../cmps/suggested'
 
-export function HomeIndex() {
+export function HomeIndex({ setIsStoryDetailsOpen, isStoryDetailsOpen }) {
     const { storys } = useSelector((storeState) => storeState.storyModule)
 
     useEffect(() => {
@@ -26,7 +26,7 @@ export function HomeIndex() {
         <section>
             <div className='home-index flex'>
                 <section className='story-container'>
-                    <StoryList storys={storys} onRemoveStory={onRemoveStory} />
+                    <StoryList storys={storys} onRemoveStory={onRemoveStory} setIsStoryDetailsOpen={setIsStoryDetailsOpen} isStoryDetailsOpen={isStoryDetailsOpen} />
                 </section>
                 <Suggested />
             </div>

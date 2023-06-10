@@ -5,18 +5,25 @@ import { CommentList } from './comment-list'
 import { LikeBtn } from './like-btn.jsx'
 import { toggleLike } from '../store/story.actions.js'
 import { commentIcon, likeIcon, optionsIcon, savedIcon, sendIcon } from './icons'
+import { StoryDetails } from './story-details'
+import { useLocation, useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 
-export function StoryPreview({ story, onRemoveStory }) {
+export function StoryPreview({ story, onRemoveStory, setIsStoryDetailsOpen, isStoryDetailsOpen }) {
 
     const user = useSelector(storeState => storeState.userModule.user)
     const isLiked = story.likedBy.some((u) => u._id === user._id)
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const onToggleLike = useCallback(() => {
         toggleLike(story, user)
     }, [story, user])
 
-    function onOpenStoryDetails() {
-
+    function onOpenStoryDetails(story) {
+        setIsStoryDetailsOpen(true)
+        console.log("is details open", isStoryDetailsOpen)
+        navigate('/StoryDetails/:storyId');
     }
 
     function likesPreview(likesCount) {
@@ -26,7 +33,7 @@ export function StoryPreview({ story, onRemoveStory }) {
     }
 
     return (
-        <article>
+        <article className="story-preview column">
             <header className="story-header flex space-between">
                 <div className="user-preview flex">
                     <img className="mini-user-img" src={story.by.userImgUrl} alt="" />
@@ -36,11 +43,15 @@ export function StoryPreview({ story, onRemoveStory }) {
                     <button className=" icon-btn remove-btn" onClick={() => { onRemoveStory(story._id) }}><span>{optionsIcon}</span></button>
                 </div>
             </header>
-            <img className="story-img" src={story.imgUrl} alt="" />
+            <section className='story-img-container' >
+                <img className="story-img" src={story.imgUrl} alt="" />
+            </section>
             <div className="action-btns">
                 {/* <button className='icon-btn'><span>{likeIcon}</span></button> */}
                 <LikeBtn className="icon-btn" toggleLike={onToggleLike} isLiked={isLiked} />
-                <button className='icon-btn' onClick={onOpenStoryDetails}><span>{commentIcon}</span></button>
+                {/* <button className='icon-btn' onClick={onOpenStoryDetails}><span>{commentIcon}</span></button> */}
+                <Link to="/StoryDetails/:storyId" state={{ background: location }}><span>{commentIcon}</span></Link>
+
                 <button className='icon-btn'><span>{sendIcon}</span></button>
                 <button className='icon-btn'><span>{savedIcon}</span></button>
             </div>
