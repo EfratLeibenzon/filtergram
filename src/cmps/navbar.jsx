@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { searchIcon, exploreIcon, homeIcon, reelsIcon, sendIcon, likeIcon, createIcon, moreIcon } from './icons'
 import { storyService } from "../services/story.service.local"
 import { userService } from "../services/user.service";
-import { loadUsers } from "../store/user.actions"
 import { useState, useEffect } from 'react'
 
 
@@ -29,7 +28,7 @@ export function Navbar({ isStoryEdit, setisStoryEdit, user }) {
                 <NavLink className="navbar-item-messages" to={"/messages"}><span>{sendIcon}</span><span>Messages</span></NavLink>
                 <a className="navbar-item-notifications"><span>{likeIcon}</span><span>Notifications</span></a>
                 <a className="navbar-item-create" onClick={onCreate} > <span>{createIcon}</span><span>Create</span></a>
-                <NavLink className="navbar-item-profile" to={`/profile/${user._id}`}>Profile</NavLink>
+                <NavLink className="navbar-item-profile" to={`/profile/${user._id}`}><img src={user.userImgUrl} />Profile</NavLink>
                 {/* <a className="navbar-item-more"><span>{moreIcon}</span><span>More</span></a> */}
                 <a className="navbar-item-more"><span>{moreIcon}</span><span>More</span></a>
             </nav>

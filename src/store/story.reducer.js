@@ -1,4 +1,4 @@
-export const SET_STORYS = 'SET_STORYS'
+export const SET_STORIES = 'SET_STORIES'
 export const REMOVE_STORY = 'REMOVE_STORY'
 export const ADD_STORY = 'ADD_STORY'
 export const UPDATE_STORY = 'UPDATE_STORY'
@@ -13,7 +13,7 @@ export function storyReducer(state = initialState, action) {
     var newState = state
     var stories
     switch (action.type) {
-        case SET_STORYS:
+        case SET_STORIES:
             newState = { ...state, stories: action.stories }
             break
         case REMOVE_STORY:

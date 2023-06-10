@@ -8,13 +8,13 @@ import { Messages } from './pages/messages'
 import { Reels } from './pages/reels'
 import { StoryEdit } from './cmps/story-edit'
 import { userService } from './services/user.service'
+import { loadUser } from './store/user.actions'
 
 
 export function RootCmp() {
     const [isStoryEdit, setisStoryEdit] = useState(false)
 
     const user = userService.getLoggedinUser()?.[0];
-    console.log('user iuddddd', user)
 
     return (
         <div className='flex'>

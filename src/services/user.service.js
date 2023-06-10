@@ -1,20 +1,23 @@
 
 import { storageService } from './async-storage.service.js'
-import { stories, users } from './demo-data.js'
+import { users } from './demo-data.js'
 import { utilService } from './util.service.js'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+const STORAGE_KEY_USERS = 'users'
+const STORAGE_KEY_GUEST = 'guest'
 
 // const STORAGE_KEY = 'userDB'
 
 _createUsers()
+_createGuest()
 
 export const userService = {
     login,
     logout,
     query,
     getById,
-    save,
+    // save,
     remove,
     getLoggedinUser,
     getEmptyUser,
@@ -86,15 +89,15 @@ async function remove(userId) {
     await storageService.remove(STORAGE_KEY_LOGGEDIN_USER, userId)
 }
 
-async function save(user) {
-    var savedUser
-    if (user._id) {
-        savedUser = await storageService.put(STORAGE_KEY_LOGGEDIN_USER, user)
-    } else {
-        savedUser = await storageService.post(STORAGE_KEY_LOGGEDIN_USER, user)
-    }
-    return savedUser
-}
+// async function save(user) {
+//     var savedUser
+//     if (user._id) {
+//         savedUser = await storageService.put(STORAGE_KEY_LOGGEDIN_USER, user)
+//     } else {
+//         savedUser = await storageService.post(STORAGE_KEY_LOGGEDIN_USER, user)
+//     }
+//     return savedUser
+// }
 
 function getLoggedinUser() {
     // const user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
@@ -148,11 +151,20 @@ function _createUsers() {
     if (storedUsers?.length > 0) {
         return
     }
-    _saveUsers(users)
+    _saveUsers(STORAGE_KEY_USERS, users)
 }
 
-function _saveUsers(users) {
-    utilService.saveToStorage(STORAGE_KEY_LOGGEDIN_USER, users)
+function _createGuest(){
+    const storedGuest = utilService.loadFromStorage(STORAGE_KEY_GUEST)
+    if (storedGuest?.length > 0) {
+        return
+    }
+    const guestUser = users.filter((u)=>u._id==='Guest')
+    _saveUsers(STORAGE_KEY_LOGGEDIN_USER, guestUser)
+}
+
+function _saveUsers(userType, users) {
+    utilService.saveToStorage(userType, users)
 }
 
 

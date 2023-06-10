@@ -1,3 +1,63 @@
-.suggested {
-    width: 319px;
+.suggestions {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    gap: 15px;
+    width: 315px;
+    padding-top: 22px;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+
+    .suggestion-header {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px;
+        width: 315px;
+        font-size: 14px;
+
+        .suggestion-header-info {
+            align-items: center;
+            display: flex;
+            gap: 15px;
+
+            img {
+                border-radius: 50%;
+                height: 56px;
+                object-fit: cover;
+                width: 56px;
+            }
+
+            .suggestion-user-name {
+                display: flex;
+                flex-direction: column;
+
+                a {
+                    font-weight: 600;
+                }
+
+                span {
+                    color: #b2b2b2;
+                }
+            }
+        }
+    }
+
+    .suggested-options {
+        display: flex;
+        padding: 4px 16px;
+        width: 351px;
+
+        span {
+            color: #b2b2b2;
+            font-weight: 600;
+        }
+
+        a {
+            color: #000;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 116px;
+        }
+    }
 }

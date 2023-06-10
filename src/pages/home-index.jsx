@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadStories, removeStory } from '../store/story.actions'
 import { StoryList } from '../cmps/story-list'
