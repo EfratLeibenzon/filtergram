@@ -21,9 +21,9 @@ export function StoryList({ stories, onRemoveStory }) {
             )}
 
         </ul>
-        <footer>
+      
         <button><LoginSignup onChangeLoginStatus={onChangeLoginStatus} /></button>
-        </footer>
+
         </div>
     )
 }
