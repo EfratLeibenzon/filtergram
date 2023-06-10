@@ -5,8 +5,8 @@ import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'story'
 
-let gStorys
-_createStorys()
+let gStories
+_createStories()
 
 export const storyService = {
     query,
@@ -24,9 +24,9 @@ window.cs = storyService
 
 
 async function query() { // filterBy = { by: '', tags: [] }
-    var storys = await storageService.query(STORAGE_KEY)
-    storys.sort((s1, s2) => s2.createdAt - s1.createdAt)
-    return storys
+    var stories = await storageService.query(STORAGE_KEY)
+    stories.sort((s1, s2) => s2.createdAt - s1.createdAt)
+    return stories
 }
 
 function getById(storyId) {
@@ -113,15 +113,15 @@ function getEmptyComment() {
 
 ////////////////////
 
-function _createStorys() {
-    gStorys = utilService.loadFromStorage(STORAGE_KEY)
-    if (gStorys && gStorys.length > 0) return
-    gStorys = stories
-    _saveStorys()
+function _createStories() {
+    gStories = utilService.loadFromStorage(STORAGE_KEY)
+    if (gStories && gStories.length > 0) return
+    gStories = stories
+    _saveStories()
 }
 
-function _saveStorys() {
-    utilService.saveToStorage(STORAGE_KEY, gStorys)
+function _saveStories() {
+    utilService.saveToStorage(STORAGE_KEY, gStories)
 }
 
 

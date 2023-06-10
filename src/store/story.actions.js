@@ -36,17 +36,17 @@ export async function toggleLike(story, user) {
     }
 }
 
-export async function loadStorys() {
+export async function loadStories() {
     try {
-        const storys = await storyService.query()
-        console.log('Storys from DB:', storys)
+        const stories = await storyService.query()
+        console.log('Stories from DB:', stories)
         store.dispatch({
             type: SET_STORYS,
-            storys
+            stories
         })
 
     } catch (err) {
-        console.log('Cannot load storys', err)
+        console.log('Cannot load stories', err)
         throw err
     }
 }

@@ -8,6 +8,7 @@ export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
 export const SET_SCORE = 'SET_SCORE'
+export const GET_LOGGED_IN_USER = 'GET_LOGGED_IN_USER'
 
 const initialState = {
     count: 10,

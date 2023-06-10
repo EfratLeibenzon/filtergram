@@ -1,12 +1,13 @@
 import { NavLink, useNavigate } from "react-router-dom"
+import { useSelector } from 'react-redux'
 import { searchIcon, exploreIcon, homeIcon, reelsIcon, sendIcon, likeIcon, createIcon, moreIcon } from './icons'
 import { storyService } from "../services/story.service.local"
 import { userService } from "../services/user.service";
+import { loadUsers } from "../store/user.actions"
+import { useState, useEffect } from 'react'
 
-const userName = userService.getLoggedinUser()?.[0]?.userName;
 
-
-export function Navbar({ isStoryEdit, setisStoryEdit }) {
+export function Navbar({ isStoryEdit, setisStoryEdit, user }) {
 
     function onCreate() {
         setisStoryEdit(true)
@@ -14,19 +15,23 @@ export function Navbar({ isStoryEdit, setisStoryEdit }) {
     }
 
     return (
-        <nav className="main-navbar flex column justify-start">
+        <div className="side-bar">
             <section className="logo">
-                <NavLink className="navbar-item" to={"/"}>FILTERGRAM</NavLink>
+                {/* <NavLink className="navbar-item" to={"/"}>FILTERGRAM</NavLink> */}
+                <a>FILTERGRAM</a>
             </section>
-            <NavLink className="navbar-item" to={"/"}><span>{homeIcon}</span><span>home</span> </NavLink>
-            <button className="navbar-item"> <span>{searchIcon}</span><span>search</span></button>
-            <NavLink className="navbar-item" to={"/explore"}><span>{exploreIcon}</span><span>explore</span></NavLink>
-            <NavLink className="navbar-item" to={"/reels"}><span>{reelsIcon}</span><span>reels</span></NavLink>
-            <NavLink className="navbar-item" to={"/messages"}><span>{sendIcon}</span><span>messages</span></NavLink>
-            <button className="navbar-item"><span>{likeIcon}</span><span>notifications</span></button>
-            <button className="navbar-item" onClick={onCreate} > <span>{createIcon}</span><span>create</span></button>
-            <NavLink className="navbar-item" to={"/profile/:userId"}>Profile</NavLink>
-            <button className="navbar-item"><span>{moreIcon}</span><span>more</span></button>
-        </nav>
+            <nav className="main-navbar flex column justify-start">
+                <NavLink className="navbar-item-home" to={"/"}><span>{homeIcon}</span><span className="home">Home</span> </NavLink>
+                <a className="navbar-item-search"> <span>{searchIcon}</span><span>Search</span></a>
+                <NavLink className="navbar-item-explore" to={"/explore"}><span>{exploreIcon}</span><span>Explore</span></NavLink>
+                <NavLink className="navbar-item-reels" to={"/reels"}><span>{reelsIcon}</span><span>Reels</span></NavLink>
+                <NavLink className="navbar-item-messages" to={"/messages"}><span>{sendIcon}</span><span>Messages</span></NavLink>
+                <a className="navbar-item-notifications"><span>{likeIcon}</span><span>Notifications</span></a>
+                <a className="navbar-item-create" onClick={onCreate} > <span>{createIcon}</span><span>Create</span></a>
+                <NavLink className="navbar-item-profile" to={`/profile/${user._id}`}>Profile</NavLink>
+                {/* <a className="navbar-item-more"><span>{moreIcon}</span><span>More</span></a> */}
+                <a className="navbar-item-more"><span>{moreIcon}</span><span>More</span></a>
+            </nav>
+        </div>
     )
 }

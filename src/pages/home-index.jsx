@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { loadStorys, removeStory } from '../store/story.actions'
+import { loadStories, removeStory } from '../store/story.actions'
 import { StoryList } from '../cmps/story-list'
 import { StoryEdit } from '../cmps/story-edit'
 import { Suggested } from '../cmps/suggested'
 
 export function HomeIndex() {
-    const { storys } = useSelector((storeState) => storeState.storyModule)
+    const { stories } = useSelector((storeState) => storeState.storyModule)
 
     useEffect(() => {
-        loadStorys()
-        console.log(storys)
+        loadStories()
+        console.log(stories)
     }, [])
 
     async function onRemoveStory(storyId) {
@@ -26,7 +26,7 @@ export function HomeIndex() {
         <section>
             <div className='home-index flex'>
                 <section className='story-container'>
-                    <StoryList storys={storys} onRemoveStory={onRemoveStory} />
+                    <StoryList stories={stories} onRemoveStory={onRemoveStory} />
                 </section>
                 <Suggested />
             </div>

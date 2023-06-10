@@ -21,6 +21,7 @@ export const userService = {
     getUsers,
     queryComments,
     getCommentById,
+    getEmptyCredentials,
     getEmptyComment
 
 }
@@ -128,6 +129,14 @@ function getEmptyComment() {
         by: users[0],
         txt: "",
         likedBy: []
+    }
+}
+
+function getEmptyCredentials() {
+    return {
+        username: '',
+        password: '',
+        fullname: ''
     }
 }
 
