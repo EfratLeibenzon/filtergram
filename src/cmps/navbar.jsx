@@ -10,6 +10,7 @@ export function Navbar({ isStoryEdit, setisStoryEdit, user }) {
 
     function onCreate() {
         setisStoryEdit(true)
+        // isStoryEdit? document.StoryEdit.classList.remove('hidden') : document.StoryEdit.classList.add('hidden')
         console.log('isStoryEdit', isStoryEdit)
     }
 

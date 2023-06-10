@@ -49,13 +49,19 @@ export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
         }
         finally {
             console.log('finally')
-            setisStoryEdit(false)
+            onCloseEdit()
         }
+    }
+
+    function onCloseEdit() {
+        setisStoryEdit(false)
     }
 
 
     return (
         <div className="story-edit">
+
+            <button className="exit-btn" onClick={onCloseEdit}>x</button>
             {storyToEdit && <DynamicComponent
                 stage={stage}
                 onUploaded={onUploaded}
@@ -65,6 +71,7 @@ export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
                 onSaveStory={onSaveStory}
                 setStage={setStage}
             />}
+
         </div>
     )
 }

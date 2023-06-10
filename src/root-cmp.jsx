@@ -14,11 +14,20 @@ import { loadUser } from './store/user.actions'
 export function RootCmp() {
     const [isStoryEdit, setisStoryEdit] = useState(false)
 
+<<<<<<< HEAD
+    let user = userService
+
+    return (
+        <div className='flex'>
+            <Navbar isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} />
+            {isStoryEdit && <StoryEdit isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} />}
+=======
     const user = userService.getLoggedinUser()?.[0];
 
     return (
         <div className='flex'>
             <Navbar isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} user={user} />
+>>>>>>> 8e52411a01a2c28df63270d8869c2f552b485632
 
             <main className='main-section'>
                 <Routes>
@@ -30,7 +39,6 @@ export function RootCmp() {
                     <Route element={<Messages />} path="/messages" />
                     <Route element={<Profile />} path="/profile/:userId" />
                 </Routes>
-                {isStoryEdit && <StoryEdit isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} />}
             </main>
 
         </div>
