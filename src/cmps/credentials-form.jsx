@@ -44,7 +44,7 @@ export function CredentialsForm({ onSubmit, isSignup }) {
                 onChange={handleChange}
                 required
             />}
-            <button className="btn log-btn">{isSignup ? 'Signup' : 'Login'}</button>
+            <a className="btn log-btn">{isSignup ? 'Signup' : 'Login'}</a>
         </form>
     )
 }
