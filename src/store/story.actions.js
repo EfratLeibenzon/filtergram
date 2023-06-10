@@ -1,6 +1,6 @@
 import { storyService } from "../services/story.service.local.js";
 import { store } from './store.js'
-import { ADD_STORY, REMOVE_STORY, SET_STORYS, UPDATE_STORY, TOGGLE_LIKE } from "./story.reducer.js";
+import { ADD_STORY, REMOVE_STORY, SET_STORIES, UPDATE_STORY, TOGGLE_LIKE } from "./story.reducer.js";
 
 
 // Action Creators:
@@ -41,7 +41,7 @@ export async function loadStories() {
         const stories = await storyService.query()
         console.log('Stories from DB:', stories)
         store.dispatch({
-            type: SET_STORYS,
+            type: SET_STORIES,
             stories
         })
 

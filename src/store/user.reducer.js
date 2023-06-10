@@ -8,27 +8,20 @@ export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const REMOVE_USER = 'REMOVE_USER'
 export const SET_USERS = 'SET_USERS'
 export const SET_SCORE = 'SET_SCORE'
-export const GET_LOGGED_IN_USER = 'GET_LOGGED_IN_USER'
+// export const GET_LOGGED_IN_USER = 'GET_LOGGED_IN_USER'
+// export const SET_GUEST_USER = 'SET_GUEST_USER'
 
 const initialState = {
     count: 10,
     user: userService.getLoggedinUser(),
     users: [],
-    watchedUser : null
+    // isGuest: true,
+    // watchedUser : null
 }
 
 export function userReducer(state = initialState, action) {
     var newState = state
     switch (action.type) {
-        case INCREMENT:
-            newState = { ...state, count: state.count + 1 }
-            break
-        case DECREMENT:
-            newState = { ...state, count: state.count - 1 }
-            break
-        case CHANGE_COUNT:
-            newState = { ...state, count: state.count + action.diff }
-            break
         case SET_USER:
             newState = { ...state, user: action.user }
             break
@@ -44,9 +37,10 @@ export function userReducer(state = initialState, action) {
         case SET_USERS:
             newState = { ...state, users: action.users }
             break
-        case SET_SCORE:
-            newState = { ...state, user: { ...state.user, score: action.score } }
-            break
+        // case SET_GUEST_USER:
+        //     newState = { ...state, isGuest: true } 
+        //     console.log(newState)
+        //     break
         default:
     }
     // For debug:

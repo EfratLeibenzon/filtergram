@@ -12,9 +12,10 @@ export function UserDetails() {
     const stories = useSelector(storeState => storeState.storyModule.stories)
     const userName = useParams()
 
-    console.log('usersssss', users)
-    console.log('userrrrr', user)
-    let profilePage = user[0]
+    // let loggedInUser = user[0]
+
+    const [loggedInUser, setUser] = useState(...userService.getLoggedinUser())
+    console.log('logged in user', loggedInUser)
 
 
     useEffect(() => {
@@ -24,28 +25,28 @@ export function UserDetails() {
 
     
     // const profileStories = stories.filter(story => story.by._id === profilePage._id)
-    console.log('profile storiessss',stories)
+
     return (
         <div className="profile-container">
             <section className='profile-header'>
                 <section className="profile-photo">
-                    <img src={profilePage.userImgUrl} />
+                    <img src={loggedInUser.userImgUrl} />
                 </section>
                 <section className="profile-info">
                     <div className="profile-info-header">
-                        <a>{profilePage.userName}</a>
+                        <a>{loggedInUser.userName}</a>
                         <div>
                             <button className="profile-edit-btn">Edit profile</button>
                         </div>
                     </div>
                     <div className="user-info">
                         <ul style={{ listStyle: "none" }}>
-                            <li>{profilePage.userStories.length} post</li>
-                            <li>{profilePage.followers.length} followers</li>
-                            <li>{profilePage.following.length} following</li>
+                            <li>{loggedInUser.userStories.length} post</li>
+                            <li>{loggedInUser.followers.length} followers</li>
+                            <li>{loggedInUser.following.length} following</li>
                         </ul>
                     </div>
-                    <div class="user-name">{profilePage.fullName}</div>
+                    <div class="user-name">{loggedInUser.fullName}</div>
                 </section>
             </section>
             <div className="posts-menu">
