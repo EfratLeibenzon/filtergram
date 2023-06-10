@@ -24,8 +24,8 @@ export function StoryPreview({ story, onRemoveStory }) {
     }, [story, user])
 
     function onOpenStoryDetails(story) {
-        setIsStoryDetailsOpen(true)
-        console.log("is details open", isStoryDetailsOpen)
+        // setIsStoryDetailsOpen(true)
+        // console.log("is details open", isStoryDetailsOpen)
         navigate('/StoryDetails/:storyId');
     }
 
