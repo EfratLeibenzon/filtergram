@@ -8,8 +8,6 @@ import { commentIcon, likeIcon, optionsIcon, savedIcon, sendIcon } from './icons
 import { StoryDetails } from './story-details'
 import { useLocation, useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
-
-import { useNavigate } from 'react-router'
 import { LongTxt } from './long-txt'
 
 // export function StoryPreview({ story, onRemoveStory, setIsStoryDetailsOpen, isStoryDetailsOpen }) {
