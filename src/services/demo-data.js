@@ -89,6 +89,90 @@ export const users = [
         taggedStories: [], //not in the starter
         userStories: [] //not in the starter
     },
+    {
+        _id: "u102",
+        fullName: "Jannet Simpson",
+        userName: "jannetgirl",
+        password: "jannetgirl",
+        mail: '', //not in the starter
+        userBio: '', //not in the starter
+        userImgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFtHTppnHblCfpg_T9M0Xu-hlgJLJgasbk0w&usqp=CAU',
+        followingId: [], //provided in the starter as: following
+        followersId: [], //provided in the starter as: followers
+        following: [
+            {
+              _id: "u106",
+              fullname: "Dob",
+              imgUrl: "http://some-img"
+            }
+          ],
+          followers: [
+            {
+              _id: "u105",
+              fullname: "Bob",
+              imgUrl: "http://some-img"
+            }
+          ],
+        savedStories: [], //provided in the starter as savedStoryIds
+        taggedStories: [], //not in the starter
+        userStories: [] //not in the starter
+    },
+    {
+        _id: "u103",
+        fullName: "Johnny Brown",
+        userName: "johnny boy",
+        password: "johnnyboy",
+        mail: '', //not in the starter
+        userBio: '', //not in the starter
+        userImgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe9nYvaxaQMY2u0Cyyk-5sTjQwJY1yq_NJIQ&usqp=CAU',
+        followingId: [], //provided in the starter as: following
+        followersId: [], //provided in the starter as: followers
+        following: [
+            {
+              _id: "u106",
+              fullname: "Dob",
+              imgUrl: "http://some-img"
+            }
+          ],
+          followers: [
+            {
+              _id: "u105",
+              fullname: "Bob",
+              imgUrl: "http://some-img"
+            }
+          ],
+        savedStories: [], //provided in the starter as savedStoryIds
+        taggedStories: [], //not in the starter
+        userStories: [] //not in the starter
+    },
+    {
+        _id: "Guest",
+        fullName: "Guest",
+        userName: "Guest",
+        password: "",
+        mail: '', //not in the starter
+        userBio: '', //not in the starter
+        userImgUrl: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png',
+        followingId: [], //provided in the starter as: following
+        followersId: [], //provided in the starter as: followers
+        following: [
+            {
+              _id: "u106",
+              fullname: "Dob",
+              imgUrl: "http://some-img"
+            }
+          ],
+          followers: [
+            {
+              _id: "u105",
+              fullname: "Bob",
+              imgUrl: "http://some-img"
+            }
+          ],
+        savedStories: [], //provided in the starter as savedStoryIds
+        taggedStories: [], //not in the starter
+        userStories: [] //not in the starter
+    },
 ]
 
 export const hashTags = ['cool', 'food', 'baby', 'nature',]

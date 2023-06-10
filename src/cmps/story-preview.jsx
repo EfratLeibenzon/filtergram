@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { useSelector } from 'react-redux'
-import { CommentIndex } from './comment-index'
+import { CommentAdd } from './comment-add'
 import { CommentList } from './comment-list'
 import { LikeBtn } from './like-btn.jsx'
 import { toggleLike } from '../store/story.actions.js'
@@ -9,11 +9,16 @@ import { StoryDetails } from './story-details'
 import { useLocation, useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
 
-export function StoryPreview({ story, onRemoveStory, setIsStoryDetailsOpen, isStoryDetailsOpen }) {
+import { useNavigate } from 'react-router'
+import { LongTxt } from './long-txt'
+
+// export function StoryPreview({ story, onRemoveStory, setIsStoryDetailsOpen, isStoryDetailsOpen }) {
+export function StoryPreview({ story, onRemoveStory }) {
+    const navigate = useNavigate()
 
     const user = useSelector(storeState => storeState.userModule.user)
     const isLiked = story.likedBy.some((u) => u._id === user._id)
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const location = useLocation()
 
     const onToggleLike = useCallback(() => {
@@ -30,6 +35,19 @@ export function StoryPreview({ story, onRemoveStory, setIsStoryDetailsOpen, isSt
         if (likesCount > 1) return <section>{likesCount} likes</section>
         else if (likesCount === 1) return <section>{likesCount} like</section>
         return <section>no likes yet</section>
+    }
+
+    function getComments(comments) {
+        const commentsCount = comments.length
+        let shownComments = (commentsCount >= 2) ? [comments[commentsCount - 1], comments[commentsCount - 2]] : comments
+        const isMore = (comments.length > 2)
+
+        return (
+            <section>
+                <CommentList comments={shownComments} />
+                {isMore && <button > view all {commentsCount} comments </button>}
+            </section>)
+
     }
 
     return (
@@ -56,9 +74,12 @@ export function StoryPreview({ story, onRemoveStory, setIsStoryDetailsOpen, isSt
                 <button className='icon-btn'><span>{savedIcon}</span></button>
             </div>
             {likesPreview(story.likedBy.length)}
-            <p><span className="user-name">{story.by.userName}</span><span className="story-txt">{story.txt}</span></p>
-            <CommentList comments={story.comments} />
-            <CommentIndex story={story} />
+            <section className='story-title'>
+                <p className="user-name">{story.by.userName}</p>
+                <LongTxt txt={story.txt} length={119} />
+            </section>
+            {getComments(story.comments)}
+            <CommentAdd story={story} />
         </article>
     )
 }

@@ -5,8 +5,8 @@ import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'story'
 
-let gStorys
-_createStorys()
+let gStories
+_createStories()
 
 export const storyService = {
     query,
@@ -24,9 +24,9 @@ window.cs = storyService
 
 
 async function query() { // filterBy = { by: '', tags: [] }
-    var storys = await storageService.query(STORAGE_KEY)
-    storys.sort((s1, s2) => s2.createdAt - s1.createdAt)
-    return storys
+    var stories = await storageService.query(STORAGE_KEY)
+    stories.sort((s1, s2) => s2.createdAt - s1.createdAt)
+    return stories
 }
 
 function getById(storyId) {
@@ -41,16 +41,16 @@ async function saveToggleLike(story, user) {
     const likedBy = isLiked ? story.likedBy.filter((u) => u._id !== user._id) : [...story.likedBy, user]
     const newStory = { ...story, likedBy }
     const newStories = [
-      ...stories.slice(0, storyIndex),
-      newStory,
-      ...stories.slice(storyIndex + 1)
+        ...stories.slice(0, storyIndex),
+        newStory,
+        ...stories.slice(storyIndex + 1)
     ]
     utilService.saveToStorage(STORAGE_KEY, newStories)
     return newStories
     // console.log('ssssssss', storyId)
     // console.log('userrrr', user)
     // var story = await storageService.put(STORAGE_KEY, story)
-  }
+}
 
 async function remove(storyId) {
     await storageService.remove(STORAGE_KEY, storyId)
@@ -103,7 +103,7 @@ function getCommentById(storyId, commentId) {
 
 function getEmptyComment() {
     return {
-        _id: utilService.makeId(8),
+        _id: utilService.makeId(12),
         by: users[0],
         txt: "",
         likedBy: []
@@ -113,15 +113,15 @@ function getEmptyComment() {
 
 ////////////////////
 
-function _createStorys() {
-    gStorys = utilService.loadFromStorage(STORAGE_KEY)
-    if (gStorys && gStorys.length > 0) return
-    gStorys = stories
-    _saveStorys()
+function _createStories() {
+    gStories = utilService.loadFromStorage(STORAGE_KEY)
+    if (gStories && gStories.length > 0) return
+    gStories = stories
+    _saveStories()
 }
 
-function _saveStorys() {
-    utilService.saveToStorage(STORAGE_KEY, gStorys)
+function _saveStories() {
+    utilService.saveToStorage(STORAGE_KEY, gStories)
 }
 
 

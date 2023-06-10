@@ -1,6 +1,6 @@
 import { storyService } from "../services/story.service.local.js";
 import { store } from './store.js'
-import { ADD_STORY, REMOVE_STORY, SET_STORYS, UPDATE_STORY, TOGGLE_LIKE } from "./story.reducer.js";
+import { ADD_STORY, REMOVE_STORY, SET_STORIES, UPDATE_STORY, TOGGLE_LIKE } from "./story.reducer.js";
 
 
 // Action Creators:
@@ -36,17 +36,17 @@ export async function toggleLike(story, user) {
     }
 }
 
-export async function loadStorys() {
+export async function loadStories() {
     try {
-        const storys = await storyService.query()
-        console.log('Storys from DB:', storys)
+        const stories = await storyService.query()
+        console.log('Stories from DB:', stories)
         store.dispatch({
-            type: SET_STORYS,
-            storys
+            type: SET_STORIES,
+            stories
         })
 
     } catch (err) {
-        console.log('Cannot load storys', err)
+        console.log('Cannot load stories', err)
         throw err
     }
 }
