@@ -10,6 +10,7 @@ import { StoryEdit } from './cmps/story-edit'
 import { StoryDetails } from './cmps/story-details'
 import { userService } from './services/user.service'
 import { loadUser } from './store/user.actions'
+import { EditImg } from './cmps/edit-img'
 
 
 export function RootCmp() {

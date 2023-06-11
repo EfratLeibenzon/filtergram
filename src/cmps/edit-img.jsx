@@ -11,13 +11,14 @@ export function EditImg({ imgUrl, setImgStyle }) {
     }
 
     return (
-        <div className="edit-img ">
-            <header className="flex row">
+        <div className="edit-img">
+            <header className="flex row space-between">
+                <span></span>
                 <span> Edit</span>
                 <button onClick={() => setImgStyle(currStyle)}>next</button>
             </header>
             <main className="flex row">
-                <section className="img-preview">
+                <section id="img-preview" className="img-preview">
                     <img src={imgUrl} style={currStyle} />
                 </section>
                 <section className="img-editors flex column">
@@ -29,7 +30,7 @@ export function EditImg({ imgUrl, setImgStyle }) {
                         </button>
                         <button className="filter-btn">
                             <img onClick={() => onSetStyle('grayscale(1)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'grayscale(1)' }} />
-                            <p>black&white</p>
+                            <p>gray</p>
                         </button>
                         <button className="filter-btn">
                             <img onClick={() => onSetStyle('sepia(0.7)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'sepia(0.7)' }} />
@@ -37,7 +38,19 @@ export function EditImg({ imgUrl, setImgStyle }) {
                         </button>
                         <button className="filter-btn">
                             <img onClick={() => onSetStyle('saturate(2)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'saturate(2)' }} />
-                            <p>sepia</p>
+                            <p>saturate</p>
+                        </button>
+                        <button className="filter-btn">
+                            <img onClick={() => onSetStyle('hue-rotate(90deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(90deg)' }} />
+                            <p>hue90</p>
+                        </button>
+                        <button className="filter-btn">
+                            <img onClick={() => onSetStyle('hue(180deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(180deg)' }} />
+                            <p>hue180</p>
+                        </button>
+                        <button className="filter-btn">
+                            <img onClick={() => onSetStyle('hue-rotate(270deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(270deg)' }} />
+                            <p>hue270</p>
                         </button>
                     </section>
                 </section>

@@ -1,0 +1,21 @@
+.edit-story-title {
+    width: 1072px;
+    height: 774px;
+    background-color: rgb(255, 255, 255);
+    border: solid 1px black;
+    border-radius: 12px;
+
+    &.edit-story-form {
+        height: 100%;
+    }
+}
+
+#img-preview2 {
+    width: 673px;
+    height: 673px;
+    overflow: none;
+}
+
+#span {
+    height: 1fr;
+}

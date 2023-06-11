@@ -12,15 +12,16 @@ export function CreateStoryTitle({ storyToEdit, onSaveStory }) {
     }
 
     return (
-        <div className="edit-story-img">
-            <section>
+        <div className="edit-story-title flex row">
+            <section id="img-preview2" className="img-preview">
                 <img src={storyToEdit.current.img.url} style={storyToEdit.current.img.style} alt="" />
             </section>
             <section className="edit-story-form">
-                <form onSubmit={onSubmitTitle}>
+                <form className="flex column space-between" onSubmit={onSubmitTitle}>
                     <label htmlFor="txt">
                         <input onChange={handleChange} type="text" name="txt" id="txt" placeholder="Write a caption..." />
                     </label>
+                    <span id="span"></span>
                     <button>Post</button>
                 </form>
             </section>
