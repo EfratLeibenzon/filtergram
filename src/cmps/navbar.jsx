@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import { useSelector } from 'react-redux'
-import { searchIcon, exploreIcon, homeIcon, reelsIcon, sendIcon, likeIcon, createIcon, moreIcon } from './icons'
+import { searchIcon, exploreIcon, homeIcon, reelsIcon, sendIcon, likeIcon, createIcon, moreIcon, filtergramLogo } from './icons'
 import { storyService } from "../services/story.service.local"
 import { userService } from "../services/user.service";
 import { useState, useEffect } from 'react'
@@ -18,7 +18,8 @@ export function Navbar({ isStoryEdit, setisStoryEdit, user }) {
         <div className="side-bar">
             <section className="logo">
                 {/* <NavLink className="navbar-item" to={"/"}>FILTERGRAM</NavLink> */}
-                <a>FILTERGRAM</a>
+                {/* <a>{filtergramLogo}</a> */}
+                <a>Filtergram</a>
             </section>
             <nav className="main-navbar flex column justify-start">
                 <NavLink className="navbar-item-home" to={"/"}><span>{homeIcon}</span><span className="home">Home</span> </NavLink>

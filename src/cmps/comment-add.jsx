@@ -47,7 +47,7 @@ export function CommentAdd({ story }) {
 
     return (
         <form onSubmit={onSaveComment}>
-            <input onChange={handleChange} type="text" name="comment" placeholder="Add a comment..." value={newComment.txt} />
+            <input className="comment-input" onChange={handleChange} type="text" name="comment" placeholder="Add a comment..." value={newComment.txt} />
             <button>Post</button>
         </form>
     )

@@ -18,8 +18,8 @@ export function LongTxt({ txt = 'test', length }) {
     return (
         <section className="description-container">
 
-            {!isMore && <p>{txt.substring(0, length)}</p>}
-            {isMore && <p>{txt}</p>}
+            {!isMore && <p className="short-story-title">{txt.substring(0, length)}</p>}
+            {isMore && <p className="long-story-title">{txt}</p>}
             {!isShort && <article>
                 {!isMore && <button onClick={BtnToggle}>Read More</button>}
                 {isMore && <button onClick={BtnToggle}>Read Less</button>}

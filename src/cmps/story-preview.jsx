@@ -73,13 +73,17 @@ export function StoryPreview({ story, onRemoveStory }) {
                 <button className='icon-btn'><span>{sendIcon}</span></button>
                 <button className='icon-btn save'><span>{savedIcon}</span></button>
             </div>
+
             {likesPreview(story.likedBy.length)}
+
             <section className='story-title'>
                 <p className="user-name">{story.by.userName}</p>
                 <LongTxt txt={story.txt} length={119} />
             </section>
-            {getComments(story.comments)}
+
+            <section className='comments-preview'>{getComments(story.comments)}</section>
             <CommentAdd story={story} />
+
         </article>
     )
 }
