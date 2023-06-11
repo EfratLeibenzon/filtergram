@@ -8,14 +8,13 @@ export function CreateStoryTitle({ storyToEdit, onSaveStory }) {
 
     function onSubmitTitle(ev) {
         ev.preventDefault()
-        // setStoryToEdit((prev) => ({ ...prev, txt: title }))
         onSaveStory(title)
     }
 
     return (
         <div className="edit-story-img">
             <section>
-                <img src={storyToEdit.current.imgUrl} alt="" />
+                <img src={storyToEdit.current.img.url} style={storyToEdit.current.img.style} alt="" />
             </section>
             <section className="edit-story-form">
                 <form onSubmit={onSubmitTitle}>

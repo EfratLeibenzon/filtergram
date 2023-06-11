@@ -23,14 +23,14 @@ export function UserDetails() {
         loadUsers()
     }, [])
 
-    
+
     // const profileStories = stories.filter(story => story.by._id === profilePage._id)
 
     return (
         <div className="profile-container">
             <section className='profile-header'>
                 <section className="profile-photo">
-                    <img src={loggedInUser.userImgUrl} />
+                    <img src={loggedInUser.userImg.url} style={loggedInUser.userImg.style} />
                 </section>
                 <section className="profile-info">
                     <div className="profile-info-header">

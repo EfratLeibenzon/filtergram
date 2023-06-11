@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-export function EditImg({ imgUrl, setStage }) {
+export function EditImg({ imgUrl, setImgStyle }) {
     const [currStyle, setCurrStyle] = useState({ filter: 'none' })
 
     function onSetStyle(currFilter) {
@@ -14,7 +14,7 @@ export function EditImg({ imgUrl, setStage }) {
         <div className="edit-img ">
             <header className="flex row">
                 <span> Edit</span>
-                <button onClick={() => setStage(3)}>next</button>
+                <button onClick={() => setImgStyle(currStyle)}>next</button>
             </header>
             <main className="flex row">
                 <section className="img-preview">

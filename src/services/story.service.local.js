@@ -70,7 +70,7 @@ function getEmptyStory() {
     return {
         txt: '',
         createdAt: null,
-        imgUrl: '',
+        img: { url: '', style: { filter: 'none' } },
         by: users[0],
         loc: {},
         taggedUsers: [],

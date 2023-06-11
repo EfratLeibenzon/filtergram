@@ -33,7 +33,7 @@ export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
 
     function onUploaded(imgUrl) {
         console.log(imgUrl)
-        storyToEdit.current = { ...storyToEdit.current, imgUrl: imgUrl }
+        storyToEdit.current = { ...storyToEdit.current, img: { ...storyToEdit.current.img, url: imgUrl } }
         console.log(storyToEdit)
         setStage(2)
     }
@@ -53,6 +53,11 @@ export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
         }
     }
 
+    function setImgStyle(newStyle) {
+        storyToEdit.current = { ...storyToEdit.current, img: { ...storyToEdit.current.img, style: newStyle } }
+        setStage(3)
+    }
+
     function onCloseEdit() {
         setisStoryEdit(false)
     }
@@ -65,18 +70,18 @@ export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
             {storyToEdit && <DynamicComponent
                 stage={stage}
                 onUploaded={onUploaded}
-                imgUrl={storyToEdit.current.imgUrl}
+                imgUrl={storyToEdit.current.img.url}
                 storyToEdit={storyToEdit}
-                // setStoryToEdit={setStoryToEdit}
+                setImgStyle={setImgStyle}
                 onSaveStory={onSaveStory}
-                setStage={setStage}
+
             />}
 
         </div>
     )
 }
 
-function DynamicComponent({ stage, onUploaded, imgUrl, storyToEdit, onSaveStory, setStage }) {
+function DynamicComponent({ stage, onUploaded, imgUrl, storyToEdit, setImgStyle, onSaveStory }) {
     switch (stage) {
         case 1:
             console.log('storyToEdit inside case 1:', storyToEdit)
@@ -84,7 +89,7 @@ function DynamicComponent({ stage, onUploaded, imgUrl, storyToEdit, onSaveStory,
         // break
         case 2:
             console.log('storyToEdit inside case 2:', storyToEdit)
-            return <EditImg imgUrl={imgUrl} setStage={setStage} />
+            return <EditImg imgUrl={imgUrl} setImgStyle={setImgStyle} />
         // break
         case 3:
             console.log('storyToEdit inside case 3:', storyToEdit)

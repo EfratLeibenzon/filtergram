@@ -8,7 +8,7 @@ export function Suggested() {
         <div className="suggestions">
             <div className="suggestion-header">
                 <div className="suggestion-header-info">
-                    <img src={user.userImgUrl} />
+                    <img src={user.userImg.url} style={user.userImg.style} />
                     <div className="suggestion-user-name">
                         <a>{user.userName}</a>
                         <span>{user.fullName}</span>

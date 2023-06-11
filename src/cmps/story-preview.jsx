@@ -15,7 +15,7 @@ export function StoryPreview({ story, onRemoveStory }) {
     const navigate = useNavigate()
 
     const user = useSelector(storeState => storeState.userModule.user)
-    const isLiked = story.likedBy.some((u) => u._id === user._id)
+    const isLiked = story.likedBy.some((u) => u._id === user._id) || null
     // const navigate = useNavigate()
     const location = useLocation()
 
@@ -47,14 +47,14 @@ export function StoryPreview({ story, onRemoveStory }) {
             </section>)
 
     }
- 
-console.log('liked by',story.likedBy )
+
+    console.log('liked by', story.likedBy)
 
     return (
         <article className="story-preview column">
             <header className="story-header flex space-between">
                 <div className="user-preview flex">
-                    <img className="mini-user-img" src={story.by.userImgUrl} alt="" />
+                    <img className="mini-user-img" src={story.by.userImg.url} style={story.by.userImg.style} alt="" />
                     <h4 className="user-name">{story.by.userName}</h4>
                 </div>
                 <div>
@@ -62,7 +62,7 @@ console.log('liked by',story.likedBy )
                 </div>
             </header>
             <section className='story-img-container' >
-                <img className="story-img" src={story.imgUrl} alt="" />
+                <img className="story-img" src={story.img.url} style={story.img.style} alt="" />
             </section>
             <div className="action-btns">
                 {/* <button className='icon-btn'><span>{likeIcon}</span></button> */}

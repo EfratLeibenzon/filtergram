@@ -36,7 +36,7 @@ export function RootCmp() {
                     <Route element={<StoryDetails setIsStoryDetailsOpen={setIsStoryDetailsOpen} isStoryDetailsOpen={isStoryDetailsOpen} />} path={'/StoryDetails/:storyId'} />
                     <Route element={<Profile />} path="/profile/:userId" />
                 </Routes>
-                {isStoryEdit && <StoryEdit isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} />}
+                {/* {isStoryEdit && <StoryEdit isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} />} */}
                 {/* {isStoryDetailsOpen && <StoryDetails isStoryDetailsOpen={isStoryDetailsOpen} setIsStoryDetailsOpen={setIsStoryDetailsOpen} />}
                 {background && (
                     <Routes>

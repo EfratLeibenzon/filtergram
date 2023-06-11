@@ -108,7 +108,7 @@ function getLoggedinUser() {
 function getEmptyUser() {
     return {
         txt: "",
-        imgUrl: "",
+        img: { url: '', style: { filter: 'none' } },
         by: users[0],
         loc: {},
         comments: [],
@@ -154,12 +154,12 @@ function _createUsers() {
     _saveUsers(STORAGE_KEY_USERS, users)
 }
 
-function _createGuest(){
+function _createGuest() {
     const storedGuest = utilService.loadFromStorage(STORAGE_KEY_GUEST)
     if (storedGuest?.length > 0) {
         return
     }
-    const guestUser = users.filter((u)=>u._id==='Guest')
+    const guestUser = users.filter((u) => u._id === 'Guest')
     _saveUsers(STORAGE_KEY_LOGGEDIN_USER, guestUser)
 }
 
