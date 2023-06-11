@@ -1,5 +1,7 @@
 import { userService } from "../services/user.service";
 
+import { NavLink } from "react-router-dom";
+
 export function Suggested() {
 
     const user = userService.getLoggedinUser()?.[0];
@@ -8,10 +10,11 @@ export function Suggested() {
         <div className="suggestions">
             <div className="suggestion-header">
                 <div className="suggestion-header-info">
-                    <img src={user.userImg.url} style={user.userImg.style} />
+                <NavLink to={`/profile/${user._id}`}><img src={user.userImg.url} style={user.userImg.style} /></NavLink>
                     <div className="suggestion-user-name">
-                        <a>{user.userName}</a>
+                    <NavLink to={`/profile/${user._id}`}>     <a>{user.userName}</a></NavLink>
                         <span>{user.fullName}</span>
+                        {/* <NavLink className="navbar-item-profile" to={`/profile/${user._id}`}><img src={user.userImg.url} style={user.userImg.style} />Profile</NavLink> */}
                     </div>
                 </div>
             </div>

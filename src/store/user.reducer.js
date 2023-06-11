@@ -23,7 +23,9 @@ export function userReducer(state = initialState, action) {
     var newState = state
     switch (action.type) {
         case SET_USER:
+            console.log('user action11111111112222222222222222222')
             newState = { ...state, user: action.user }
+            console.log('user action1111111111', {user: action.user})
             break
         case SET_WATCHED_USER:
             newState = { ...state, watchedUser: action.user }

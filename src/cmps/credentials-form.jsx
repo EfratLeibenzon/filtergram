@@ -2,20 +2,22 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js'
 import { login } from '../store/user.actions.js'
 import { signup } from '../store/user.actions.js'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 export function CredentialsForm({ onSubmit, isSignup }) {
 
-    const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
+    const [user, setUser] = useState(userService.getEmptyUser())
+    console.log('user12345', user)
 
     function handleChange({ target }) {
+        console.log('target', target)
         const { name: field, value } = target
-        setCredentials(prevCreds => ({ ...prevCreds, [field]: value }))
+        setUser(prevCreds => ({ ...prevCreds, [field]: value }))
     }
 
     function handleSubmit(ev) {
         ev.preventDefault()
-        onSubmit(credentials)
+        onSubmit(user)
     }
 
     return (
@@ -23,7 +25,7 @@ export function CredentialsForm({ onSubmit, isSignup }) {
             <input
                 className="txt-input"
                 type="text"
-                name="username"
+                name="userName"
                 placeholder="Username"
                 onChange={handleChange}
                 required
@@ -39,12 +41,12 @@ export function CredentialsForm({ onSubmit, isSignup }) {
             {isSignup && <input
                 className="txt-input"
                 type="text"
-                name="fullname"
+                name="fullName"
                 placeholder="Full name"
                 onChange={handleChange}
                 required
             />}
-            <a className="btn log-btn">{isSignup ? 'Signup' : 'Login'}</a>
+            <button className="btn log-btn">{isSignup ? 'Signup' : 'Login'}</button>
         </form>
     )
 }

@@ -7,10 +7,10 @@ import { userService } from "../services/user.service";
 export function StoryList({ stories, onRemoveStory }) {
     const [loggedInUser, setUser] = useState(userService.getLoggedinUser())
 
-    function onChangeLoginStatus(loggedInUser) {
-        console.log('from header: ', loggedInUser);
-        setUser(loggedInUser)
-    }
+    // function onChangeLoginStatus(loggedInUser) {
+    //     console.log('from header: ', loggedInUser);
+    //     setUser(loggedInUser)
+    // }
 
     return (
         <div>
@@ -27,7 +27,7 @@ export function StoryList({ stories, onRemoveStory }) {
 
             </ul>
 
-            <button><LoginSignup onChangeLoginStatus={onChangeLoginStatus} /></button>
+            {/* <LoginSignup onChangeLoginStatus={onChangeLoginStatus} /> */}
 
         </div >
     )

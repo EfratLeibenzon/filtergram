@@ -5,12 +5,12 @@ import { login, signup } from '../store/user.actions.js'
 import { CredentialsForm } from './credentials-form.jsx'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 
-export function LoginSignup({onChangeLoginStatus}) {
+export function LoginSignup({ onChangeLoginStatus }) {
 
     const [isSignup, setIsSignUp] = useState(false)
 
-    function onSubmit(credentials) {
-        isSignup ? onSignup(credentials) : onLogin(credentials)
+    function onSubmit(user) {
+        isSignup ? onSignup(user) : onLogin(user)
     }
 
     function onLogin(credentials) {
@@ -20,8 +20,8 @@ export function LoginSignup({onChangeLoginStatus}) {
             .catch((err) => { showErrorMsg('Oops try again') })
     }
 
-    function onSignup(credentials) {
-        signup(credentials)
+    function onSignup(user) {
+        signup(user)
             .then(onChangeLoginStatus)
             .then(() => { showSuccessMsg('Signed in successfully') })
             .catch((err) => { showErrorMsg('Oops try again') })
@@ -30,11 +30,11 @@ export function LoginSignup({onChangeLoginStatus}) {
     return (
         <div className="credentials-page">
             <CredentialsForm
-                onSubmit={onSubmit}
-                isSignup={isSignup}
+                onSubmit={onSubmit} isSignup={isSignup}
+
             />
             <div className="btns">
-                <a href="#/todo" onClick={() => setIsSignUp(!isSignup)}>
+                <a onClick={() => setIsSignUp((prev) => !prev)}>
                     {isSignup ?
                         'Already a member? Login' :
                         'New user? Signup here'

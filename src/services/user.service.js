@@ -15,6 +15,7 @@ _createGuest()
 export const userService = {
     login,
     logout,
+    signup,
     query,
     getById,
     // save,
@@ -42,7 +43,7 @@ function saveLocalUser(user) {
 
 async function login(userCred) {
     const users = await storageService.query('user')
-    const user = users.find(user => user.username === userCred.username)
+    const user = users.find(user => user.userName === userCred.userName)
     if (user) {
         return saveLocalUser(user)
     }
@@ -57,6 +58,12 @@ async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     // socketService.logout()
     // return await httpService.post('auth/logout')
+}
+
+function signup(user) {
+    // const user = { username, password, fullname, activities: [] }
+    return storageService.post(STORAGE_KEY_USERS, user)
+        .then(_setLoggedinUser)
 }
 
 
@@ -107,15 +114,25 @@ function getLoggedinUser() {
 
 function getEmptyUser() {
     return {
-        txt: "",
-        img: { url: '', style: { filter: 'none' } },
-        by: users[0],
-        loc: {},
-        comments: [],
-        likedBy: [],
-        tags: []
+        _id: "",
+        fullName: "",
+        userName: "",
+        password: "",
+        mail: '', //not in the starter
+        userBio: '', //not in the starter
+        userImg: { url: '', style: { filter: 'none' } },
+        followingId: [], //provided in the starter as: following
+        followersId: [], //provided in the starter as: followers
+        following: [
+        ],
+        followers: [
+        ],
+        savedStories: [], //provided in the starter as savedStoryIds
+        taggedStories: [], //not in the starter
+        userStories: [] //not in the starter
+      }
     }
-}
+
 
 function queryComments(userId) {
     let user = getById(userId)
@@ -137,7 +154,7 @@ function getEmptyComment() {
 
 function getEmptyCredentials() {
     return {
-        username: '',
+        userName: '',
         password: '',
         fullname: ''
     }
@@ -167,5 +184,9 @@ function _saveUsers(userType, users) {
     utilService.saveToStorage(userType, users)
 }
 
-
+function _setLoggedinUser(user) {
+    storageService.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    .then(remove(STORAGE_KEY_LOGGEDIN_USER, user._id))
+    return user
+}
 
