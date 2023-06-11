@@ -1,8 +1,5 @@
 import { userService } from '../services/user.service.js'
 
-export const INCREMENT = 'INCREMENT'
-export const DECREMENT = 'DECREMENT'
-export const CHANGE_COUNT = 'CHANGE_COUNT'
 export const SET_USER = 'SET_USER'
 export const SET_WATCHED_USER = 'SET_WATCHED_USER'
 export const REMOVE_USER = 'REMOVE_USER'
@@ -12,8 +9,7 @@ export const SET_SCORE = 'SET_SCORE'
 // export const SET_GUEST_USER = 'SET_GUEST_USER'
 
 const initialState = {
-    count: 10,
-    user: userService.getLoggedinUser(),
+    user: userService.getLoggedinUser() || userService.getById('Guest') ,
     users: [],
     // isGuest: true,
     // watchedUser : null
@@ -23,9 +19,7 @@ export function userReducer(state = initialState, action) {
     var newState = state
     switch (action.type) {
         case SET_USER:
-            console.log('user action11111111112222222222222222222')
             newState = { ...state, user: action.user }
-            console.log('user action1111111111', {user: action.user})
             break
         case SET_WATCHED_USER:
             newState = { ...state, watchedUser: action.user }

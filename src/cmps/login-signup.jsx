@@ -5,7 +5,7 @@ import { login, signup } from '../store/user.actions.js'
 import { CredentialsForm } from './credentials-form.jsx'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 
-export function LoginSignup({ onChangeLoginStatus }) {
+export function LoginSignup() {
 
     const [isSignup, setIsSignUp] = useState(false)
 
@@ -13,16 +13,14 @@ export function LoginSignup({ onChangeLoginStatus }) {
         isSignup ? onSignup(user) : onLogin(user)
     }
 
-    function onLogin(credentials) {
-        login(credentials)
-            .then(onChangeLoginStatus)
+    function onLogin(user) {
+        login(user)
             .then(() => { showSuccessMsg('Logged in successfully') })
             .catch((err) => { showErrorMsg('Oops try again') })
     }
 
     function onSignup(user) {
         signup(user)
-            .then(onChangeLoginStatus)
             .then(() => { showSuccessMsg('Signed in successfully') })
             .catch((err) => { showErrorMsg('Oops try again') })
     }
@@ -31,7 +29,6 @@ export function LoginSignup({ onChangeLoginStatus }) {
         <div className="credentials-page">
             <CredentialsForm
                 onSubmit={onSubmit} isSignup={isSignup}
-
             />
             <div className="btns">
                 <a onClick={() => setIsSignUp((prev) => !prev)}>

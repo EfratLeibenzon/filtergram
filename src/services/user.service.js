@@ -5,12 +5,12 @@ import { utilService } from './util.service.js'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 const STORAGE_KEY_USERS = 'users'
-const STORAGE_KEY_GUEST = 'guest'
+// const STORAGE_KEY_GUEST = 'guest'
 
 // const STORAGE_KEY = 'userDB'
 
 _createUsers()
-_createGuest()
+// _createGuest()
 
 export const userService = {
     login,
@@ -22,30 +22,41 @@ export const userService = {
     remove,
     getLoggedinUser,
     getEmptyUser,
-    getUsers,
+    // getUsers,
     queryComments,
     getCommentById,
     getEmptyCredentials,
-    getEmptyComment
-
+    getEmptyComment,
+    getShortUserInfo
 }
+
 window.cs = userService
 
 
-function saveLocalUser(user) {
-    // user = {_id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score}
-    // sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-    // return user
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-    return user
+// function saveLocalUser(user) {
+//     // user = {_id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score}
+//     // sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+//     // return user
+//     localStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+//     return user
+// }
+
+async function saveUser(user) {
+    var savedUser
+    if (user._id) {
+        savedUser = await storageService.put(STORAGE_KEY_USERS, user)
+    } else {
+        savedUser = await storageService.post(STORAGE_KEY_USERS, user)
+    }
+    return savedUser
 }
 
 
-async function login(userCred) {
-    const users = await storageService.query('user')
-    const user = users.find(user => user.userName === userCred.userName)
-    if (user) {
-        return saveLocalUser(user)
+async function login({ userName, password }) {
+    const user = await query(userName)
+    // const user = users.find(user => user.userName === userCred.userName)
+    if (user.password === password) {
+        _setLoggedinUser(user)
     }
     // const user = await httpService.post('auth/login', userCred)
     // if (user) {
@@ -55,7 +66,7 @@ async function login(userCred) {
 }
 
 async function logout() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    storageService.remove(STORAGE_KEY_LOGGEDIN_USER)
     // socketService.logout()
     // return await httpService.post('auth/logout')
 }
@@ -67,13 +78,23 @@ function signup(user) {
 }
 
 
-async function query() {
-    var users = await storageService.query(STORAGE_KEY_LOGGEDIN_USER)
+// async function query() {
+//     var users = await storageService.query(STORAGE_KEY_LOGGEDIN_USER)
+//     return users
+// }
 
+async function query(filterBy = { fullName: '', userName: '' }) {
+    var users = await storageService.query(STORAGE_KEY_USERS).then(users => users)
+    if (filterBy.userName) {
+        const regExp = new RegExp(filterBy.userName, 'i')
+        users = users.filter(user => regExp.test(user.userName))
+    }
+    if (filterBy.fullName) {
+        const regExp = new RegExp(filterBy.fullName, 'i')
+        users = users.filter(user => regExp.test(user.fullName))
+    }
     return users
-}
 
-async function getUsers(filterBy = { txt: '' }) {
     // var users = await storageService.query('user').then(users => users)
     // if (filterBy.txt) {
     //     const regex = new RegExp(filterBy.txt, 'i')
@@ -84,16 +105,15 @@ async function getUsers(filterBy = { txt: '' }) {
     // }
     // return users
     // console.log('get logged in user', storageService.query(STORAGE_KEY_LOGGEDIN_USER))
-    return storageService.query(STORAGE_KEY_LOGGEDIN_USER)
     // return httpService.get(`user`)
 }
 
 function getById(userId) {
-    return storageService.get(STORAGE_KEY_LOGGEDIN_USER, userId)
+    return storageService.get(STORAGE_KEY_USERS, userId)
 }
 
 async function remove(userId) {
-    await storageService.remove(STORAGE_KEY_LOGGEDIN_USER, userId)
+    await storageService.remove(STORAGE_KEY_USERS, userId)
 }
 
 // async function save(user) {
@@ -107,14 +127,12 @@ async function remove(userId) {
 // }
 
 function getLoggedinUser() {
-    // const user = JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
-    return JSON.parse(localStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+    return utilService.loadFromStorage(STORAGE_KEY_LOGGEDIN_USER)
     // return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
 function getEmptyUser() {
     return {
-        _id: "",
         fullName: "",
         userName: "",
         password: "",
@@ -130,8 +148,8 @@ function getEmptyUser() {
         savedStories: [], //provided in the starter as savedStoryIds
         taggedStories: [], //not in the starter
         userStories: [] //not in the starter
-      }
     }
+}
 
 
 function queryComments(userId) {
@@ -156,7 +174,16 @@ function getEmptyCredentials() {
     return {
         userName: '',
         password: '',
-        fullname: ''
+        fullName: ''
+    }
+}
+
+async function getShortUserInfo(userId) {
+    const shortUserInfo = await getById(userId)
+    return {
+        _id: shortUserInfo._id,
+        userImg: shortUserInfo.userImg,
+        userName: shortUserInfo.userName
     }
 }
 
@@ -164,29 +191,31 @@ function getEmptyCredentials() {
 ////////////////////
 
 function _createUsers() {
-    const storedUsers = utilService.loadFromStorage(STORAGE_KEY_LOGGEDIN_USER)
+    const storedUsers = utilService.loadFromStorage(STORAGE_KEY_USERS)
     if (storedUsers?.length > 0) {
         return
     }
     _saveUsers(STORAGE_KEY_USERS, users)
 }
 
-function _createGuest() {
-    const storedGuest = utilService.loadFromStorage(STORAGE_KEY_GUEST)
-    if (storedGuest?.length > 0) {
-        return
-    }
-    const guestUser = users.filter((u) => u._id === 'Guest')
-    _saveUsers(STORAGE_KEY_LOGGEDIN_USER, guestUser)
-}
+// function _createGuest() {
+//     const storedGuest = utilService.loadFromStorage(STORAGE_KEY_GUEST)
+//     if (storedGuest?.length > 0) {
+//         return
+//     }
+//     const guestUser = users.filter((u) => u._id === 'Guest')
+//     _saveUsers(STORAGE_KEY_LOGGEDIN_USER, guestUser)
+// }
 
 function _saveUsers(userType, users) {
     utilService.saveToStorage(userType, users)
 }
 
 function _setLoggedinUser(user) {
-    storageService.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-    .then(remove(STORAGE_KEY_LOGGEDIN_USER, user._id))
+    if (getLoggedinUser()) {
+        logout()
+    }
+    utilService.saveToStorage(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
 

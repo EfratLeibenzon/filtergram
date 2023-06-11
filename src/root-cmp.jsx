@@ -18,8 +18,7 @@ export function RootCmp() {
     const [isStoryDetailsOpen, setIsStoryDetailsOpen] = useState(false)
     const location = useLocation()
     const background = location.state && location.state.background
-
-    const user = userService.getLoggedinUser()?.[0];
+    const user = userService.getLoggedinUser()[0];
 
     return (
         <div className='flex'>

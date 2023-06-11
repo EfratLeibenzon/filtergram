@@ -7,10 +7,9 @@ import { useRef, useState } from 'react'
 export function CredentialsForm({ onSubmit, isSignup }) {
 
     const [user, setUser] = useState(userService.getEmptyUser())
-    console.log('user12345', user)
 
     function handleChange({ target }) {
-        console.log('target', target)
+        console.log('target', target.field)
         const { name: field, value } = target
         setUser(prevCreds => ({ ...prevCreds, [field]: value }))
     }

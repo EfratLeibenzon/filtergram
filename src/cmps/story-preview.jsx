@@ -48,8 +48,6 @@ export function StoryPreview({ story, onRemoveStory }) {
 
     }
 
-    console.log('liked by', story.likedBy)
-
     return (
         <article className="story-preview column">
             <header className="story-header flex space-between">
