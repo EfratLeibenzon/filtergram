@@ -29,7 +29,7 @@ export function RootCmp() {
     return (
         <div className='flex'>
             <Navbar isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} user={user} />
-            {isStoryEdit && <StoryEdit isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} />}
+            {isStoryEdit && <StoryEdit setisStoryEdit={setisStoryEdit} />}
             <main className='main-section'>
                 <Routes location={background || location}>
                     <Route element={<HomeIndex setIsStoryDetailsOpen={setIsStoryDetailsOpen} isStoryDetailsOpen={isStoryDetailsOpen} />} path="/">

@@ -7,18 +7,17 @@ export function EditImg({ imgUrl, setImgStyle }) {
 
     function onSetStyle(currFilter) {
         setCurrStyle({ filter: currFilter })
-        console.log('currStyle', currStyle)
     }
 
     return (
-        <div className="edit-img">
+        <div className="edit-img flex column">
             <header className="flex row space-between">
                 <span></span>
                 <span> Edit</span>
                 <button onClick={() => setImgStyle(currStyle)}>next</button>
             </header>
             <main className="flex row">
-                <section id="img-preview" className="img-preview">
+                <section id="img-preview-container" className="img-preview-container">
                     <img src={imgUrl} style={currStyle} />
                 </section>
                 <section className="img-editors flex column">
@@ -51,6 +50,14 @@ export function EditImg({ imgUrl, setImgStyle }) {
                         <button className="filter-btn">
                             <img onClick={() => onSetStyle('hue-rotate(270deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'contrast(0.7)' }} />
                             <p>contrast</p>
+                        </button>
+                        <button className="filter-btn">
+                            <img onClick={() => onSetStyle('hue-rotate(270deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(270deg)' }} />
+                            <p>hue270</p>
+                        </button>
+                        <button className="filter-btn">
+                            <img onClick={() => onSetStyle('hue-rotate(270deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(270deg)' }} />
+                            <p>hue270</p>
                         </button>
                         <button className="filter-btn">
                             <img onClick={() => onSetStyle('hue-rotate(270deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(270deg)' }} />
