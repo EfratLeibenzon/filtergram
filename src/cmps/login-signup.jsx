@@ -8,7 +8,7 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 export function LoginSignup() {
 
     const [isSignup, setIsSignUp] = useState(false)
-
+    const [message, setMessage] = useState('')
     function onSubmit(user) {
         isSignup ? onSignup(user) : onLogin(user)
     }
@@ -16,9 +16,9 @@ export function LoginSignup() {
     function onLogin(user) {
         login(user)
             .then(() => { showSuccessMsg('Logged in successfully') })
-            .catch((err) => { showErrorMsg('Oops try again') })
+            .catch((err) => { setMessage("Wrong username/password") })
     }
-    
+
     function onSignup(user) {
         signup(user)
             .then(() => { showSuccessMsg('Signed in successfully') })
@@ -39,7 +39,8 @@ export function LoginSignup() {
         <div className='login-screen'>
             <CredentialsForm
                 onSubmit={onSubmit} isSignup={isSignup}
-            />
+                />
+                <span>{message}</span>
             <div className="new-user">
                 <a onClick={() => setIsSignUp((prev) => !prev)}>
                     {isSignup ?

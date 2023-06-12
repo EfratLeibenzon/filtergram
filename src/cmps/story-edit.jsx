@@ -7,11 +7,12 @@ import { addStory } from "../store/story.actions"
 import { EditImg } from "./edit-img"
 import { CreateStoryTitle } from "./edit-story-title"
 import { xButton } from "./icons"
+import { userService } from "../services/user.service"
 
 
 export function StoryEdit({ setisStoryEdit }) {
 
-    const user = useSelector(storeState => storeState.userModule.loggedInUser)
+    // const user = useSelector(storeState => storeState.userModule.loggedInUser)
     let storyToEdit = useRef(storyService.getEmptyStory())
     const { storyId } = useParams()
     const [stage, setStage] = useState(0)
@@ -48,10 +49,12 @@ export function StoryEdit({ setisStoryEdit }) {
     async function onSaveStory() {
         const timeStamp = Date.now()
         try {
-            // storyToEdit.current = { ...storyToEdit.current, txt: title, createdAt: timeStamp }
-            storyToEdit.current = { ...storyToEdit.current, createdAt: timeStamp }
+            storyToEdit.current = { ...storyToEdit.current, createdAt: timeStamp, }
             const story = await addStory(storyToEdit.current)
             console.log(`story with id ${story._id} added`)
+            // let user= story.by
+            // user.userStories.push(story)
+
         } catch (err) {
             console.log('Cannot add story', err)
         }

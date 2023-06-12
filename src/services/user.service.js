@@ -3,7 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { users } from './demo-data.js'
 import { utilService } from './util.service.js'
 
-const STORAGE_KEY_LOGGEDIN_USER = 'loggedInUser'
+export const STORAGE_KEY_LOGGEDIN_USER = 'loggedInUser'
 const STORAGE_KEY_USERS = 'users'
 const STORAGE_KEY_GUEST = 'guest'
 
@@ -74,7 +74,6 @@ async function login({ userName, password }) {
 async function getByUserName(userName) {
     const users = await query()
     const user = users.filter((u) => userName === u.userName)
-    console.log('from get user name func', user)
     return user[0]
 }
 

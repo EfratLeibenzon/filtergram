@@ -3,11 +3,10 @@ import { userService } from '../services/user.service.js'
 import { login } from '../store/user.actions.js'
 import { signup } from '../store/user.actions.js'
 import { useRef, useState } from 'react'
+import filtergramLogo from '../assets/img/filtergramLogo.png'
 
 export function CredentialsForm({ onSubmit, isSignup }) {
     const [user, setUser] = useState(userService.getEmptyUser())
-    const [isDemoUser, setisDemoUser] = useState(false)
-
 
     function handleChange({ target }) {
         const { name: field, value } = target
@@ -23,7 +22,7 @@ export function CredentialsForm({ onSubmit, isSignup }) {
         <div className='login-container'>
             <form className="credentials-form" onSubmit={handleSubmit}>
                 <section>
-                <div className="logo">FilterGram</div>
+                <img src={filtergramLogo} alt="Logo" className="logo" />
                 <input
                     className="txt-input username"
                     type="text"

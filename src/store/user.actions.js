@@ -5,6 +5,7 @@ import { store } from '../store/store.js'
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
 import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER, ADD_USER } from "./user.reducer.js";
+import { async } from "q";
 
 export async function loadUsers() {
     try {
@@ -45,7 +46,7 @@ export async function onAddUser(user) {
 export async function login(user) {
     try {
         const loggedInUser = await userService.login(user)
-        console.log('from actions', loggedInUser)
+        console.log('from actions1111111', loggedInUser)
         store.dispatch({
             type: SET_USER,
             loggedInUser
@@ -80,7 +81,7 @@ export async function logout() {
             type: SET_USER,
             loggedInUser: null
         })
-        socketService.logout()
+        // socketService.logout()
     } catch (err) {
         console.log('Cannot logout', err)
         throw err
@@ -96,6 +97,14 @@ export async function loadUser(userId) {
         console.log('Cannot load user', err)
     }
 }
+
+// export async function updateUser(user){
+//     try {
+//         const updatedUser= await userService.saveUser(user)
+
+
+//     }
+// }
 
 // export function isGuest(userId) {
 //     const isGuestUser = user._id === 'Guest' ? true : false

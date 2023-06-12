@@ -1,6 +1,7 @@
 
 import { storageService } from './async-storage.service.js'
 import { stories, users } from './demo-data.js'
+import { STORAGE_KEY_LOGGEDIN_USER, userService } from './user.service.js'
 import { utilService } from './util.service.js'
 
 const STORAGE_KEY = 'story'
@@ -69,7 +70,7 @@ function getEmptyStory() {
         txt: '',
         createdAt: null,
         img: { url: '', style: { filter: 'none' } },
-        by: '',
+        by: userService.getLoggedinUser(),
         loc: {},
         taggedUsers: [],
         comments: [],
@@ -102,7 +103,7 @@ function getCommentById(storyId, commentId) {
 function getEmptyComment() {
     return {
         _id: utilService.makeId(12),
-        by: users[0],
+        by: userService.getLoggedinUser(),
         txt: "",
         likedBy: []
     }
