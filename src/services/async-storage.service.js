@@ -50,8 +50,8 @@ function remove(entityType, entityId) {
     })
 }
 
-    function removeUserFromLocalStorage(loggedInUserId) {
-        localStorage.removeItem(loggedInUserId);
+    function removeUserFromLocalStorage() {
+        localStorage.removeItem('loggedInUser');
     }
     
 

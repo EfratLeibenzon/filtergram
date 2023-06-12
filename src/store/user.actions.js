@@ -45,7 +45,7 @@ export async function onAddUser(user) {
 export async function login(user) {
     try {
         const loggedInUser = await userService.login(user)
-        console.log('from actions', loggedInUser)
+        console.log('from actions1111111', loggedInUser)
         store.dispatch({
             type: SET_USER,
             loggedInUser
@@ -80,7 +80,7 @@ export async function logout() {
             type: SET_USER,
             loggedInUser: null
         })
-        socketService.logout()
+        // socketService.logout()
     } catch (err) {
         console.log('Cannot logout', err)
         throw err

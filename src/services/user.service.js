@@ -74,7 +74,6 @@ async function login({ userName, password }) {
 async function getByUserName(userName) {
     const users = await query()
     const user = users.filter((u) => userName === u.userName)
-    console.log('from get user name func', user)
     return user[0]
 }
 
