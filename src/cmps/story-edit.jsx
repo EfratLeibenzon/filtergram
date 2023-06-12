@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import { useSelector } from "react-redux"
 import { storyService } from "../services/story.service.local"
 import { useNavigate, useParams } from "react-router-dom"
 import { ImgUploader } from "./img-uploader"
@@ -8,9 +9,11 @@ import { CreateStoryTitle } from "./edit-story-title"
 
 export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
 
+    const user = useSelector(storeState => storeState.userModule.loggedInUser)
     let storyToEdit = useRef(storyService.getEmptyStory())
     const { storyId } = useParams()
     const [stage, setStage] = useState(0)
+
 
 
     useEffect(() => {
@@ -33,7 +36,7 @@ export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
 
     function onUploaded(imgUrl) {
         console.log(imgUrl)
-        storyToEdit.current = { ...storyToEdit.current, img: { ...storyToEdit.current.img, url: imgUrl } }
+        storyToEdit.current = { ...storyToEdit.current, img: { ...storyToEdit.current.img, url: imgUrl }, by:user }
         console.log(storyToEdit)
         setStage(2)
     }

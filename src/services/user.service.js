@@ -79,7 +79,8 @@ async function getByUserName(userName) {
 }
 
 async function logout() {
-    storageService.remove(STORAGE_KEY_LOGGEDIN_USER)
+    storageService.removeUserFromLocalStorage()
+    // storageService.remove(STORAGE_KEY_LOGGEDIN_USER)
     // socketService.logout()
     // return await httpService.post('auth/logout')
 }
@@ -217,7 +218,7 @@ function _createGuest() {
         return
     }
     const guestUser = users.filter((u) => u._id === 'Guest')
-    _saveUsers(STORAGE_KEY_LOGGEDIN_USER, guestUser)
+    _saveUsers(STORAGE_KEY_LOGGEDIN_USER, guestUser[0])
 }
 
 function _saveUsers(userType, users) {

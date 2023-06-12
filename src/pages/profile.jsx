@@ -27,7 +27,6 @@ export function Profile() {
             {/* <LoginSignup onChangeLoginStatus={onChangeLoginStatus} /> */}
             {/* <section className="user-stories grid">
             </section> */}
-            <LoginSignup />
         </div>
     )
 }

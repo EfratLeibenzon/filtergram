@@ -147,12 +147,12 @@ export const users = [
   },
   {
     _id: "Guest",
-    fullName: "Guest",
-    userName: "Guest",
+    fullName: "David Goggins",
+    userName: "davidg",
     password: "",
     mail: '', //not in the starter
     userBio: '', //not in the starter
-    userImg: { url: 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png', style: { filter: 'none' } },
+    userImg: { url: 'https://res.cloudinary.com/duxmabf4n/image/upload/v1686570314/wftqmpysimoxouukkpxj.jpg', style: { filter: 'none' } },
     followingId: [], //provided in the starter as: following
     followersId: [], //provided in the starter as: followers
     following: [

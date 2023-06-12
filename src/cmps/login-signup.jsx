@@ -36,49 +36,18 @@ export function LoginSignup() {
     // }
 
     return (
-        <div className="credentials-page">
+        <div className='login-screen'>
             <CredentialsForm
                 onSubmit={onSubmit} isSignup={isSignup}
             />
-            <div className="btns">
+            <div className="new-user">
                 <a onClick={() => setIsSignUp((prev) => !prev)}>
                     {isSignup ?
-                        'Already a member? Login' :
-                        'New user? Signup here'
+                        'Already a member? Click here' :
+                        'Don\'t have an account? Signup here'
                     }
                 </a >
             </div>
         </div >
     )
-
-
-
-    // const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
-    // const [isSignup, setIsSignup] = useState(false)
-    // const [users, setUsers] = useState([])
-
-    // useEffect(() => {
-    //     loadUsers()
-    // }, [])
-
-
-
-    // async function loadUsers() {
-    //     const users = await userService.getUsers()
-    //     setUsers(users)
-    // }
-
-    // function toggleSignup() {
-    //     setIsSignup(!isSignup)
-    // }
-
-    // return (
-    //     <div className="login-page">
-    //         <div className='login-container'>
-    //             <button onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
-    //         </div>
-    //     </div>
-
-    // )
-
 }

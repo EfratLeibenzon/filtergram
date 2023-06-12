@@ -13,6 +13,7 @@ import { userService } from './services/user.service'
 import { loadUser } from './store/user.actions'
 import { EditImg } from './cmps/edit-img'
 import { LoginSignup } from './cmps/login-signup'
+import { Search } from './cmps/search'
 
 
 export function RootCmp() {
@@ -22,9 +23,9 @@ export function RootCmp() {
     const location = useLocation()
     const background = location.state && location.state.background
 
-    console.log('user root cmp', user)
-
-    if (!user) return <LoginSignup />
+    if (!user) {
+        return <LoginSignup />
+    }
 
     return (
         <div className='flex'>
@@ -35,6 +36,7 @@ export function RootCmp() {
                     <Route element={<HomeIndex setIsStoryDetailsOpen={setIsStoryDetailsOpen} isStoryDetailsOpen={isStoryDetailsOpen} />} path="/">
                         <Route element={<StoryDetails path={"/story/:storyId"} />} />
                     </Route>
+                    <Route element={<Search />} path="/search" />
                     <Route element={<Explore />} path="/explore" />
                     <Route element={<Reels />} path="/reels" />
                     <Route element={<Messages />} path="/messages" />
