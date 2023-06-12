@@ -4,8 +4,10 @@ import { LoginSignup } from "../cmps/login-signup";
 import { useState } from "react";
 import { userService } from "../services/user.service";
 import { PreviewGrid } from "../cmps/grid";
+import { useSelector } from "react-redux";
 
 export function Profile() {
+    const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
     // const [loggedInUser, setUser] = useState(userService.getLoggedinUser())
 
     // function onChangeLoginStatus(loggedInUser) {
