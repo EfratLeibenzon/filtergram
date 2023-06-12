@@ -40,7 +40,7 @@ export function LoginSignup() {
             <CredentialsForm
                 onSubmit={onSubmit} isSignup={isSignup}
                 />
-                <span>{message}</span>
+                    <span>{message}</span>
             <div className="new-user">
                 <a onClick={() => setIsSignUp((prev) => !prev)}>
                     {isSignup ?
