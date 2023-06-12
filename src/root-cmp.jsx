@@ -11,6 +11,8 @@ import { StoryDetails } from './cmps/story-details'
 import { userService } from './services/user.service'
 import { loadUser } from './store/user.actions'
 import { EditImg } from './cmps/edit-img'
+import { LoginSignup } from './cmps/login-signup'
+import { utilService } from './services/util.service'
 
 
 export function RootCmp() {
@@ -18,7 +20,9 @@ export function RootCmp() {
     const [isStoryDetailsOpen, setIsStoryDetailsOpen] = useState(false)
     const location = useLocation()
     const background = location.state && location.state.background
-    const user = userService.getLoggedinUser()[0];
+    const user = utilService.loadFromStorage('loggedinUser')
+
+    // if (!user || !user._id) return <LoginSignup />
 
     return (
         <div className='flex'>

@@ -5,12 +5,12 @@ import { utilService } from './util.service.js'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 const STORAGE_KEY_USERS = 'users'
-// const STORAGE_KEY_GUEST = 'guest'
+const STORAGE_KEY_GUEST = 'guest'
 
 // const STORAGE_KEY = 'userDB'
 
 _createUsers()
-// _createGuest()
+_createGuest()
 
 export const userService = {
     login,
@@ -27,7 +27,9 @@ export const userService = {
     getCommentById,
     getEmptyCredentials,
     getEmptyComment,
-    getShortUserInfo
+    getShortUserInfo,
+    _createGuest
+
 }
 
 window.cs = userService
@@ -198,14 +200,14 @@ function _createUsers() {
     _saveUsers(STORAGE_KEY_USERS, users)
 }
 
-// function _createGuest() {
-//     const storedGuest = utilService.loadFromStorage(STORAGE_KEY_GUEST)
-//     if (storedGuest?.length > 0) {
-//         return
-//     }
-//     const guestUser = users.filter((u) => u._id === 'Guest')
-//     _saveUsers(STORAGE_KEY_LOGGEDIN_USER, guestUser)
-// }
+function _createGuest() {
+    const storedGuest = utilService.loadFromStorage(STORAGE_KEY_GUEST)
+    if (storedGuest?.length > 0) {
+        return
+    }
+    const guestUser = users.filter((u) => u._id === 'Guest')
+    _saveUsers(STORAGE_KEY_LOGGEDIN_USER, guestUser)
+}
 
 function _saveUsers(userType, users) {
     utilService.saveToStorage(userType, users)
