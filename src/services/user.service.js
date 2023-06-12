@@ -3,9 +3,10 @@ import { storageService } from './async-storage.service.js'
 import { users } from './demo-data.js'
 import { utilService } from './util.service.js'
 
-const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+const STORAGE_KEY_LOGGEDIN_USER = 'loggedInUser'
 const STORAGE_KEY_USERS = 'users'
-// const STORAGE_KEY_GUEST = 'guest'
+
+const STORAGE_KEY_GUEST = 'guest'
 
 // const STORAGE_KEY = 'userDB'
 
@@ -27,7 +28,9 @@ export const userService = {
     getCommentById,
     getEmptyCredentials,
     getEmptyComment,
-    getShortUserInfo
+    getShortUserInfo,
+    _createGuest,
+    saveUser
 }
 
 window.cs = userService
@@ -53,16 +56,27 @@ async function saveUser(user) {
 
 
 async function login({ userName, password }) {
-    const user = await query(userName)
+    const user = await getByUserName(userName)
     // const user = users.find(user => user.userName === userCred.userName)
+    console.log('user.password', user.password)
+    console.log('password', password)
     if (user.password === password) {
+        console.log('userName', user)
         _setLoggedinUser(user)
+        return user
     }
     // const user = await httpService.post('auth/login', userCred)
     // if (user) {
     //     socketService.login(user._id)
     //     return saveLocalUser(user)
     // }
+}
+
+async function getByUserName(userName) {
+    const users = await query()
+    const user = users.filter((u) => userName === u.userName)
+    console.log('from get user name func', user)
+    return user[0]
 }
 
 async function logout() {
@@ -198,24 +212,25 @@ function _createUsers() {
     _saveUsers(STORAGE_KEY_USERS, users)
 }
 
-// function _createGuest() {
-//     const storedGuest = utilService.loadFromStorage(STORAGE_KEY_GUEST)
-//     if (storedGuest?.length > 0) {
-//         return
-//     }
-//     const guestUser = users.filter((u) => u._id === 'Guest')
-//     _saveUsers(STORAGE_KEY_LOGGEDIN_USER, guestUser)
-// }
+function _createGuest() {
+    const storedGuest = utilService.loadFromStorage(STORAGE_KEY_GUEST)
+    if (storedGuest?.length > 0) {
+        return
+    }
+    const guestUser = users.filter((u) => u._id === 'Guest')
+    _saveUsers(STORAGE_KEY_LOGGEDIN_USER, guestUser)
+}
 
 function _saveUsers(userType, users) {
     utilService.saveToStorage(userType, users)
 }
 
 function _setLoggedinUser(user) {
-    if (getLoggedinUser()) {
-        logout()
-    }
-    utilService.saveToStorage(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    // if (getLoggedinUser()) {
+    //     logout()
+    // }
+    console.log('asdasd', user)
+    utilService.saveToStorage(STORAGE_KEY_LOGGEDIN_USER, user)
     return user
 }
 

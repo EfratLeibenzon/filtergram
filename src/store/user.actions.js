@@ -4,7 +4,7 @@ import { store } from '../store/store.js'
 
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
-import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from "./user.reducer.js";
+import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER, ADD_USER } from "./user.reducer.js";
 
 export async function loadUsers() {
     try {
@@ -27,9 +27,25 @@ export async function removeUser(userId) {
     }
 }
 
+
+export async function onAddUser(user) {
+    try {
+        const savedUser = await userService.saveUser(user)
+        store.dispatch({
+            type: ADD_USER,
+            savedUser
+        })
+        return savedUser
+    } catch (err) {
+        console.log('Cannot add user', err)
+        throw err
+    }
+}
+
 export async function login(user) {
     try {
         const loggedInUser = await userService.login(user)
+        console.log('from actions', loggedInUser)
         store.dispatch({
             type: SET_USER,
             loggedInUser
@@ -44,10 +60,10 @@ export async function login(user) {
 
 export async function signup(user) {
     try {
-        const loggedUser = await userService.signup(user)
+        const loggedInUser = await userService.signup(user)
         store.dispatch({
             type: SET_USER,
-            loggedUser
+            loggedInUser
         })
         // socketService.login(user)
         return user
@@ -62,7 +78,7 @@ export async function logout() {
         await userService.logout()
         store.dispatch({
             type: SET_USER,
-            user: null
+            loggedInUser: null
         })
         socketService.logout()
     } catch (err) {
