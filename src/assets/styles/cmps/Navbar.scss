@@ -7,22 +7,24 @@ div.side-bar {
     height: 100vh;
     padding: 0.615rem 0.92rem 1.54rem;
     position: fixed;
-    width: 18.9rem;
+    width: 244px;
+
     // z-index: 11;
+    .logo {
+        margin-top: 10px;
+        height: 60px;
+        width: 125px;
 
-    section.logo {
-        padding-right: 12px;
-        padding-top: 25px;
-        height: 29px;
-        margin-bottom: 20px;
-        // width: 100%;
-        cursor: pointer;
-
-        a {
-            // width: 130px;
-            margin-left: 1em;
+        img {
+            // padding-right: 12px;
+            // padding-top: 25px;
+            height: 100%;
+            width: 100%;
+            // margin-bottom: 20px;
+            cursor: pointer;
         }
     }
+
 
     nav {
         display: flex;

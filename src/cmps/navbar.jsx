@@ -4,6 +4,7 @@ import { searchIcon, exploreIcon, homeIcon, reelsIcon, sendIcon, likeIcon, creat
 import { storyService } from "../services/story.service.local"
 import { userService } from "../services/user.service";
 import { useState, useEffect } from 'react'
+import filtergramLogo from '../assets/img/filtergramLogo.png'
 
 
 export function Navbar({ isStoryEdit, setisStoryEdit, user }) {
@@ -19,11 +20,11 @@ export function Navbar({ isStoryEdit, setisStoryEdit, user }) {
 
     return (
         <div className="side-bar">
-            <section id="logo-id" className="logo">
+            <section className="logo">
                 {/* <NavLink className="navbar-item" to={"/"}>FILTERGRAM</NavLink> */}
                 {/* <a>{filtergramLogo}</a> */}
                 {/* <a>Filtergram</a> */}
-                <a>FILTERGRAM</a>
+                <img id="logo-id" src={filtergramLogo} alt="Logo" />
             </section>
             <nav className="main-navbar flex column justify-start">
                 <NavLink className="navbar-item-home" to={"/"}><span>{homeIcon}</span><span className="home">Home</span> </NavLink>

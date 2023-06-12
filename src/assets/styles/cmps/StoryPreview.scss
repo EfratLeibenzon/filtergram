@@ -1,13 +1,41 @@
 .story-preview {
     width: 100%;
     max-height: 150vh;
-    border-bottom: 0.8px solid rgb(219, 219, 219);
+    border-bottom: 0.3px solid rgba(219, 219, 219, 0.8);
 
+    .story-header {
+        height: 56px;
+        width: 470px;
+        padding: 0;
+        align-items: center;
 
-    .user-preview {
-        // padding: 5px;
-        padding-bottom: 5px;
+        &.remove-btn-container {
+            align-items: center;
+        }
+
+        .user-preview {
+            margin: 8px 4px 8px 5px;
+            align-items: center;
+
+            .story-info {
+                display: flex;
+                height: 40px;
+                width: 380px;
+                margin-left: 10px;
+                position: relative;
+                align-items: center;
+
+                .user-name {
+                    display: inline;
+                    font-family: inherit;
+                    font-weight: 600;
+                    padding: 0 1vw 0 0;
+                }
+
+            }
+        }
     }
+
 
     .action-btns {
         display: flex;
@@ -26,6 +54,7 @@
         border: none;
         color: inherit;
         text-align: start;
+        cursor: pointer;
 
         &:hover {
             color: rgb(115, 115, 115);
@@ -65,6 +94,7 @@
         border: none;
         color: inherit;
         text-align: start;
+        cursor: pointer;
 
         &:hover {
             color: rgb(115, 115, 115);
@@ -102,17 +132,29 @@
 
 }
 
+.likes,
+.like {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.no-likes {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
 
 .mini-user-img {
     height: 32px;
     width: 32px;
-
     border-radius: 50%;
 }
 
 #message {
     margin-top: 2px;
 }
+
 
 .short-story-title {
     display: inline;
@@ -124,22 +166,34 @@
 
 }
 
+
 .comments-preview {
 
-    // &>.user-name {
-    //     padding: 0 1vw 0 0;
-    //     float: left;
-
-
-    // }
+    p {
+        font-size: 14px;
+        color: $clrDrkGry;
+        margin: 6px 0;
+    }
 }
 
 .comment-input {
     border: none;
     background-color: transparent;
     outline: none;
-    margin: 0 1vw 1vw 1vw;
+    margin: 0.3vh 0 1.9vw 0;
+    font-size: 14px;
 
+}
+
+#post-btn {
+    margin-top: 1.5px;
+    float: right;
+    color: $clrPostBtn;
+    font-weight: 600;
+
+    &:hover {
+        color: $clrPostBtnHvr;
+    }
 }
 
 
@@ -157,19 +211,24 @@
 //     width: 200px;
 // }
 
-.user-name {
-    font-family: inherit;
-    font-weight: 600;
-    padding: 0 1vw;
-    align-items: center;
-}
+
 
 .story-title {
+    line-height: 1.15;
 
     &>.user-name {
-        padding: 0 1vw 0 0;
+        padding: 0 0.5vw 0 0;
         float: left;
+        display: inline;
+        font-family: inherit;
+        font-weight: 600;
 
+    }
+
+    button {
+        margin-top: 3px;
+        font-size: 14px;
+        color: $clrDrkGry;
     }
 }
 
@@ -184,4 +243,16 @@ button {
 #user-name-id {
     padding: 0 1vw 0 0;
     float: left;
+}
+
+.like-btn {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    text-align: start;
+
+    &:hover {
+        color: rgb(115, 115, 115);
+        background-color: transparent;
+    }
 }

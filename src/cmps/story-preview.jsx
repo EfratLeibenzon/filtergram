@@ -29,9 +29,9 @@ export function StoryPreview({ story, onRemoveStory }) {
     }
 
     function likesPreview(likesCount) {
-        if (likesCount > 1) return <section>{likesCount} likes</section>
-        else if (likesCount === 1) return <section>{likesCount} like</section>
-        return <section>no likes yet</section>
+        if (likesCount > 1) return <section className="likes">{likesCount} likes</section>
+        else if (likesCount === 1) return <section className="like">{likesCount} like</section>
+        return <section className="no-likes">no likes yet</section>
     }
 
     function getComments(comments) {
@@ -52,10 +52,12 @@ export function StoryPreview({ story, onRemoveStory }) {
             <header className="story-header flex space-between">
                 <div className="user-preview flex">
                     <img className="mini-user-img" src={story.by.userImg.url} style={story.by.userImg.style} alt="" />
-                    <h4 className="user-name">{story.by.userName}</h4>
+                    <div className="story-info">
+                        <h4 className="user-name">{story.by.userName}</h4>
+                    </div>
                 </div>
-                <div>
-                    <button className=" icon-btn remove-btn" onClick={() => { onRemoveStory(story._id) }}><span>{optionsIcon}</span></button>
+                <div className='remove-btn-container flex column' >
+                    <button className="icon-btn remove-btn" onClick={() => { onRemoveStory(story._id) }}>{optionsIcon}</button>
                 </div>
             </header>
             <section className='story-img-container' >
@@ -63,7 +65,7 @@ export function StoryPreview({ story, onRemoveStory }) {
             </section>
             <div className="action-btns">
                 {/* <button className='icon-btn'><span>{likeIcon}</span></button> */}
-                <LikeBtn className="icon-btn" toggleLike={onToggleLike} isLiked={isLiked} />
+                <LikeBtn className="icon-btn like-btn" toggleLike={onToggleLike} isLiked={isLiked} />
                 {/* <button className='icon-btn' onClick={onOpenStoryDetails}><span>{commentIcon}</span></button> */}
                 <Link to="/StoryDetails/:storyId" state={{ background: location }}><span>{commentIcon}</span></Link>
 
@@ -80,6 +82,7 @@ export function StoryPreview({ story, onRemoveStory }) {
 
             <section className='comments-preview'>{getComments(story.comments)}</section>
             <CommentAdd story={story} />
+
 
         </article>
     )
