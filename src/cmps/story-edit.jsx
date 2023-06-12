@@ -36,13 +36,7 @@ export function StoryEdit({ setisStoryEdit }) {
     }
 
     function onUploaded(imgUrl) {
-<<<<<<< HEAD
-        console.log(imgUrl)
-        storyToEdit.current = { ...storyToEdit.current, img: { ...storyToEdit.current.img, url: imgUrl }, by:user }
-        console.log(storyToEdit)
-=======
         storyToEdit.current = { ...storyToEdit.current, img: { ...storyToEdit.current.img, url: imgUrl } }
->>>>>>> 3590359ba7ed8dcf64a7073cfd98ec3a2016a117
         setStage(2)
     }
 
