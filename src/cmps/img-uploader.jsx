@@ -3,7 +3,6 @@ import { uploadService } from '../services/upload.service'
 import { uploadBgImg } from './icons'
 
 export function ImgUploader({ onUploaded = null }) {
-  console.log('ImgUploader working')
   const [imgData, setImgData] = useState({
     imgUrl: null,
     height: 500,
@@ -20,11 +19,6 @@ export function ImgUploader({ onUploaded = null }) {
     onUploaded && onUploaded(secure_url)
   }
 
-  function getUploadLabel() {
-    if (imgData.imgUrl) return 'Upload Another?'
-    return isUploading ? 'Uploading....' : 'Upload Image'
-  }
-
   return (
     <div className="img-uploader">
       <header className='flex column'>
@@ -32,7 +26,7 @@ export function ImgUploader({ onUploaded = null }) {
       </header>
       <main className='flex column'>
         {imgData.imgUrl && <img src={imgData.imgUrl} />}
-        {/* <label htmlFor="imgUpload">{getUploadLabel()}</label> */}
+
         <section className='icon'>{uploadBgImg}</section>
         <p>Drag photos and videos here</p>
         <button className='input-btn'><span className='btn-txt'>Select from computer</span>

@@ -42,10 +42,11 @@ export function StoryEdit({ setisStoryEdit }) {
         setStage(3)
     }
 
-    async function onSaveStory(title) {
+    async function onSaveStory() {
         const timeStamp = Date.now()
         try {
-            storyToEdit.current = { ...storyToEdit.current, txt: title, createdAt: timeStamp }
+            // storyToEdit.current = { ...storyToEdit.current, txt: title, createdAt: timeStamp }
+            storyToEdit.current = { ...storyToEdit.current, createdAt: timeStamp }
             const story = await addStory(storyToEdit.current)
             console.log(`story with id ${story._id} added`)
         } catch (err) {

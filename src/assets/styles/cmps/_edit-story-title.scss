@@ -19,8 +19,14 @@
 
     .edit-story-form {
 
-        input {
-            height: 100%;
+        .texterea {
+            max-height: 300px;
+            width: 300px;
+            border: none;
+        }
+
+        .texterea:focus {
+            outline: none;
         }
 
         button {
@@ -38,8 +44,4 @@
     width: 494px;
     height: 494px;
     overflow: none;
-}
-
-#span {
-    height: 1fr;
 }

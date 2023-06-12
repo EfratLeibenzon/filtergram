@@ -48,7 +48,7 @@ export function EditImg({ imgUrl, setImgStyle }) {
                             <p>hue180</p>
                         </button>
                         <button className="filter-btn">
-                            <img onClick={() => onSetStyle('hue-rotate(270deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'contrast(0.7)' }} />
+                            <img onClick={() => onSetStyle('contrast(2)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'contrast(2)' }} />
                             <p>contrast</p>
                         </button>
                         <button className="filter-btn">
