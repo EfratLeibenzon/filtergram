@@ -3,7 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { users } from './demo-data.js'
 import { utilService } from './util.service.js'
 
-const STORAGE_KEY_LOGGEDIN_USER = 'loggedInUser'
+export const STORAGE_KEY_LOGGEDIN_USER = 'loggedInUser'
 const STORAGE_KEY_USERS = 'users'
 const STORAGE_KEY_GUEST = 'guest'
 

@@ -21,6 +21,8 @@ export function CreateStoryTitle({ storyToEdit, onSaveStory }) {
                     <img src={storyToEdit.current.img.url} style={storyToEdit.current.img.style} alt="" />
                 </section>
                 <section className="edit-story-form">
+                    <img className="mini-user-img" src={storyToEdit.current.by.userImg.url} style={storyToEdit.current.by.userImg.style} />
+                    <p>{storyToEdit.current.by.userName}</p>
                     <input className="texterea" onChange={handleChange} type="texterea" name="txt" placeholder="Write a caption..." />
 
                     <span id="span"></span>
