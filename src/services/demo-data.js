@@ -171,7 +171,143 @@ export const users = [
     ],
     savedStories: [], //provided in the starter as savedStoryIds
     taggedStories: [], //not in the starter
-    userStories: [] //not in the starter
+    userStories: [
+      {
+        by: {
+          followers: [],
+          followersId: [],
+          following: [],
+          followingId: [],
+          fullName: "Irene Radvogin",
+          mail: "IreneRadvogin@gmail.com",
+          password: "mukmuk",
+          savedStories: [],
+          taggedStories: [],
+          userBio: "",
+          userImg: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685950112/eiqrhchqoliytvlhd60w.jpg", style: { filter: 'none' } },
+          userName: "irene_rad",
+          userStories: [],
+          _id: "u101"
+        },
+        comments: [],
+        createdAt: 1686119781486,
+        hashTags: [],
+        img: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg", style: { filter: 'none' } },
+        likedBy: [],
+        loc: {},
+        taggedUsers: [],
+        txt: "yummy!!",
+        _id: "s101"
+      },
+      {
+        by: {
+          followers: [],
+          followersId: [],
+          following: [],
+          followingId: [],
+          fullName: "Irene Radvogin",
+          mail: "IreneRadvogin@gmail.com",
+          password: "mukmuk",
+          savedStories: [],
+          taggedStories: [],
+          userBio: "",
+          userImg: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685950112/eiqrhchqoliytvlhd60w.jpg", style: { filter: 'none' } },
+          userName: "irene_rad",
+          userStories: [],
+          _id: "u101"
+        },
+        comments: [],
+        createdAt: 1686119781486,
+        hashTags: [],
+        img: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg", style: { filter: 'none' } },
+        likedBy: [],
+        loc: {},
+        taggedUsers: [],
+        txt: "yummy!!",
+        _id: "s101"
+      },
+      {
+        by: {
+          followers: [],
+          followersId: [],
+          following: [],
+          followingId: [],
+          fullName: "Irene Radvogin",
+          mail: "IreneRadvogin@gmail.com",
+          password: "mukmuk",
+          savedStories: [],
+          taggedStories: [],
+          userBio: "",
+          userImg: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685950112/eiqrhchqoliytvlhd60w.jpg", style: { filter: 'none' } },
+          userName: "irene_rad",
+          userStories: [],
+          _id: "u101"
+        },
+        comments: [],
+        createdAt: 1686119781486,
+        hashTags: [],
+        img: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg", style: { filter: 'none' } },
+        likedBy: [],
+        loc: {},
+        taggedUsers: [],
+        txt: "yummy!!",
+        _id: "s101"
+      },
+      {
+        by: {
+          followers: [],
+          followersId: [],
+          following: [],
+          followingId: [],
+          fullName: "Irene Radvogin",
+          mail: "IreneRadvogin@gmail.com",
+          password: "mukmuk",
+          savedStories: [],
+          taggedStories: [],
+          userBio: "",
+          userImg: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685950112/eiqrhchqoliytvlhd60w.jpg", style: { filter: 'none' } },
+          userName: "irene_rad",
+          userStories: [],
+          _id: "u101"
+        },
+        comments: [],
+        createdAt: 1686119781486,
+        hashTags: [],
+        img: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg", style: { filter: 'none' } },
+        likedBy: [],
+        loc: {},
+        taggedUsers: [],
+        txt: "yummy!!",
+        _id: "s101"
+      },
+      {
+        by: {
+          followers: [],
+          followersId: [],
+          following: [],
+          followingId: [],
+          fullName: "Irene Radvogin",
+          mail: "IreneRadvogin@gmail.com",
+          password: "mukmuk",
+          savedStories: [],
+          taggedStories: [],
+          userBio: "",
+          userImg: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685950112/eiqrhchqoliytvlhd60w.jpg", style: { filter: 'none' } },
+          userName: "irene_rad",
+          userStories: [],
+          _id: "u101"
+        },
+        comments: [],
+        createdAt: 1686119781486,
+        hashTags: [],
+        img: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg", style: { filter: 'none' } },
+        likedBy: [],
+        loc: {},
+        taggedUsers: [],
+        txt: "yummy!!",
+        _id: "s101"
+      }
+    ] //not in the starter
   },
 ]
 
