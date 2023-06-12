@@ -10,9 +10,9 @@ export function Suggested() {
         <div className="suggestions">
             <div className="suggestion-header">
                 <div className="suggestion-header-info">
-                <NavLink to={`/profile/${user._id}`}><img src={user.userImg.url} style={user.userImg.style} /></NavLink>
+                    <NavLink to={`/profile/${user._id}`}><img src={user.userImg.url} style={user.userImg.style} /></NavLink>
                     <div className="suggestion-user-name">
-                    <NavLink to={`/profile/${user._id}`}>     <a>{user.userName}</a></NavLink>
+                        <NavLink to={`/profile/${user._id}`}>     <a>{user.userName}</a></NavLink>
                         <span>{user.fullName}</span>
                         {/* <NavLink className="navbar-item-profile" to={`/profile/${user._id}`}><img src={user.userImg.url} style={user.userImg.style} />Profile</NavLink> */}
                     </div>

@@ -16,10 +16,10 @@ export function Navbar({ isStoryEdit, setisStoryEdit, user }) {
 
     return (
         <div className="side-bar">
-            <section className="logo">
+            <section id="logo-id" className="logo">
                 {/* <NavLink className="navbar-item" to={"/"}>FILTERGRAM</NavLink> */}
                 {/* <a>{filtergramLogo}</a> */}
-                <a>Filtergram</a>
+                {/* <a>Filtergram</a> */}
             </section>
             <nav className="main-navbar flex column justify-start">
                 <NavLink className="navbar-item-home" to={"/"}><span>{homeIcon}</span><span className="home">Home</span> </NavLink>

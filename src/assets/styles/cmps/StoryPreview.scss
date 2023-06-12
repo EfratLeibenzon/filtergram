@@ -31,6 +31,12 @@
             color: rgb(115, 115, 115);
             background-color: transparent;
         }
+
+        &._ab6- {
+            &:hover {
+                color: rgb(115, 115, 115);
+            }
+        }
     }
 
     .x1lliihq.x1n2onr6 {
@@ -120,12 +126,12 @@
 
 .comments-preview {
 
-    &>.user-name {
-        padding: 0 1vw 0 0;
-        float: left;
+    // &>.user-name {
+    //     padding: 0 1vw 0 0;
+    //     float: left;
 
 
-    }
+    // }
 }
 
 .comment-input {
@@ -173,4 +179,9 @@ button {
             color: rgb(115, 115, 115);
         }
     }
+}
+
+#user-name-id {
+    padding: 0 1vw 0 0;
+    float: left;
 }

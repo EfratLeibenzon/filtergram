@@ -23,10 +23,10 @@ export function StoryPreview({ story, onRemoveStory }) {
         toggleLike(story, user)
     }, [story, user])
 
-    function onOpenStoryDetails(story) {
+    function onOpenStoryDetails(storyId) {
         // setIsStoryDetailsOpen(true)
         // console.log("is details open", isStoryDetailsOpen)
-        navigate('/StoryDetails/:storyId');
+        navigate(`/story/:${storyId}`);
     }
 
     function likesPreview(likesCount) {
