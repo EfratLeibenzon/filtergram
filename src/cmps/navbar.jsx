@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom"
 import { useSelector } from 'react-redux'
-import { searchIcon, exploreIcon, homeIcon, reelsIcon, sendIcon, likeIcon, createIcon, moreIcon, filtergramLogo } from './icons'
+import { searchIcon, exploreIcon, homeIcon, reelsIcon, sendIcon, likeIcon, createIcon, moreIcon } from './icons'
 import { storyService } from "../services/story.service.local"
 import { userService } from "../services/user.service";
 import { useState, useEffect } from 'react'
@@ -13,13 +13,20 @@ export function Navbar({ isStoryEdit, setisStoryEdit, user }) {
         // isStoryEdit? document.StoryEdit.classList.remove('hidden') : document.StoryEdit.classList.add('hidden')
         console.log('isStoryEdit', isStoryEdit)
     }
+    // const user = userService.getLoggedinUser()?.[0];
+    if (!user) return null
+    console.log('user23', user)
 
     return (
         <div className="side-bar">
             <section id="logo-id" className="logo">
                 {/* <NavLink className="navbar-item" to={"/"}>FILTERGRAM</NavLink> */}
+<<<<<<< HEAD
                 {/* <a>{filtergramLogo}</a> */}
                 {/* <a>Filtergram</a> */}
+=======
+                <a>FILTERGRAM</a>
+>>>>>>> 571bb363f5abe76dd5e4a28f8796c10ebc70c970
             </section>
             <nav className="main-navbar flex column justify-start">
                 <NavLink className="navbar-item-home" to={"/"}><span>{homeIcon}</span><span className="home">Home</span> </NavLink>
@@ -29,7 +36,7 @@ export function Navbar({ isStoryEdit, setisStoryEdit, user }) {
                 <NavLink className="navbar-item-messages" to={"/messages"}><span>{sendIcon}</span><span>Messages</span></NavLink>
                 <a className="navbar-item-notifications"><span>{likeIcon}</span><span>Notifications</span></a>
                 <a className="navbar-item-create" onClick={onCreate} > <span>{createIcon}</span><span>Create</span></a>
-                <NavLink className="navbar-item-profile" to={`/profile/${user._id}`}><img src={user.userImg.url} style={user.userImg.style} />Profile</NavLink>
+                <NavLink className="navbar-item-profile" to={`/profile/${user._id}`}><img src={user.userImg?.url} style={user.userImg?.style} />Profile</NavLink>
                 {/* <a className="navbar-item-more"><span>{moreIcon}</span><span>More</span></a> */}
                 <a className="navbar-item-more"><span>{moreIcon}</span><span>More</span></a>
             </nav>

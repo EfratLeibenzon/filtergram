@@ -10,13 +10,7 @@ export function UserDetails() {
     const user = useSelector(storeState => storeState.userModule.user)
     const users = useSelector(storeState => storeState.userModule.users)
     const stories = useSelector(storeState => storeState.storyModule.stories)
-    const userName = useParams()
-
-    // let loggedInUser = user[0]
-
-    const [loggedInUser, setUser] = useState(...userService.getLoggedinUser())
-    console.log('logged in user', loggedInUser)
-
+    const userName = useParams()    
 
     useEffect(() => {
         loadStories()
@@ -30,23 +24,23 @@ export function UserDetails() {
         <div className="profile-container">
             <section className='profile-header'>
                 <section className="profile-photo">
-                    <img src={loggedInUser.userImg.url} style={loggedInUser.userImg.style} />
+                    <img src={user.userImg.url} style={user.userImg.style} />
                 </section>
                 <section className="profile-info">
                     <div className="profile-info-header">
-                        <a>{loggedInUser.userName}</a>
+                        <a>{user.userName}</a>
                         <div>
                             <button className="profile-edit-btn">Edit profile</button>
                         </div>
                     </div>
                     <div className="user-info">
                         <ul style={{ listStyle: "none" }}>
-                            <li>{loggedInUser.userStories.length} post</li>
-                            <li>{loggedInUser.followers.length} followers</li>
-                            <li>{loggedInUser.following.length} following</li>
+                            <li>{user.userStories.length} post</li>
+                            <li>{user.followers.length} followers</li>
+                            <li>{user.following.length} following</li>
                         </ul>
                     </div>
-                    <div className="user-name">{loggedInUser.fullName}</div>
+                    <div className="user-name">{user.fullName}</div>
                 </section>
             </section>
         </div>

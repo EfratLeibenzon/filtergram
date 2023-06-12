@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router'
+import { useSelector } from 'react-redux'
 import { Navbar } from './cmps/navbar'
 import { HomeIndex } from './pages/home-index'
 import { Explore } from './pages/explore'
@@ -11,15 +12,19 @@ import { StoryDetails } from './cmps/story-details'
 import { userService } from './services/user.service'
 import { loadUser } from './store/user.actions'
 import { EditImg } from './cmps/edit-img'
+import { LoginSignup } from './cmps/login-signup'
 
 
 export function RootCmp() {
+    const user = useSelector(storeState => (storeState.userModule.loggedInUser))
     const [isStoryEdit, setisStoryEdit] = useState(false)
     const [isStoryDetailsOpen, setIsStoryDetailsOpen] = useState(false)
     const location = useLocation()
     const background = location.state && location.state.background
 
-    const user = userService.getLoggedinUser()?.[0];
+    console.log('user root cmp', user)
+
+    if (!user) return <LoginSignup />
 
     return (
         <div className='flex'>

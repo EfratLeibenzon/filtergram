@@ -6,16 +6,17 @@ import { userService } from "../services/user.service";
 import { PreviewGrid } from "../cmps/grid";
 
 export function Profile() {
-    const [loggedInUser, setUser] = useState(userService.getLoggedinUser())
+    // const [loggedInUser, setUser] = useState(userService.getLoggedinUser())
 
-    function onChangeLoginStatus(loggedInUser) {
-        console.log('from header: ', loggedInUser);
-        setUser(loggedInUser)
-    }
+    // function onChangeLoginStatus(loggedInUser) {
+    //     console.log('from header: ', loggedInUser);
+    //     setUser(loggedInUser)
+    // }
 
     return (
         <div className="profile-page">
             <UserDetails />
+<<<<<<< HEAD
             <div className="posts-menu">
                 <a aria-selected="true" role="tab"><div><svg aria-label="" className="posts" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="12" role="img" viewBox="0 0 24 24" width="12"><rect fill="none" height="18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" width="18" x="3" y="3"></rect><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="9.015" x2="9.015" y1="3" y2="21"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="14.985" x2="14.985" y1="3" y2="21"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="21" x2="3" y1="9.015" y2="9.015"></line><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="21" x2="3" y1="14.985" y2="14.985"></line></svg><span>Posts</span></div></a>
                 {/* <a aria-selected="false" role="tab"><div ><svg aria-label="" color="rgb(115, 115, 115)" fill="rgb(115, 115, 115)" height="12" role="img" viewBox="0 0 24 24" width="12"><polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></polygon></svg><span style={{ opacity: 0.5 }}>Saved</span></div></a>
@@ -23,6 +24,11 @@ export function Profile() {
             </div>
             <PreviewGrid stories={loggedInUser.userStories} />
             {/* <LoginSignup onChangeLoginStatus={onChangeLoginStatus} /> */}
+=======
+            {/* <section className="user-stories grid">
+            </section> */}
+                   <LoginSignup />
+>>>>>>> 571bb363f5abe76dd5e4a28f8796c10ebc70c970
         </div>
     )
 }

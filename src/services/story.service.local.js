@@ -47,8 +47,6 @@ async function saveToggleLike(story, user) {
     ]
     utilService.saveToStorage(STORAGE_KEY, newStories)
     return newStories
-    // console.log('ssssssss', storyId)
-    // console.log('userrrr', user)
     // var story = await storageService.put(STORAGE_KEY, story)
 }
 

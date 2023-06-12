@@ -49,6 +49,8 @@ function remove(entityType, entityId) {
     })
 }
 
+
+
 // Private functions
 
 function _save(entityType, entities) {
