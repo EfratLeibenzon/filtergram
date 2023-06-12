@@ -69,7 +69,7 @@ function getEmptyStory() {
         txt: '',
         createdAt: null,
         img: { url: '', style: { filter: 'none' } },
-        by: users[0],
+        by: '',
         loc: {},
         taggedUsers: [],
         comments: [],

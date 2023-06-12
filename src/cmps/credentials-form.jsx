@@ -5,10 +5,11 @@ import { signup } from '../store/user.actions.js'
 import { useRef, useState } from 'react'
 
 export function CredentialsForm({ onSubmit, isSignup }) {
-const [user, setUser] = useState(userService.getEmptyUser())
+    const [user, setUser] = useState(userService.getEmptyUser())
+    const [isDemoUser, setisDemoUser] = useState(false)
+
 
     function handleChange({ target }) {
-        console.log('target', target.field)
         const { name: field, value } = target
         setUser(prevCreds => ({ ...prevCreds, [field]: value }))
     }
@@ -19,33 +20,40 @@ const [user, setUser] = useState(userService.getEmptyUser())
     }
 
     return (
-        <form className="credentials-form" onSubmit={handleSubmit}>
-            <input
-                className="txt-input"
-                type="text"
-                name="userName"
-                placeholder="Username"
-                onChange={handleChange}
-                required
-                autoFocus
-            />
-            <input className="txt-input"
-                type="password"
-                name="password"
-                placeholder="Password"
-                onChange={handleChange}
-                required
-            />
-            {isSignup && <input
-                className="txt-input"
-                type="text"
-                name="fullName"
-                placeholder="Full name"
-                onChange={handleChange}
-                required
+        <div className='login-container'>
+            <form className="credentials-form" onSubmit={handleSubmit}>
+                <section>
+                <div className="logo">FilterGram</div>
+                <input
+                    className="txt-input username"
+                    type="text"
+                    name="userName"
+                    placeholder="Username"
+                    onChange={handleChange}
+                    required
+                    autoFocus
+                />
+                <input className="txt-input password"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    onChange={handleChange}
+                    required
+                />
+                {isSignup && <input
+                    className="txt-input fullname"
+                    type="text"
+                    name="fullName"
+                    placeholder="Full name"
+                    onChange={handleChange}
+                    required
                 />}
-                <button onClick={()=>userService._createGuest()}>demo user</button>
-            <button className="btn log-btn">{isSignup ? 'Signup' : 'Login'}</button>
-        </form>
+                <button className="btn log-btn">{isSignup ? 'Signup' : 'Login'}</button>
+                <span class="or"><span>OR</span></span>
+                {/* <button className="btn demo-user" onClick={() => userService._createGuest()}>Demo user</button> */}
+                <button className="btn demo-user" onClick={() => { userService._createGuest(); window.location.reload();}}>Demo user</button>
+                </section>
+            </form>
+        </div>
     )
 }
