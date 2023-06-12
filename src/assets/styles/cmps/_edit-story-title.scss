@@ -1,21 +1,47 @@
 .edit-story-title {
-    width: 1072px;
-    height: 774px;
+    width: 835px;
+    height: 537.6px;
     background-color: rgb(255, 255, 255);
     border: solid 1px black;
     border-radius: 12px;
 
-    &.edit-story-form {
-        height: 100%;
+    header {
+        border-bottom: 1px solid rgb(219, 219, 219);
+        height: 42.2px;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .edit-story-form {
+
+        .texterea {
+            max-height: 300px;
+            width: 300px;
+            border: none;
+        }
+
+        .texterea:focus {
+            outline: none;
+        }
+
+        button {
+            color: rgb(0, 149, 246);
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
     }
 }
 
 #img-preview2 {
-    width: 673px;
-    height: 673px;
+    width: 494px;
+    height: 494px;
     overflow: none;
-}
-
-#span {
-    height: 1fr;
 }

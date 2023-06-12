@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 import { storyService } from "../services/story.service.local"
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { ImgUploader } from "./img-uploader"
 import { addStory } from "../store/story.actions"
 import { EditImg } from "./edit-img"
 import { CreateStoryTitle } from "./edit-story-title"
+import { xButton } from "./icons"
 
-export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
+
+export function StoryEdit({ setisStoryEdit }) {
 
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
     let storyToEdit = useRef(storyService.getEmptyStory())
@@ -18,7 +20,6 @@ export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
 
     useEffect(() => {
         if (!storyId) {
-            // storyToEdit = storyService.getEmptyStory()
             setStage(1)
         } else {
             loadStory()
@@ -35,25 +36,14 @@ export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
     }
 
     function onUploaded(imgUrl) {
+<<<<<<< HEAD
         console.log(imgUrl)
         storyToEdit.current = { ...storyToEdit.current, img: { ...storyToEdit.current.img, url: imgUrl }, by:user }
         console.log(storyToEdit)
+=======
+        storyToEdit.current = { ...storyToEdit.current, img: { ...storyToEdit.current.img, url: imgUrl } }
+>>>>>>> 3590359ba7ed8dcf64a7073cfd98ec3a2016a117
         setStage(2)
-    }
-
-    async function onSaveStory(title) {
-        const timeStamp = Date.now()
-        try {
-            storyToEdit.current = { ...storyToEdit.current, txt: title, createdAt: timeStamp }
-            const story = await addStory(storyToEdit.current)
-            console.log(`story after!`, story)
-        } catch (err) {
-            console.log('Cannot add story', err)
-        }
-        finally {
-            console.log('finally')
-            onCloseEdit()
-        }
     }
 
     function setImgStyle(newStyle) {
@@ -61,15 +51,28 @@ export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
         setStage(3)
     }
 
+    async function onSaveStory() {
+        const timeStamp = Date.now()
+        try {
+            // storyToEdit.current = { ...storyToEdit.current, txt: title, createdAt: timeStamp }
+            storyToEdit.current = { ...storyToEdit.current, createdAt: timeStamp }
+            const story = await addStory(storyToEdit.current)
+            console.log(`story with id ${story._id} added`)
+        } catch (err) {
+            console.log('Cannot add story', err)
+        }
+        finally {
+            onCloseEdit()
+        }
+    }
+
     function onCloseEdit() {
         setisStoryEdit(false)
     }
 
-
     return (
         <div className="story-edit">
-
-            <button className="exit-btn" onClick={onCloseEdit}>x</button>
+            <button className="exit-btn" onClick={onCloseEdit}>{xButton}</button>
             {storyToEdit && <DynamicComponent
                 stage={stage}
                 onUploaded={onUploaded}
@@ -77,9 +80,7 @@ export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
                 storyToEdit={storyToEdit}
                 setImgStyle={setImgStyle}
                 onSaveStory={onSaveStory}
-
             />}
-
         </div>
     )
 }
@@ -87,16 +88,10 @@ export function StoryEdit({ isStoryEdit, setisStoryEdit }) {
 function DynamicComponent({ stage, onUploaded, imgUrl, storyToEdit, setImgStyle, onSaveStory }) {
     switch (stage) {
         case 1:
-            console.log('storyToEdit inside case 1:', storyToEdit)
             return <ImgUploader onUploaded={onUploaded} />
-        // break
         case 2:
-            console.log('storyToEdit inside case 2:', storyToEdit)
             return <EditImg imgUrl={imgUrl} setImgStyle={setImgStyle} />
-        // break
         case 3:
-            console.log('storyToEdit inside case 3:', storyToEdit)
             return <CreateStoryTitle storyToEdit={storyToEdit} onSaveStory={onSaveStory} />
-        // break
     }
 }
