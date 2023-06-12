@@ -21,12 +21,9 @@ export function Navbar({ isStoryEdit, setisStoryEdit, user }) {
         <div className="side-bar">
             <section id="logo-id" className="logo">
                 {/* <NavLink className="navbar-item" to={"/"}>FILTERGRAM</NavLink> */}
-<<<<<<< HEAD
                 {/* <a>{filtergramLogo}</a> */}
                 {/* <a>Filtergram</a> */}
-=======
                 <a>FILTERGRAM</a>
->>>>>>> 571bb363f5abe76dd5e4a28f8796c10ebc70c970
             </section>
             <nav className="main-navbar flex column justify-start">
                 <NavLink className="navbar-item-home" to={"/"}><span>{homeIcon}</span><span className="home">Home</span> </NavLink>
