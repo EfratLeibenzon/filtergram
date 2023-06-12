@@ -5,8 +5,7 @@ import { signup } from '../store/user.actions.js'
 import { useRef, useState } from 'react'
 
 export function CredentialsForm({ onSubmit, isSignup }) {
-
-    const [user, setUser] = useState(userService.getEmptyUser())
+const [user, setUser] = useState(userService.getEmptyUser())
 
     function handleChange({ target }) {
         console.log('target', target.field)
@@ -44,7 +43,8 @@ export function CredentialsForm({ onSubmit, isSignup }) {
                 placeholder="Full name"
                 onChange={handleChange}
                 required
-            />}
+                />}
+                <button onClick={()=>userService._createGuest()}>demo user</button>
             <button className="btn log-btn">{isSignup ? 'Signup' : 'Login'}</button>
         </form>
     )

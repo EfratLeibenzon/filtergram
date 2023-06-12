@@ -13,8 +13,7 @@ import { LongTxt } from './long-txt'
 // export function StoryPreview({ story, onRemoveStory, setIsStoryDetailsOpen, isStoryDetailsOpen }) {
 export function StoryPreview({ story, onRemoveStory }) {
     const navigate = useNavigate()
-
-    const user = useSelector(storeState => storeState.userModule.user)
+    const user = useSelector(storeState => storeState.userModule.loggedInUser)
     const isLiked = story.likedBy.some((u) => u._id === user._id) || null
     // const navigate = useNavigate()
     const location = useLocation()

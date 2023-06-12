@@ -18,12 +18,22 @@ export function LoginSignup() {
             .then(() => { showSuccessMsg('Logged in successfully') })
             .catch((err) => { showErrorMsg('Oops try again') })
     }
-
+    
     function onSignup(user) {
         signup(user)
             .then(() => { showSuccessMsg('Signed in successfully') })
             .catch((err) => { showErrorMsg('Oops try again') })
     }
+
+    // async function onSignup(user) {
+    //     try {
+    //         const savedUser = await onAddUser(user)
+    //         if (savedUser) onLogin(savedUser)
+    //     } catch (err) {
+    //         console.log('Cannot login', err)
+    //         throw err
+    //     }
+    // }
 
     return (
         <div className="credentials-page">
