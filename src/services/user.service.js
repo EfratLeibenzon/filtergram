@@ -10,7 +10,7 @@ const STORAGE_KEY_GUEST = 'guest'
 // const STORAGE_KEY = 'userDB'
 
 _createUsers()
-_createGuest()
+// _createGuest()
 
 export const userService = {
     login,
