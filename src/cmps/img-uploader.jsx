@@ -16,7 +16,17 @@ export function ImgUploader({ onUploaded = null }) {
     const { secure_url, height, width } = await uploadService.uploadImg(ev)
     setImgData({ imgUrl: secure_url, width, height })
     setIsUploading(false)
-    onUploaded && onUploaded(secure_url)
+    onUploaded && getCroppedImgUrl('' + secure_url)
+  }
+
+  function getCroppedImgUrl(imgUrl) {
+    console.log('imgUrl', imgUrl)
+    const idx = imgUrl.indexOf('upload') + 7
+    let newUrl = imgUrl.substring(0, idx)
+    newUrl += 'w_494,h_550,c_fill/' + imgUrl.substring(idx)
+    console.log(newUrl)
+    onUploaded(newUrl)
+
   }
 
   return (

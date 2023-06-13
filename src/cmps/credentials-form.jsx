@@ -50,7 +50,7 @@ export function CredentialsForm({ onSubmit, isSignup }) {
                 <button className="btn log-btn">{isSignup ? 'Signup' : 'Login'}</button>
                 <span class="or"><span>OR</span></span>
                 {/* <button className="btn demo-user" onClick={() => userService._createGuest()}>Demo user</button> */}
-                <button className="btn demo-user" onClick={() => { userService._createGuest(); window.location.reload();}}>Demo user</button>
+                <button className="btn demo-user" onClick={() => { userService._createGuest(); window.location.reload();}}>Have fun with a Demo user</button>
                 </section>
             </form>
         </div>

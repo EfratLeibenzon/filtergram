@@ -151,7 +151,7 @@ function getEmptyUser() {
         password: "",
         mail: '', //not in the starter
         userBio: '', //not in the starter
-        userImg: { url: '', style: { filter: 'none' } },
+        userImg: { url: 'https://res.cloudinary.com/duxmabf4n/image/upload/v1686594941/p5igjah3vvmmfpdhs2e5.jpg', style: { filter: 'none' } },
         followingId: [], //provided in the starter as: following
         followersId: [], //provided in the starter as: followers
         following: [

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react"
-import { useSelector } from "react-redux"
 import { storyService } from "../services/story.service.local"
 import { useParams } from "react-router-dom"
 import { ImgUploader } from "./img-uploader"
@@ -7,17 +6,12 @@ import { addStory } from "../store/story.actions"
 import { EditImg } from "./edit-img"
 import { CreateStoryTitle } from "./edit-story-title"
 import { xButton } from "./icons"
-import { userService } from "../services/user.service"
-
 
 export function StoryEdit({ setisStoryEdit }) {
 
-    // const user = useSelector(storeState => storeState.userModule.loggedInUser)
     let storyToEdit = useRef(storyService.getEmptyStory())
     const { storyId } = useParams()
     const [stage, setStage] = useState(0)
-
-
 
     useEffect(() => {
         if (!storyId) {
@@ -52,8 +46,6 @@ export function StoryEdit({ setisStoryEdit }) {
             storyToEdit.current = { ...storyToEdit.current, createdAt: timeStamp, }
             const story = await addStory(storyToEdit.current)
             console.log(`story with id ${story._id} added`)
-            // let user= story.by
-            // user.userStories.push(story)
 
         } catch (err) {
             console.log('Cannot add story', err)
