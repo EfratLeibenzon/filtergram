@@ -82,9 +82,7 @@ export function StoryPreview({ story, onRemoveStory }) {
                 <button className='icon-btn'><span>{sendIcon}</span></button>
                 <button className='icon-btn save'><span>{savedIcon}</span></button>
             </div>
-            {console.log('story.likedBy.length', story.likedBy.length)}
-            {console.log('story.likedBy', story.likedBy)}
-            {console.log('story', story)}
+
             {likesPreview(story.likedBy.length)}
 
             <section className='story-title'>

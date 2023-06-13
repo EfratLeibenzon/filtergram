@@ -1,4 +1,4 @@
-@media screen and (min-width: 460px) {
+@media screen and (min-width: 300px) {
     .suggestions {
         display: none;
     }
@@ -29,6 +29,13 @@
                 align-items: center;
                 display: flex;
                 gap: 15px;
+
+                .suggestion-user-name {
+                    span.suggestion {
+                        font-weight: 600;
+                        color: #000;
+                    }
+                }
 
                 img {
                     border-radius: 50%;
@@ -71,19 +78,17 @@
             }
         }
     }
-
-
-
-}
-.suggestion-profile{
-    img{                    border-radius: 50%;
-        height: 50px;
-        object-fit: cover;
-        width: 50px;
-    }
 }
 
-.suggestion-profile-name {
-    display: flex;
-    flex-direction: column;
+
+.suggestion-header-info .suggestion-user-name .suggestion:hover{
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.suggestion-header-info img:hover{
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
 }

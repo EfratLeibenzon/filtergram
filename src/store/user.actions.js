@@ -7,6 +7,7 @@ import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
 import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER, ADD_USER } from "./user.reducer.js";
 import { async } from "q";
 
+
 export async function loadUsers() {
     try {
         store.dispatch({ type: LOADING_START })
