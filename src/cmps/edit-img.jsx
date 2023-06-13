@@ -1,4 +1,3 @@
-// import { blackwhite } from "@cloudinary/url-gen/actions/effect"
 
 import { useState } from "react"
 
@@ -40,32 +39,36 @@ export function EditImg({ imgUrl, setImgStyle }) {
                             <p>saturate</p>
                         </button>
                         <button className="filter-btn">
-                            <img onClick={() => onSetStyle('hue-rotate(90deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(90deg)' }} />
-                            <p>hue90</p>
-                        </button>
-                        <button className="filter-btn">
-                            <img onClick={() => onSetStyle('hue(180deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(180deg)' }} />
-                            <p>hue180</p>
-                        </button>
-                        <button className="filter-btn">
                             <img onClick={() => onSetStyle('contrast(2)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'contrast(2)' }} />
                             <p>contrast</p>
                         </button>
                         <button className="filter-btn">
-                            <img onClick={() => onSetStyle('hue-rotate(270deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(270deg)' }} />
-                            <p>hue270</p>
+                            <img onClick={() => onSetStyle('opacity(0.5)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'opacity(0.5)' }} />
+                            <p>opacity</p>
+                        </button>
+                        <button className="filter-btn">
+                            <img onClick={() => onSetStyle('hue-rotate(90deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(90deg)' }} />
+                            <p>hue90</p>
                         </button>
                         <button className="filter-btn">
                             <img onClick={() => onSetStyle('hue-rotate(270deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(270deg)' }} />
                             <p>hue270</p>
                         </button>
                         <button className="filter-btn">
-                            <img onClick={() => onSetStyle('hue-rotate(270deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(270deg)' }} />
-                            <p>hue270</p>
+                            <img onClick={() => onSetStyle('invert(1)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'invert(1)' }} />
+                            <p>invert</p>
                         </button>
                         <button className="filter-btn">
-                            <img onClick={() => onSetStyle('hue-rotate(270deg)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'hue-rotate(270deg)' }} />
-                            <p>hue270</p>
+                            <img onClick={() => onSetStyle('brightness(1.5)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'brightness(1.5)' }} />
+                            <p>brighter</p>
+                        </button>
+                        <button className="filter-btn">
+                            <img onClick={() => onSetStyle('brightness(0.5)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'brightness(0.5)' }} />
+                            <p>darker</p>
+                        </button>
+                        <button className="filter-btn">
+                            <img onClick={() => onSetStyle('blur(1.5px)')} src="https://res.cloudinary.com/duxmabf4n/image/upload/v1686396746/vhq0nld9nnhfas7oyqiq.jpg" alt="" style={{ filter: 'blur(1.5px)' }} />
+                            <p>blur</p>
                         </button>
                     </section>
                 </section>

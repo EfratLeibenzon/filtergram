@@ -50,7 +50,7 @@ export function StoryPreview({ story, onRemoveStory }) {
     }
 
     return (
-        <article className="story-preview column">
+        <article className="story-preview flex column">
             <header className="story-header flex space-between">
                 <div className="user-preview flex">
                     <img className="mini-user-img" src={story.by.userImg.url} style={story.by.userImg.style} alt="" />
@@ -77,7 +77,7 @@ export function StoryPreview({ story, onRemoveStory }) {
                 {/* <button className='icon-btn'><span>{likeIcon}</span></button> */}
                 <LikeBtn className="icon-btn like-btn" toggleLike={onToggleLike} isLiked={isLiked} />
                 {/* <button className='icon-btn' onClick={onOpenStoryDetails}><span>{commentIcon}</span></button> */}
-                <Link to="/StoryDetails/:storyId" state={{ background: location }}><span>{commentIcon}</span></Link>
+                <Link to={`/StoryDetails/:${story._id}`} state={{ background: location }}><span>{commentIcon}</span></Link>
 
                 <button className='icon-btn'><span>{sendIcon}</span></button>
                 <button className='icon-btn save'><span>{savedIcon}</span></button>
@@ -93,7 +93,7 @@ export function StoryPreview({ story, onRemoveStory }) {
             </section>
 
             <section className='comments-preview'>{getComments(story.comments)}</section>
-            <CommentAdd story={story} />
+            <section><CommentAdd story={story} /></section>
 
 
         </article>
