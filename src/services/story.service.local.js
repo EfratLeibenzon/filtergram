@@ -30,8 +30,16 @@ async function query() { // filterBy = { by: '', tags: [] }
     return stories
 }
 
-function getById(storyId) {
-    return storageService.get(STORAGE_KEY, storyId)
+// function getById(storyId) {
+//     return storageService.get(STORAGE_KEY, storyId)
+// }
+
+async function getById(storyId) {
+    try {
+        return await storageService.get(STORAGE_KEY, storyId)
+    } catch (error) {
+        console.log(`could not get story with ${storyId}`)
+    }
 }
 
 async function saveToggleLike(story, user) {
@@ -81,7 +89,9 @@ function getEmptyStory() {
 
 function queryComments(storyId) {
     let story = getById(storyId)
-    return story.comments
+    let comments = story.comments
+    comments.sort((c1, c2) => c2.createdAt - c1.createdAt)
+    return comments
 }
 
 function getCommentById(storyId, commentId) {
