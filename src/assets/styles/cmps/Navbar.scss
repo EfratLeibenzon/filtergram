@@ -9,8 +9,10 @@ div.side-bar {
     position: fixed;
     width: 244px;
 
+    // z-index: 11;
     .logo {
-        margin-top: 10px;
+        position: relative;
+        margin: 10px 0 35px;
         height: 60px;
         width: 125px;
 
@@ -24,13 +26,32 @@ div.side-bar {
         }
     }
 
+    .main-navbar {
+        margin-top: 12.5px;
+    }
 
     nav {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 5px;
         font-size: 16px;
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+
+        &>* {
+            margin: 4px 0;
+            padding: 12px;
+
+            &:focus {
+                font-weight: 700;
+            }
+
+            svg {
+                margin-right: 2.5px;
+                height: 24px;
+                width: 24px;
+            }
+
+        }
 
         .navbar-item-home {
             align-items: center;
@@ -38,7 +59,7 @@ div.side-bar {
             color: #262626;
             cursor: pointer;
             display: flex;
-            font-size: 0.92em;
+            font-size: 16px;
             font-family: $sogoeui-sansaserif;
             gap: 10px;
             margin-bottom: 2px;
@@ -51,8 +72,8 @@ div.side-bar {
             svg {
                 font-size: 22px;
                 position: relative;
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
                 display: flex;
             }
         }
@@ -72,13 +93,13 @@ div.side-bar {
             text-decoration: none;
             width: 220px;
             position: relative;
-            font-size: 0.92em;
+            font-size: 16px;
 
             svg {
                 font-size: 16px;
                 position: relative;
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
                 display: flex;
             }
         }
@@ -98,13 +119,13 @@ div.side-bar {
             text-decoration: none;
             width: 220px;
             position: relative;
-            font-size: 0.92em;
+            font-size: 16px;
 
             svg {
                 font-size: 16px;
                 position: relative;
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
                 display: flex;
             }
         }
@@ -124,13 +145,13 @@ div.side-bar {
             text-decoration: none;
             width: 220px;
             position: relative;
-            font-size: 0.92em;
+            font-size: 16px;
 
             svg {
                 font-size: 16px;
                 position: relative;
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
                 display: flex;
             }
         }
@@ -150,13 +171,13 @@ div.side-bar {
             text-decoration: none;
             width: 220px;
             position: relative;
-            font-size: 0.92em;
+            font-size: 16px;
 
             svg {
                 font-size: 16px;
                 position: relative;
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
                 display: flex;
             }
         }
@@ -176,13 +197,13 @@ div.side-bar {
             text-decoration: none;
             width: 220px;
             position: relative;
-            font-size: 0.92em;
+            font-size: 16px;
 
             svg {
                 font-size: 16px;
                 position: relative;
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
                 display: flex;
             }
         }
@@ -202,13 +223,13 @@ div.side-bar {
             text-decoration: none;
             width: 220px;
             position: relative;
-            font-size: 0.92em;
+            font-size: 16px;
 
             svg {
                 font-size: 16px;
                 position: relative;
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
                 display: flex;
             }
         }
@@ -228,7 +249,7 @@ div.side-bar {
             text-decoration: none;
             width: 220px;
             position: relative;
-            font-size: 0.92em;
+            font-size: 16px;
 
             img {
                 background-color: rgb(250, 250, 250);
