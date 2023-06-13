@@ -9,6 +9,12 @@
         padding: 0;
         align-items: center;
 
+        .mini-user-img {
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+        }
+
         &.remove-btn-container {
             align-items: center;
         }
@@ -41,64 +47,82 @@
         display: flex;
         gap: 13px;
         position: relative;
+        margin: 7.5px 0 0 0;
 
         .icon-btn.save {
             position: absolute;
             right: 0;
         }
 
-    }
-
-    a {
-        background-color: transparent;
-        border: none;
-        color: inherit;
-        text-align: start;
-        cursor: pointer;
-
-        &:hover {
-            color: rgb(115, 115, 115);
+        .like-btn {
             background-color: transparent;
+            border: none;
+            color: inherit;
+            text-align: start;
+
+            &:hover {
+                color: rgb(115, 115, 115);
+                background-color: transparent;
+            }
         }
 
-        &._ab6- {
+        a {
+            background-color: transparent;
+            border: none;
+            color: inherit;
+            text-align: start;
+            cursor: pointer;
+
+            &:hover {
+                color: rgb(115, 115, 115);
+                background-color: transparent;
+            }
+
+            &._ab6- {
+                &:hover {
+                    color: rgb(115, 115, 115);
+                }
+            }
+        }
+
+        button {
+            background-color: transparent;
+            border: none;
+            color: inherit;
+            text-align: start;
+            cursor: pointer;
+
+            &:hover {
+                color: rgb(115, 115, 115);
+                background-color: transparent;
+            }
+
+            ._ab6- {
+                &:hover {
+                    color: rgb(115, 115, 115);
+                }
+            }
+        }
+
+        .icon-btn {
+
+            ._ab6- {
+                &:hover {
+                    color: rgb(115, 115, 115);
+                }
+            }
+        }
+
+        .x1lliihq.x1n2onr6 {
             &:hover {
                 color: rgb(115, 115, 115);
             }
         }
-    }
 
-    .x1lliihq.x1n2onr6 {
-        &:hover {
-            color: rgb(115, 115, 115);
-        }
-    }
-
-    .x1lliihq.x1n2onr6 {
-        &:hover {
-            color: rgb(115, 115, 115);
-        }
-    }
-
-    ._ab6- {
-        &:hover {
-            color: rgb(115, 115, 115);
-        }
-    }
-
-
-
-
-    button {
-        background-color: transparent;
-        border: none;
-        color: inherit;
-        text-align: start;
-        cursor: pointer;
-
-        &:hover {
-            color: rgb(115, 115, 115);
-            background-color: transparent;
+        .x1lliihq.x1n2onr6 {
+            &:hover {
+                color: rgb(115, 115, 115);
+            }
         }
 
         ._ab6- {
@@ -108,113 +132,52 @@
         }
     }
 
-    .icon-btn {
 
-        ._ab6- {
-            &:hover {
-                color: rgb(115, 115, 115);
-            }
-        }
+}
+
+.story-img-container {
+    width: 468px;
+    height: fit-content;
+
+    .story-img {
+        max-width: 100%;
+        max-height: 100%;
+
+
     }
-
-    &.story-img-container {
-        width: 468px;
-        height: 585px;
-
-        &.story-img {
-            max-width: 100%;
-            max-height: 100%;
-
-
-        }
-    }
-
-
 }
 
 .likes,
 .like {
     font-weight: 600;
     font-size: 14px;
-    margin-bottom: 3px;
+    margin: 4px 0 6px;
 }
 
 .no-likes {
     font-weight: 400;
     font-size: 14px;
-    margin-bottom: 3px;
-}
-
-.mini-user-img {
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
+    margin: 4px 0 6px;
 }
 
 #message {
     margin-top: 2px;
 }
 
-
-.short-story-title {
-    display: inline;
-
-}
-
-.long-story-title {
-    display: inline;
-
-}
-
-
-.comments-preview {
-
-    p {
-        font-size: 14px;
-        color: $clrDrkGry;
-        margin: 6px 0;
-    }
-}
-
-.comment-input {
-    border: none;
-    background-color: transparent;
-    outline: none;
-    margin: 0.3vh 0 1.9vw 0;
-    font-size: 14px;
-
-}
-
-#post-btn {
-    margin-top: 1.5px;
-    float: right;
-    color: $clrPostBtn;
-    font-weight: 600;
-
-    &:hover {
-        color: $clrPostBtnHvr;
-    }
-}
-
-
-
-
-
-// .upload-preview {
-//     height: 200px;
-//     background-color: wheat;
-
-// }
-
-// .bg-img {
-//     margin: auto;
-//     width: 200px;
-// }
-
-
-
 .story-title {
     line-height: 1.15;
+    // display: inline-block;
+    font-size: 14px;
+
+    .short-story-title {
+        display: inline;
+
+    }
+
+    .long-story-title {
+        display: inline;
+
+    }
 
     &>.user-name {
         padding: 0 0.5vw 0 0;
@@ -222,6 +185,7 @@
         display: inline;
         font-family: inherit;
         font-weight: 600;
+        font-size: 14px;
 
     }
 
@@ -232,27 +196,52 @@
     }
 }
 
-button {
-    &._ab6- {
+.comments-preview {
+
+    p {
+        font-size: 14px;
+        color: $clrTruBlk;
+        margin: 6px 0;
+    }
+
+    #user-name-id {
+        padding: 0 0.5vw 0 0;
+        float: left;
+        font-weight: 600;
+    }
+}
+
+.comment-add {
+    align-items: baseline;
+    margin: 10px 0 20px;
+
+    .comment-input {
+        border: none;
+        background-color: transparent;
+        outline: none;
+        // margin: 0.3vh 0 1.9vw 0;
+        font-size: 14px;
+        // display: block;
+
+    }
+
+    #post-btn {
+        margin-top: 1.5px;
+        float: right;
+        color: $clrPostBtn;
+        font-weight: 600;
+
         &:hover {
-            color: rgb(115, 115, 115);
+            color: $clrPostBtnHvr;
         }
     }
+
 }
 
-#user-name-id {
-    padding: 0 1vw 0 0;
-    float: left;
-}
-
-.like-btn {
-    background-color: transparent;
-    border: none;
-    color: inherit;
-    text-align: start;
-
-    &:hover {
-        color: rgb(115, 115, 115);
-        background-color: transparent;
-    }
-}
+// button {
+//     &._ab6- {
+//         &:hover {
+//             color: rgb(115, 115, 115);
+//         }
+//     }
+// }

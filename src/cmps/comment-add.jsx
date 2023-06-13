@@ -46,7 +46,7 @@ export function CommentAdd({ story }) {
 
 
     return (
-        <form onSubmit={onSaveComment}>
+        <form className="comment-add flex row space-between" onSubmit={onSaveComment}>
             <input className="comment-input" onChange={handleChange} type="text" name="comment" placeholder="Add a comment..." value={newComment.txt} />
             <button id="post-btn" className="post-btn">Post</button>
         </form>
