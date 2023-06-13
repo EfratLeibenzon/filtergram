@@ -309,6 +309,34 @@ export const users = [
       }
     ] //not in the starter
   },
+  {
+    _id: "u10Z",
+    fullName: "Dimitry Valdes",
+    userName: "Dimuchka",
+    password: "mukmuk",
+    mail: '', //not in the starter
+    userBio: '', //not in the starter
+    userImg: { url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAORDGWrDGSbG4N4lf7O7WURlcqqNjbihMgA&usqp=CAU', style: { filter: 'none' } },
+    followingId: [], //provided in the starter as: following
+    followersId: [], //provided in the starter as: followers
+    following: [
+      // {
+      //   _id: "u106",
+      //   fullname: "Dob",
+      //   imgUrl: "http://some-img"
+      // }
+    ],
+    followers: [
+      // {
+      //   _id: "u105",
+      //   fullname: "Bob",
+      //   imgUrl: "http://some-img"
+      // }
+    ],
+    savedStories: [], //provided in the starter as savedStoryIds
+    taggedStories: [], //not in the starter
+    userStories: [] //not in the starter
+  },
 ]
 
 export const hashTags = ['cool', 'food', 'baby', 'nature',]

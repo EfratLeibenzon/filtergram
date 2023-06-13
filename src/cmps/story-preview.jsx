@@ -1,10 +1,10 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { CommentAdd } from './comment-add'
 import { CommentList } from './comment-list'
 import { LikeBtn } from './like-btn.jsx'
 import { toggleLike } from '../store/story.actions.js'
-import { commentIcon, likeIcon, optionsIcon, savedIcon, sendIcon } from './icons'
+import { commentIcon, likeIcon, optionsIcon, savedIcon, sendIcon, trashIcon } from './icons'
 import { StoryDetails } from './story-details'
 import { useLocation, useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
@@ -17,6 +17,8 @@ export function StoryPreview({ story, onRemoveStory }) {
     const isLiked = story.likedBy.some((u) => u._id === user._id) || null
     // const navigate = useNavigate()
     const location = useLocation()
+
+    const [isExpanned, setIsExpanned] = useState(false)
 
     const onToggleLike = useCallback(() => {
         toggleLike(story, user)
@@ -56,9 +58,17 @@ export function StoryPreview({ story, onRemoveStory }) {
                         <h4 className="user-name">{story.by.userName}</h4>
                     </div>
                 </div>
+                <div className={isExpanned ? 'remove-menu open' : 'remove-menu'}>
+                        <a className='remove-menu-btn' onClick={() => { onRemoveStory(story._id) }}>{trashIcon}</a>
+                    </div>
+                <div className='remove-btn-container flex column' >
+                    <button className="icon-btn remove-btn" onClick={() => setIsExpanned(!isExpanned)}>{optionsIcon}</button>
+                </div>
+
+                {/* 
                 <div className='remove-btn-container flex column' >
                     <button className="icon-btn remove-btn" onClick={() => { onRemoveStory(story._id) }}>{optionsIcon}</button>
-                </div>
+                </div> */}
             </header>
             <section className='story-img-container' >
                 <img className="story-img" src={story.img.url} style={story.img.style} alt="" />
@@ -72,7 +82,9 @@ export function StoryPreview({ story, onRemoveStory }) {
                 <button className='icon-btn'><span>{sendIcon}</span></button>
                 <button className='icon-btn save'><span>{savedIcon}</span></button>
             </div>
-
+            {console.log('story.likedBy.length', story.likedBy.length)}
+            {console.log('story.likedBy', story.likedBy)}
+            {console.log('story', story)}
             {likesPreview(story.likedBy.length)}
 
             <section className='story-title'>
