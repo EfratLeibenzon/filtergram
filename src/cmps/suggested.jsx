@@ -1,9 +1,13 @@
 import { userService } from "../services/user.service";
 import { useSelector } from 'react-redux';
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+
+import { loadUsers } from '../store/user.actions'
 
 export function Suggested() {
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
+    const users = useSelector(storeState => storeState.userModule.users)
     // const user = userService.getLoggedinUser();
 
     return (
@@ -24,18 +28,18 @@ export function Suggested() {
             </div>
             <div className="suggestion-header">
                 <div className="suggestion-header-info">
-                    <NavLink to={`/profile/${user._id}`}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAORDGWrDGSbG4N4lf7O7WURlcqqNjbihMgA&usqp=CAU" /></NavLink>
+                    <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAORDGWrDGSbG4N4lf7O7WURlcqqNjbihMgA&usqp=CAU" /></span>
                     <div className="suggestion-user-name">
-                        <NavLink to={`/profile/${user._id}`}>Dimtry Levin</NavLink>
+                        <span className="suggestion">Dimtry Levin</span>
                         <span>DimaLev</span>
                     </div>
                 </div>
             </div>
             <div className="suggestion-header">
                 <div className="suggestion-header-info">
-                    <NavLink to={`/profile/${user._id}`}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfWeIxZrWnLc-QyCfO8mp6cYIs554vr5gU6Q&usqp=CAU" /></NavLink>
+                    <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfWeIxZrWnLc-QyCfO8mp6cYIs554vr5gU6Q&usqp=CAU" /></span>
                     <div className="suggestion-user-name">
-                        <NavLink to={`/profile/${user._id}`}>Lisa S</NavLink>
+                        <span className="suggestion">Lisa S</span>
                         <span>Simpson Girl</span>
                     </div>
                 </div>

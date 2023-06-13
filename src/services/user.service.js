@@ -29,7 +29,8 @@ export const userService = {
     getEmptyComment,
     getShortUserInfo,
     _createGuest,
-    saveUser
+    saveUser,
+    getByUserName
 }
 
 window.cs = userService

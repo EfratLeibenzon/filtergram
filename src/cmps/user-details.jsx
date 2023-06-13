@@ -17,9 +17,6 @@ export function UserDetails() {
         loadUsers()
     }, [])
 
-
-    // const profileStories = stories.filter(story => story.by._id === profilePage._id)
-
     return (
         // <div className="profile-container">
         <section className='profile-header'>
