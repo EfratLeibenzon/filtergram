@@ -3,23 +3,24 @@
     padding: 0;
 }
 
-.profile-container {
-    // .user-img {
-    //     height: 200px;
-    //     width: 200px;
-    //     background-size: contain;
-    // }
-    // width: 100%;
-    // height: 100vh;
-    // display: flex;
-    // justify-content: center;
+// .profile-container {
+// .user-img {
+//     height: 200px;
+//     width: 200px;
+//     background-size: contain;
+// }
+// width: 100%;
+// height: 100vh;
+// display: flex;
+// justify-content: center;
 
-    height: 100vh;
-    padding: 30px 0;
-    width: 1000px;
-}
+// height: 100vh;
+// }
 
 .profile-header {
+    height: fit-content;
+    padding: 30px 0;
+    width: 1000px;
     display: flex;
     gap: 20px;
     justify-content: space-around;
@@ -84,88 +85,6 @@
             li {
                 float: left;
                 margin-right: 2em;
-            }
-        }
-    }
-}
-
-.posts-menu {
-    font-weight: 600;
-    text-align: center;
-    letter-spacing: 1px;
-    display: flex;
-    justify-content: center;
-    padding-right: 0;
-    padding-left: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-left: 0;
-    border-right: 0;
-    border-left: 0;
-    border-bottom: 0;
-    margin-bottom: 0;
-    margin-right: 0;
-    border-top: 1px solid rgb(219, 219, 219);
-    color: 142, 142, 142;
-    flex-direction: row;
-    font-size: .75rem;
-    position: relative;
-    vertical-align: baseline;
-    line-height: 18px;
-
-
-    a {
-        align-items: center;
-        color: rgb(0, 0, 0);
-        margin-right: 60px;
-        margin-top: -1px;
-        cursor: pointer;
-        display: flex;
-        flex-direction: row;
-        height: 52px;
-        justify-content: center;
-        text-transform: uppercase;
-        padding-left: 0;
-        background-color: transparent;
-        touch-action: manipulation;
-        padding-top: 0;
-        padding-right: 0;
-        margin-bottom: 0;
-
-        div {
-            overflow-y: visible;
-            border-bottom-left-radius: 0;
-            background-color: transparent;
-            display: flex;
-            align-items: center;
-            border-bottom-right-radius: 0;
-            align-self: auto;
-            justify-content: flex-start;
-            position: relative;
-
-            svg {
-                display: block;
-                position: relative;
-                align-items: center;
-                cursor: pointer;
-                display: flex !important;
-                flex-direction: row;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-                height: 52px;
-                justify-content: center;
-                text-transform: uppercase;
-                font-weight: 600;
-                margin-right: 6px;
-
-                span{
-                    padding-left: 0;
-                    font-size: 100%;
-                    padding-top: 0;
-                    margin-top: 0;
-                    margin-left: 6px;
-                    vertical-align: baseline;
-                }
             }
         }
     }

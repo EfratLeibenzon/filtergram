@@ -11,23 +11,10 @@
         align-items: center;
         justify-content: center;
         margin: 0;
-        padding: 0;
+        padding: 10px;
         width: 100%;
         font-size: 16px;
         font-weight: 600;
-    }
-
-    .edit-story-form {
-
-        .texterea {
-            max-height: 300px;
-            width: 300px;
-            border: none;
-        }
-
-        .texterea:focus {
-            outline: none;
-        }
 
         button {
             color: rgb(0, 149, 246);
@@ -36,12 +23,47 @@
         button:hover {
             cursor: pointer;
         }
-
     }
-}
 
-#img-preview2 {
-    width: 494px;
-    height: 494px;
-    overflow: none;
+    main {
+        #img-preview2 {
+            width: 494px;
+            height: 494px;
+            overflow: none;
+            border-right: 0.6px solid rgb(219, 219, 219);
+        }
+
+        .edit-story-form {
+            padding: 25px;
+
+            .user-section {
+                margin-block-end: 10px;
+                align-items: center;
+
+                .mini-user-img {
+                    margin-right: 10px;
+
+                }
+
+                p {
+                    font-weight: 600;
+                }
+            }
+
+            .texterea {
+                margin-top: 15px;
+                height: 300px;
+                width: 300px;
+                border: none;
+                overflow: hidden;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+
+            .texterea:focus {
+                outline: none;
+            }
+
+        }
+    }
 }
