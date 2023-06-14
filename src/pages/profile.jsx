@@ -2,15 +2,25 @@ import { StoryList } from "../cmps/story-list";
 import { UserDetails } from "../cmps/user-details";
 import { LoginSignup } from "../cmps/login-signup";
 import { useState } from "react";
+import { useEffect } from "react";
 import { userService } from "../services/user.service";
-// import { PreviewGrid } from "../cmps/grid";
+import { PreviewGrid } from "../cmps/grid";
 import { useSelector } from "react-redux";
+import { loadStories } from "../store/story.actions";
 
 export function Profile() {
     const loggedInUser = useSelector(storeState => storeState.userModule.loggedInUser)
+    // const stories = useSelector(storeState => storeState.userModule.stories)
+    const stories = useSelector(storeState => storeState.storyModule.stories)
+    console.log('loggedInUser.userStories', loggedInUser)
+    console.log('Stories before loadstories', stories)
 
+    useEffect(() => {
+        loadStories()
+    }, [])
 
-
+    console.log('Stories after loadstories', stories)
+    // 
 
     // function onChangeLoginStatus(loggedInUser) {
     //     console.log('from header: ', loggedInUser);
@@ -26,12 +36,9 @@ export function Profile() {
                     </svg><span>Posts</span></div></a>
                 </section>
             </div>
-            <PreviewGrid stories={loggedInUser.userStories} />
+            <PreviewGrid stories={stories} />
             <section className="user-stories grid">
             </section>
-
-            {/* <PreviewGrid storiesId={loggedInUser.userStories} /> */}
-
         </div>
     )
 }
