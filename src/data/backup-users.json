@@ -95,5 +95,27 @@
             "vrXTq97Uo",
             "OOszq1f1W"
         ]
+    },
+    {
+        "_id": "u111",
+        "fullName": "Sivan L",
+        "userName": "Sivannnn",
+        "password": "Sivannnn",
+        "mail": "",
+        "userBio": "",
+        "userImg": {
+            "url": "https://res.cloudinary.com/duxmabf4n/image/upload/v1686760839/a9kx0ug4ukd27ihosbjn.png",
+            "style": {
+                "filter": "none"
+            }
+        },
+        "followingId": [],
+        "followersId": [],
+        "following": [],
+        "followers": [],
+        "savedStories": [],
+        "taggedStories": [],
+        "userStories": [
+        ]
     }
 ]
