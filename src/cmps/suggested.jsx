@@ -4,19 +4,21 @@ import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 
 import { loadUsers } from '../store/user.actions'
+import { getRandomIntInclusive, utilService } from '../services/util.service'
 
 export function Suggested() {
     const user = useSelector(storeState => storeState.userModule.loggedInUser)
     const users = useSelector(storeState => storeState.userModule.users)
     // const user = userService.getLoggedinUser();
 
-    console.log('users from suggested', users[0])
+    // console.log('users from suggested', users[0])
 
     useEffect(() => {
         loadUsers()
     }, [])
 
-    // {users.map((user)=><p>{user.fullName}</p>)}
+    const suggestedUsers = users.map(user => user).filter((u) => u._id !== user._id)
+    const randomSuggestedUser = utilService.getRandomIntInclusive(0, suggestedUsers.length - 1)
 
     return (
         <div className="suggestions">
@@ -24,8 +26,8 @@ export function Suggested() {
                 <div className="suggestion-header-info">
                     <NavLink to={`/profile/${user._id}`}><img src={user.userImg?.url} style={user.userImg?.style} /></NavLink>
                     <div className="suggestion-user-name">
-                        <NavLink to={`/profile/${user._id}`}>{user.userName}</NavLink>
-                        <span>{user.fullName}</span>
+                        <NavLink to={`/profile/${user._id}`}>{user?.userName}</NavLink>
+                        <span>{user?.fullName}</span>
                         {/* <NavLink className="navbar-item-profile" to={`/profile/${user._id}`}><img src={user.userImg.url} style={user.userImg.style} />Profile</NavLink> */}
                     </div>
                 </div>
@@ -36,22 +38,22 @@ export function Suggested() {
             </div>
             <div className="suggestion-header">
                 <div className="suggestion-header-info">
-                    <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAORDGWrDGSbG4N4lf7O7WURlcqqNjbihMgA&usqp=CAU" /></span>
+                    <span><img src={suggestedUsers[randomSuggestedUser]?.userImg.url} style={user.userImg?.style} /></span>
                     <div className="suggestion-user-name">
-                        <span className="suggestion">Dimtry Levin</span>
-                        <span>DimaLev</span>
+                        <span className="suggestion">{suggestedUsers[randomSuggestedUser]?.fullName} </span>
+                        <span>{suggestedUsers[randomSuggestedUser]?.userName}</span>
                     </div>
                 </div>
             </div>
-            <div className="suggestion-header">
+            {/* <div className="suggestion-header">
                 <div className="suggestion-header-info">
-                    <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfWeIxZrWnLc-QyCfO8mp6cYIs554vr5gU6Q&usqp=CAU" /></span>
+                    <span><img src={suggestedUsers[2]?.userImg.url} style={user.userImg?.style} /></span>
                     <div className="suggestion-user-name">
-                        <span className="suggestion">Lisa S</span>
-                        <span>Simpson Girl</span>
+                        <span className="suggestion">{suggestedUsers[2]?.fullName} </span>
+                        <span>{suggestedUsers[2]?.userName}</span>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
