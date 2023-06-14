@@ -1,7 +1,6 @@
-
 import { storageService } from './async-storage.service.js'
-import { users } from './demo-data.js'
 import { utilService } from './util.service.js'
+import users from '../data/backup-users.json'
 
 export const STORAGE_KEY_LOGGEDIN_USER = 'loggedInUser'
 const STORAGE_KEY_USERS = 'users'
@@ -10,7 +9,6 @@ const STORAGE_KEY_GUEST = 'guest'
 // const STORAGE_KEY = 'userDB'
 
 _createUsers()
-// _createGuest()
 
 export const userService = {
     login,
@@ -205,9 +203,8 @@ async function getShortUserInfo(userId) {
 
 function _createUsers() {
     const storedUsers = utilService.loadFromStorage(STORAGE_KEY_USERS)
-    if (storedUsers?.length > 0) {
-        return
-    }
+    if (storedUsers?.length > 0) return
+
     _saveUsers(STORAGE_KEY_USERS, users)
 }
 

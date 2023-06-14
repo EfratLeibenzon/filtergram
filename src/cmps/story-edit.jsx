@@ -6,19 +6,22 @@ import { addStory } from "../store/story.actions"
 import { EditImg } from "./edit-img"
 import { CreateStoryTitle } from "./edit-story-title"
 import { xButton } from "./icons"
+const STAGE_1 = 'STAGE_1'
+const STAGE_2 = 'STAGE_2'
+const STAGE_3 = 'STAGE_3'
 
 export function StoryEdit({ setisStoryEdit }) {
 
     let storyToEdit = useRef(storyService.getEmptyStory())
     const { storyId } = useParams()
-    const [stage, setStage] = useState(0)
+    const [stage, setStage] = useState(null)
 
     useEffect(() => {
         if (!storyId) {
-            setStage(1)
+            setStage(STAGE_1)
         } else {
             loadStory()
-            setStage(3)
+            setStage(STAGE_3)
         }
     }, [])
 
@@ -32,12 +35,12 @@ export function StoryEdit({ setisStoryEdit }) {
 
     function onUploaded(imgUrl) {
         storyToEdit.current = { ...storyToEdit.current, img: { ...storyToEdit.current.img, url: imgUrl } }
-        setStage(2)
+        setStage(STAGE_2)
     }
 
     function setImgStyle(newStyle) {
         storyToEdit.current = { ...storyToEdit.current, img: { ...storyToEdit.current.img, style: newStyle } }
-        setStage(3)
+        setStage(STAGE_3)
     }
 
     async function onSaveStory() {
@@ -76,11 +79,11 @@ export function StoryEdit({ setisStoryEdit }) {
 
 function DynamicComponent({ stage, onUploaded, imgUrl, storyToEdit, setImgStyle, onSaveStory }) {
     switch (stage) {
-        case 1:
+        case STAGE_1:
             return <ImgUploader onUploaded={onUploaded} />
-        case 2:
+        case STAGE_2:
             return <EditImg imgUrl={imgUrl} setImgStyle={setImgStyle} />
-        case 3:
+        case STAGE_3:
             return <CreateStoryTitle storyToEdit={storyToEdit} onSaveStory={onSaveStory} />
     }
 }

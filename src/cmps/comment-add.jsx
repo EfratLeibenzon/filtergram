@@ -7,7 +7,6 @@ import { updateStory } from "../store/story.actions"
 export function CommentAdd({ story }) {
     // const [commentToAdd, setcommentToAdd] = useState(storyService.getEmptyComment())
     let newComment = useRef(storyService.getEmptyComment())
-    console.log('new render', newComment.current)
 
     // function onRemoveComment(commentId, story._id) {
     //     removeComment(commentId)
