@@ -15,7 +15,6 @@ import { EditImg } from './cmps/edit-img'
 import { LoginSignup } from './cmps/login-signup'
 import { Search } from './cmps/search'
 
-
 export function RootCmp() {
     const user = useSelector(storeState => (storeState.userModule.loggedInUser))
     const [isStoryEdit, setisStoryEdit] = useState(false)

@@ -153,161 +153,13 @@ export const users = [
     mail: '', //not in the starter
     userBio: '', //not in the starter
     userImg: { url: 'https://res.cloudinary.com/duxmabf4n/image/upload/v1686570314/wftqmpysimoxouukkpxj.jpg', style: { filter: 'none' } },
-    followingId: [], //provided in the starter as: following
-    followersId: [], //provided in the starter as: followers
-    following: [
-      // {
-      //   _id: "u106",
-      //   fullname: "Dob",
-      //   imgUrl: "http://some-img"
-      // }
-    ],
-    followers: [
-      // {
-      //   _id: "u105",
-      //   fullname: "Bob",
-      //   imgUrl: "http://some-img"
-      // }
-    ],
+    followingId: [],
+    followersId: [],
+    following: [],
+    followers: [],
     savedStories: [], //provided in the starter as savedStoryIds
     taggedStories: [], //not in the starter
-    userStories: [
-      {
-        by: {
-          followers: [],
-          followersId: [],
-          following: [],
-          followingId: [],
-          fullName: "Irene Radvogin",
-          mail: "IreneRadvogin@gmail.com",
-          password: "mukmuk",
-          savedStories: [],
-          taggedStories: [],
-          userBio: "",
-          userImg: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685950112/eiqrhchqoliytvlhd60w.jpg", style: { filter: 'none' } },
-          userName: "irene_rad",
-          userStories: [],
-          _id: "u101"
-        },
-        comments: [],
-        createdAt: 1686119781486,
-        hashTags: [],
-        img: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg", style: { filter: 'none' } },
-        likedBy: [],
-        loc: {},
-        taggedUsers: [],
-        txt: "yummy!!",
-        _id: "s101"
-      },
-      {
-        by: {
-          followers: [],
-          followersId: [],
-          following: [],
-          followingId: [],
-          fullName: "Irene Radvogin",
-          mail: "IreneRadvogin@gmail.com",
-          password: "mukmuk",
-          savedStories: [],
-          taggedStories: [],
-          userBio: "",
-          userImg: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685950112/eiqrhchqoliytvlhd60w.jpg", style: { filter: 'none' } },
-          userName: "irene_rad",
-          userStories: [],
-          _id: "u101"
-        },
-        comments: [],
-        createdAt: 1686119781486,
-        hashTags: [],
-        img: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg", style: { filter: 'none' } },
-        likedBy: [],
-        loc: {},
-        taggedUsers: [],
-        txt: "yummy!!",
-        _id: "s101"
-      },
-      {
-        by: {
-          followers: [],
-          followersId: [],
-          following: [],
-          followingId: [],
-          fullName: "Irene Radvogin",
-          mail: "IreneRadvogin@gmail.com",
-          password: "mukmuk",
-          savedStories: [],
-          taggedStories: [],
-          userBio: "",
-          userImg: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685950112/eiqrhchqoliytvlhd60w.jpg", style: { filter: 'none' } },
-          userName: "irene_rad",
-          userStories: [],
-          _id: "u101"
-        },
-        comments: [],
-        createdAt: 1686119781486,
-        hashTags: [],
-        img: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg", style: { filter: 'none' } },
-        likedBy: [],
-        loc: {},
-        taggedUsers: [],
-        txt: "yummy!!",
-        _id: "s101"
-      },
-      {
-        by: {
-          followers: [],
-          followersId: [],
-          following: [],
-          followingId: [],
-          fullName: "Irene Radvogin",
-          mail: "IreneRadvogin@gmail.com",
-          password: "mukmuk",
-          savedStories: [],
-          taggedStories: [],
-          userBio: "",
-          userImg: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685950112/eiqrhchqoliytvlhd60w.jpg", style: { filter: 'none' } },
-          userName: "irene_rad",
-          userStories: [],
-          _id: "u101"
-        },
-        comments: [],
-        createdAt: 1686119781486,
-        hashTags: [],
-        img: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg", style: { filter: 'none' } },
-        likedBy: [],
-        loc: {},
-        taggedUsers: [],
-        txt: "yummy!!",
-        _id: "s101"
-      },
-      {
-        by: {
-          followers: [],
-          followersId: [],
-          following: [],
-          followingId: [],
-          fullName: "Irene Radvogin",
-          mail: "IreneRadvogin@gmail.com",
-          password: "mukmuk",
-          savedStories: [],
-          taggedStories: [],
-          userBio: "",
-          userImg: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685950112/eiqrhchqoliytvlhd60w.jpg", style: { filter: 'none' } },
-          userName: "irene_rad",
-          userStories: [],
-          _id: "u101"
-        },
-        comments: [],
-        createdAt: 1686119781486,
-        hashTags: [],
-        img: { url: "https://res.cloudinary.com/duxmabf4n/image/upload/v1685949752/mvvh6gxmpshxuxit9bth.jpg", style: { filter: 'none' } },
-        likedBy: [],
-        loc: {},
-        taggedUsers: [],
-        txt: "yummy!!",
-        _id: "s101"
-      }
-    ] //not in the starter
+    userStories: [] //not in the starter
   },
   {
     _id: "u10Z",
@@ -337,6 +189,22 @@ export const users = [
     taggedStories: [], //not in the starter
     userStories: [] //not in the starter
   },
+  {
+    followers: [],
+    followersId: [],
+    following: [],
+    followingId: [],
+    fullName: "Kobi Greidinger",
+    mail: "",
+    password: "kkk",
+    savedStories: [],
+    taggedStories: [],
+    userBio: 'hi im Kobi!',
+    userImg: { url: "  https://res.cloudinary.com/duxmabf4n/image/upload/w_494,h_550,c_fill/v1686656424/hyryicpgbebunocluphb.jpg", style: { filter: 'none' } },
+    userName: "kobi_kobi",
+    userStories: [],
+    _id: "w2zH5vbNF",
+  }
 ]
 
 export const hashTags = ['cool', 'food', 'baby', 'nature',]
@@ -356,3 +224,6 @@ export const stories = [{
   likedBy: [],
   hashTags: []
 }]
+
+
+

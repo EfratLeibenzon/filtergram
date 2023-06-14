@@ -4,7 +4,7 @@ import { store } from '../store/store.js'
 
 import { showErrorMsg } from '../services/event-bus.service.js'
 import { LOADING_DONE, LOADING_START } from "./system.reducer.js";
-import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER, ADD_USER } from "./user.reducer.js";
+import { REMOVE_USER, SET_LOGGED_IN_USER, SET_USERS, SET_WATCHED_USER, ADD_USER, UPDATE_LOGGEDIN_USER } from "./user.reducer.js";
 import { async } from "q";
 
 
@@ -49,7 +49,7 @@ export async function login(user) {
         const loggedInUser = await userService.login(user)
         console.log('from actions1111111', loggedInUser)
         store.dispatch({
-            type: SET_USER,
+            type: SET_LOGGED_IN_USER,
             loggedInUser
         })
         // socketService.login(user)
@@ -64,7 +64,7 @@ export async function signup(user) {
     try {
         const loggedInUser = await userService.signup(user)
         store.dispatch({
-            type: SET_USER,
+            type: SET_LOGGED_IN_USER,
             loggedInUser
         })
         // socketService.login(user)
@@ -79,7 +79,7 @@ export async function logout() {
     try {
         await userService.logout()
         store.dispatch({
-            type: SET_USER,
+            type: SET_LOGGED_IN_USER,
             loggedInUser: null
         })
         // socketService.logout()
@@ -99,11 +99,30 @@ export async function loadUser(userId) {
     }
 }
 
-// export async function updateUser(user){
+export async function updateUser(user) {
+    try {
+        const updatedUser = await userService.saveUser(user)
+        console.log('updatedUser', updatedUser)
+        store.dispatch({
+            type: UPDATE_LOGGEDIN_USER,
+            updatedUser
+        })
+        return updateUser
+    } catch (err) {
+        console.log('Cannot update logged user (id: ' + user._id + ')', err)
+        throw err
+    }
+}
+
+// export async function addStory(story) {
 //     try {
-//         const updatedUser= await userService.saveUser(user)
-
-
+//         const savedStory = await storyService.save(story)
+//         console.log('Added Story', savedStory)
+//         store.dispatch(getActionAddStory(savedStory))
+//         return savedStory
+//     } catch (err) {
+//         console.log('Cannot add story', err)
+//         throw err
 //     }
 // }
 

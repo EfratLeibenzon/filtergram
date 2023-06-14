@@ -2,7 +2,7 @@
     width: 835px;
     height: 536.2px;
     background-color: rgb(255, 255, 255);
-    border: solid 1px black;
+    border: none;
     border-radius: 12px;
     margin: 0;
     padding: 0;
@@ -24,9 +24,10 @@
     main {
 
         #img-preview-container {
-            width: 494px;
-            height: 494px;
-            // overflow: none;
+            width: 493.8px;
+            height: 493.8px;
+            overflow: none;
+            border-right: rgb(219, 219, 219) 0.5px solid;
 
             img {
                 max-width: 100%;
@@ -64,7 +65,7 @@
 
 
                 .filter-btn {
-                    margin: 0;
+                    margin: auto;
                     display: flex;
                     flex-direction: column;
                     border-radius: 5px;
@@ -89,4 +90,3 @@
         }
     }
 }
-

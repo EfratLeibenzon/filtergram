@@ -17,25 +17,20 @@ export function StoryPreview({ story, onRemoveStory }) {
     const isLiked = story.likedBy.some((u) => u._id === user._id) || null
     // const navigate = useNavigate()
     const location = useLocation()
-
     const [isExpanned, setIsExpanned] = useState(false)
-
     const onToggleLike = useCallback(() => {
         toggleLike(story, user)
     }, [story, user])
-
     function onOpenStoryDetails(storyId) {
         // setIsStoryDetailsOpen(true)
         // console.log("is details open", isStoryDetailsOpen)
         navigate(`/story/:${storyId}`);
     }
-
     function likesPreview(likesCount) {
         if (likesCount > 1) return <section className="likes">{likesCount} likes</section>
         else if (likesCount === 1) return <section className="like">{likesCount} like</section>
         return <section className="no-likes">no likes yet</section>
     }
-
     function getComments(comments) {
         const commentsCount = comments.length
         let shownComments = (commentsCount >= 2) ? [comments[commentsCount - 2], comments[commentsCount - 1]] : comments
@@ -47,9 +42,7 @@ export function StoryPreview({ story, onRemoveStory }) {
                 <CommentList comments={shownComments} />
                 {isMore && <button > view all {commentsCount} comments </button>}
             </section>)
-
     }
-
     return (
         <article className="story-preview flex column">
             <header className="story-header flex space-between">
@@ -65,8 +58,7 @@ export function StoryPreview({ story, onRemoveStory }) {
                 <div className='remove-btn-container flex column' >
                     <button className="icon-btn remove-btn" onClick={() => setIsExpanned(!isExpanned)}>{optionsIcon}</button>
                 </div>
-
-                {/* 
+                {/*
                 <div className='remove-btn-container flex column' >
                     <button className="icon-btn remove-btn" onClick={() => { onRemoveStory(story._id) }}>{optionsIcon}</button>
                 </div> */}
@@ -79,22 +71,16 @@ export function StoryPreview({ story, onRemoveStory }) {
                 <LikeBtn className="icon-btn like-btn" toggleLike={onToggleLike} isLiked={isLiked} />
                 {/* <button className='icon-btn' onClick={onOpenStoryDetails}><span>{commentIcon}</span></button> */}
                 <Link to={`/StoryDetails/:${story._id}`} state={{ background: location }}><span>{commentIcon}</span></Link>
-
                 <button className='icon-btn'><span>{sendIcon}</span></button>
                 <button className='icon-btn save'><span>{savedIcon}</span></button>
             </div>
-
             {likesPreview(story.likedBy.length)}
-
             <section className='story-title'>
                 <p className="user-name">{story.by.userName}</p>
                 <LongTxt txt={story.txt} length={119} />
             </section>
-
             <section className='comments-preview'>{getComments(story.comments)}</section>
             <section><CommentAdd story={story} /></section>
-
-
         </article>
     )
 }

@@ -34,7 +34,7 @@ export function CreateStoryTitle({ storyToEdit, onSaveStory }) {
                         type="texterea" name="txt"
                         placeholder="Write a caption..."
                         style={{ height: 'scrollHeight' }} />
-                    {/* <texterea rows="4" cols="50" onChange={handleChange} name="txt" placeholder="Write a caption..." /> */}
+                    {/* <texterea rows="4" cols="50" wrap="hard" onChange={handleChange} name="txt" placeholder="Write a caption..." /> */}
 
                     <span id="span"></span>
                 </section>
