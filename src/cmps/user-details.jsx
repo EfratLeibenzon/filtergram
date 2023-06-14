@@ -19,7 +19,7 @@ export function UserDetails() {
 
     return (
         // <div className="profile-container">
-        <section className='profile-header'>
+        <section className='user-details'>
             <section className="profile-photo">
                 <img src={user.userImg.url} style={user.userImg.style} />
             </section>
