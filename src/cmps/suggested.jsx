@@ -10,6 +10,14 @@ export function Suggested() {
     const users = useSelector(storeState => storeState.userModule.users)
     // const user = userService.getLoggedinUser();
 
+    console.log('users from suggested', users[0])
+
+    useEffect(() => {
+        loadUsers()
+    }, [])
+
+    // {users.map((user)=><p>{user.fullName}</p>)}
+
     return (
         <div className="suggestions">
             <div className="suggestion-header">

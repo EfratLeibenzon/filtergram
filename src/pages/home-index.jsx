@@ -4,6 +4,7 @@ import { loadStories, removeStory } from '../store/story.actions'
 import { StoryList } from '../cmps/story-list'
 import { StoryEdit } from '../cmps/story-edit'
 import { Suggested } from '../cmps/suggested'
+import { loadUsers } from '../store/user.actions'
 
 export function HomeIndex() {
     const { stories } = useSelector((storeState) => storeState.storyModule)
