@@ -67,6 +67,8 @@
             }
 
             .profile-edit-btn {
+                background-color: rgb(239, 237, 237);
+                cursor: pointer;
                 line-height: 18px;
                 width: 7em;
                 height: 32px;
@@ -88,4 +90,9 @@
             }
         }
     }
+}
+
+.profile-edit-btn:hover{
+    background-color: rgb(115, 115, 115);
+    // background-color: transparent;
 }
