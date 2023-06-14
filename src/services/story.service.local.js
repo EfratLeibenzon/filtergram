@@ -24,9 +24,17 @@ async function query() { // filterBy = { by: '', tags: [] }
     stories.sort((s1, s2) => s2.createdAt - s1.createdAt)
     return stories
 }
+<<<<<<< HEAD
 // function getById(storyId) {
 //     return storageService.get(STORAGE_KEY, storyId)
 // }
+=======
+
+// function getById(storyId) {
+//     return storageService.get(STORAGE_KEY, storyId)
+// }
+
+>>>>>>> 06695e3f8160306ed5076339813477e84cd0d8e2
 async function getById(storyId) {
     try {
         return await storageService.get(STORAGE_KEY, storyId)

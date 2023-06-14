@@ -29,6 +29,8 @@ export function CommentAdd({ story }) {
         if (!newComment.current.txt) return
         newComment.current = { ...newComment.current, CreatedAt: Date.now() }
         story.comments.push(newComment.current)
+        newComment.current = storyService.getEmptyComment()
+        ev.target.comment.value = ''
         try {
             const savedStory = await updateStory(story)
             console.log('savedStory', savedStory)
@@ -37,8 +39,7 @@ export function CommentAdd({ story }) {
             console.log('cant add comment', err)
         }
         finally {
-            newComment.current = storyService.getEmptyComment()
-            ev.target.comment.value = ''
+            console.log('finally')
         }
     }
 
