@@ -30,25 +30,26 @@ export function Navbar({ isStoryEdit, setisStoryEdit, user }) {
     return (
         <div className="side-bar">
             <section className="logo">
-                {/* <NavLink className="navbar-item" to={"/"}>FILTERGRAM</NavLink> */}
-                {/* <a>{filtergramLogo}</a> */}
-                {/* <a>Filtergram</a> */}
                 <img id="logo-id" src={filtergramLogo} alt="Logo" />
             </section>
-            <nav className="main-navbar flex column justify-start">
-                <NavLink className="navbar-item-home" to={"/"}><span>{homeIcon}</span><span className="home">Home</span> </NavLink>
-                <NavLink className="navbar-item-search" to={"/search"}> <span>{searchIcon}</span><span>Search</span></NavLink>
-                <NavLink className="navbar-item-explore" to={"/explore"}><span>{exploreIcon}</span><span>Explore</span></NavLink>
-                <NavLink className="navbar-item-reels" to={"/reels"}><span>{reelsIcon}</span><span>Reels</span></NavLink>
-                <NavLink className="navbar-item-messages" to={"/messages"}><span>{sendIcon}</span><span>Messages</span></NavLink>
-                <a className="navbar-item-notifications"><span>{likeIcon}</span><span>Notifications</span></a>
-                <a className="navbar-item-create" onClick={onCreate} > <span>{createIcon}</span><span>Create</span></a>
-                <NavLink className="navbar-item-profile" to={`/profile/${user._id}`}><img src={user.userImg?.url} style={user.userImg?.style} />Profile</NavLink>
-                {/* <a className="navbar-item-more"><span>{moreIcon}</span><span>More</span></a> */}
-                <div className={isExpanned ? 'nav-more open' : 'nav-more'}>
-                    <a className='nav-more-btn' onClick={onLogout}>Log out</a>
-                </div>
-                <a className="navbar-item-more" onClick={() => setIsExpanned(!isExpanned)}><span>{moreIcon}</span><span>More</span></a>
+
+            <nav className="main-navbar flex column">
+
+                <NavLink className="navbar-item" to={"/"}><span>{homeIcon}</span><span className="home nav-span">Home</span> </NavLink>
+                <NavLink className="navbar-item" to={"/search"}> <span>{searchIcon}</span><span className="nav-span">Search</span></NavLink>
+                <NavLink className="navbar-item nav-span" to={"/explore"}><span className="nav-span">{exploreIcon}</span><span className="nav-span">Explore</span></NavLink>
+                <NavLink className="navbar-item nav-span" to={"/reels"}><span className="nav-span">{reelsIcon}</span><span className="nav-span">Reels</span></NavLink>
+                <NavLink className="navbar-item nav-span" to={"/messages"}><span>{sendIcon}</span><span className="nav-span">Messages</span></NavLink>
+                <a className="navbar-item nav-span"><span>{likeIcon}</span><span className="nav-span">Notifications</span></a>
+                <a className="navbar-item" onClick={onCreate} > <span>{createIcon}</span><span className="nav-span">Create</span></a>
+                <NavLink className="navbar-item profile" to={`/profile/${user._id}`}><img src={user.userImg?.url} style={user.userImg?.style} /><span className=" nav-span">Profile</span> </NavLink>
+                <section>
+                    {/* <a className="navbar-item-more"><span>{moreIcon}</span><span>More</span></a> */}
+                    <div className={isExpanned ? 'nav-more open' : 'nav-more'}>
+                        <a className='nav-more-btn' onClick={onLogout}>Log out</a>
+                    </div>
+                    <a className="navbar-item more" onClick={() => setIsExpanned(!isExpanned)}><span>{moreIcon}</span> <span className="nav-span">More</span></a>
+                </section>
             </nav>
         </div>
     )
