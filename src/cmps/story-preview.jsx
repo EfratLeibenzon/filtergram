@@ -38,8 +38,9 @@ export function StoryPreview({ story, onRemoveStory }) {
 
     function getComments(comments) {
         const commentsCount = comments.length
-        let shownComments = (commentsCount >= 2) ? [comments[commentsCount - 1], comments[commentsCount - 2]] : comments
+        let shownComments = (commentsCount >= 2) ? [comments[commentsCount - 2], comments[commentsCount - 1]] : comments
         const isMore = (comments.length > 2)
+        console.log(' comments', comments)
 
         return (
             <section>
@@ -59,8 +60,8 @@ export function StoryPreview({ story, onRemoveStory }) {
                     </div>
                 </div>
                 <div className={isExpanned ? 'remove-menu open' : 'remove-menu'}>
-                        <a className='remove-menu-btn' onClick={() => { onRemoveStory(story._id) }}>{trashIcon}</a>
-                    </div>
+                    <a className='remove-menu-btn' onClick={() => { onRemoveStory(story._id) }}>{trashIcon}</a>
+                </div>
                 <div className='remove-btn-container flex column' >
                     <button className="icon-btn remove-btn" onClick={() => setIsExpanned(!isExpanned)}>{optionsIcon}</button>
                 </div>
