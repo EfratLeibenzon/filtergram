@@ -49,7 +49,8 @@ export function StoryEdit({ setisStoryEdit }) {
             storyToEdit.current = { ...storyToEdit.current, createdAt: timeStamp, }
             const story = await addStory(storyToEdit.current)
             console.log(`story with id ${story._id} added`)
-
+            // let user=story.by
+            // user.userStories.push(story._id)
         } catch (err) {
             console.log('Cannot add story', err)
         }

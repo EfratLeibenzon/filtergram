@@ -9,6 +9,7 @@ import { StoryDetails } from './story-details'
 import { useLocation, useNavigate } from 'react-router'
 import { Link } from 'react-router-dom'
 import { LongTxt } from './long-txt'
+
 // export function StoryPreview({ story, onRemoveStory, setIsStoryDetailsOpen, isStoryDetailsOpen }) {
 export function StoryPreview({ story, onRemoveStory }) {
     const navigate = useNavigate()
@@ -34,7 +35,6 @@ export function StoryPreview({ story, onRemoveStory }) {
         const commentsCount = comments.length
         let shownComments = (commentsCount >= 2) ? [comments[commentsCount - 2], comments[commentsCount - 1]] : comments
         const isMore = (comments.length > 2)
-        console.log(' comments', comments)
         return (
             <section>
                 <CommentList comments={shownComments} />
