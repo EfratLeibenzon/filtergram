@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router'
 import { useSelector } from 'react-redux'
 import { Navbar } from './cmps/navbar'
 import { HomeIndex } from './pages/home-index'
+import { NavbarMobile } from './cmps/navbar-mobile'
 import { Explore } from './pages/explore'
 import { Profile } from './pages/profile'
 import { Messages } from './pages/messages'
@@ -14,6 +15,11 @@ import { loadUser } from './store/user.actions'
 import { EditImg } from './cmps/edit-img'
 import { LoginSignup } from './cmps/login-signup'
 import { Search } from './cmps/search'
+import useBreakpoint from 'use-breakpoint'
+
+const BREAKPOINTS = { mobile: 0, tablet: 768, desktop: 1280 }
+
+
 
 export function RootCmp() {
     const user = useSelector(storeState => (storeState.userModule.loggedInUser))
@@ -22,13 +28,21 @@ export function RootCmp() {
     const location = useLocation()
     const background = location.state && location.state.background
 
+    const { breakpoint, maxWidth, minWidth } = useBreakpoint(
+        BREAKPOINTS,
+        'desktop'
+    )
+
+
+
+
     if (!user) {
         return <LoginSignup />
     }
 
     return (
-        <div className='flex'>
-            <Navbar isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} user={user} />
+        <div className='app flex'>
+            {breakpoint !== 'mobile' && < Navbar isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} user={user} />}
             {isStoryEdit && <StoryEdit setisStoryEdit={setisStoryEdit} />}
             <main className='main-section'>
                 <Routes location={background || location}>
@@ -51,7 +65,8 @@ export function RootCmp() {
                     </Routes>)} */}
 
             </main>
-
+            {/* {breakpoint === 'mobile' && <p className="mobile-navbar">sdasdas</p>} */}
+            {breakpoint === 'mobile' && <NavbarMobile isStoryEdit={isStoryEdit} setisStoryEdit={setisStoryEdit} user={user}/>}
         </div >
     )
 }

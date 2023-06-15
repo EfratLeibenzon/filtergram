@@ -90,3 +90,34 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    main.flex.row {
+        flex-direction: column;
+    }
+
+    #img-preview-container{
+        border: 1px solid white;
+    }
+
+    div.edit-img {
+        height: 100vh;
+        width: 100%;
+        overflow-y: scroll;
+
+        .img-editors {
+            width: 100%;
+            overflow-y: scroll;
+        }
+    }
+
+    main.flex.row  {
+        flex-direction: column;
+    }
+
+    div.edit-story-title {
+        height: 100vh;
+        width: 100%;
+        overflow-y: scroll;
+    }
+}

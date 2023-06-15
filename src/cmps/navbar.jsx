@@ -43,7 +43,7 @@ export function Navbar({ isStoryEdit, setisStoryEdit, user }) {
                 <a className="navbar-item nav-span"><span>{likeIcon}</span><span className="nav-span">Notifications</span></a>
                 <a className="navbar-item" onClick={onCreate} > <span>{createIcon}</span><span className="nav-span">Create</span></a>
                 <NavLink className="navbar-item profile" to={`/profile/${user._id}`}><img src={user.userImg?.url} style={user.userImg?.style} /><span className=" nav-span">Profile</span> </NavLink>
-                <section>
+                <section className="more-menu-container">
                     {/* <a className="navbar-item-more"><span>{moreIcon}</span><span>More</span></a> */}
                     <div className={isExpanned ? 'nav-more open' : 'nav-more'}>
                         <a className='nav-more-btn' onClick={onLogout}>Log out</a>

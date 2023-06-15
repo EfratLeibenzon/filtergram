@@ -14,11 +14,16 @@
     text-align: center;
 
 
-    &.exit-btn {
+    .exit-btn {
         background-color: transparent;
         border: none;
         position: fixed;
-        right: -5px;
-        top: -5px;
+        right: 20px;
+        top: 20px;
     }
+}
+
+@media screen and (max-width:480px) {
+    
+    
 }
